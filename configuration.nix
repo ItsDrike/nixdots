@@ -97,11 +97,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  nix.package = pkgs.nixUnstable;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
 

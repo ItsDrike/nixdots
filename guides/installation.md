@@ -34,15 +34,11 @@ nano configuration.nix
 
 In there, change the `environment.systemPackages = with pkgs; [];` like, and include `git` and `vim`.
 
-After that, let's enable flakes, by adding the following at the end of your `configuration.nix` (but still within the function body - before the last `}`):
+After that, let's enable flakes, by adding the following anywhere in your `configuration.nix`:
 
 ```nix
-nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-        experimental-features = nix-command flakes
-    ''
-};
+nix.package = pkgs.nixUnstable;
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
 
 Now you can save the changes and rebuild the system:

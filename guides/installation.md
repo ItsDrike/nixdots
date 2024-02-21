@@ -129,6 +129,18 @@ Yay, you're now using NixOS in flakes mode!
 > If you run the `sudo nixos-rebuild switch` command, without the `--flake .`
 > it would look for the `flake.nix` file in `/etc/nixos`.
 
+> [!TIP]
+> Notice the `nixosConfigurations` (plural) key in our flake, suggesting that
+> it can hold multiple configurations. Indeed, it can! You can use a single
+> flake to manage multiple systems.
+>
+> The name for the configuration just needs to match the hostname of your
+> machine, which by default will be `nixos`.
+>
+> Alternatively, you can also pick which configuration to use manually in the
+> rebuild command, like so: `nixos-rebuild --flake .#my-configuration`, which
+> would pick a config named `my-configuration`.
+
 You can notice that this also created a `flake.lock` file, containing the exact
 versions of all of the packages you're using. Let's add this file to git too:
 `git add flake.lock`.

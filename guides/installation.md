@@ -153,9 +153,20 @@ git commit -m "Initial commit"
 
 ## Updating
 
-Over time, to update the software that's installed on your machine, you can use
-`nix flake update`, to update your `flake.lock` file, and then `nixos-rebuild
-switch`, to get switch your system to the new dependencies.
+Over time, you'll want to update the software that's installed on your machine,
+to do that, we'll first want to update the `flake.lock` file, which contains
+the commit sha of the nixpkgs repo that's being used. To do so, you can use
+this command (while in `~/dots` directory):
+
+```sh
+nix flake update
+```
+
+After which, you'll probably also want to rebuild your system and switch:
+
+```sh
+nixos-rebuild switch --flake .
+```
 
 > [!TIP]
 > This replaces the legacy (non-flake) regime's command: `nixos-rebuild switch --upgrade`

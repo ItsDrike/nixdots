@@ -15,21 +15,10 @@ During this installation, make sure you allow non-free programs, and in the desk
 
 ## Set up configuration.nix
 
-First thing you'll need to do is to make your useer account own the
-`/etc/nixos` directory. You'll want to do this to allow you to easily manage
-your config with git (which is a requirement when using flakes). You can use
-system wide git, however it is much more convenient to just leave it to the
-user, as you'll have your git configuration there.
-
-```sh
-cd /etc/nixos
-sudo chmod -R itsdrike:users .
-```
-
 Out of the box, NixOS only comes with `nano` editor, so we'll have to use that to edit the `configuration.nix` for the first time.
 
 ```sh
-nano configuration.nix
+sudo nano configuration.nix
 ```
 
 In there, change the `environment.systemPackages = with pkgs; [];` like, and include `git` and `vim`.
@@ -49,11 +38,23 @@ sudo nixos-rebuild switch
 
 ## Set up flakes
 
-Now, since a git repository is required for flakes, let's set up git:
+An interesting things about nix flakes, is that they need to live in a git
+repository, you won't be able to rebuild otherwise, so let's set up some git
+settings, so that we can make commits:
 
 ```sh
 git config --global user.email "itsdrike@protonmail.com"
 git config --global user.name "ItsDrike"
+```
+
+We could create and manage this repository directly in `/etc/nixos`, however
+that's not practical, since we probably want to use our git config and
+generally just work in a non-root environment when editing the flake. I like
+using the `~/dots` directory.
+
+```sh
+cp -r /etc/nixos ~/dots
+cd ~/dots
 ```
 
 Now we have 2 options, the first one I'll show will set up my configuration
@@ -71,6 +72,7 @@ git init
 git remote add origin https://github.com/ItsDrike/nixdots
 git branch -M main
 git pull origin main
+nixos-rebuild switch --flake .
 ```
 
 ## Create your own custom flake
@@ -81,7 +83,7 @@ Initialize an empty git repository:
 git init
 ```
 
-Create a very basic `/etc/nixos/flake.nix`:
+Create a very basic `./flake.nix`:
 
 ```sh
 {
@@ -115,12 +117,17 @@ git add configuration.nix
 git add hardware-configuration.nix
 ```
 
-Now you can run `sudo nixos-rebuild switch`. Yay, you're now using NixOS in flakes mode!
+Now you can rebuild the system to use our flake:
+
+```sh
+sudo nixos-rebuild switch --flake .
+```
+
+Yay, you're now using NixOS in flakes mode!
 
 > [!NOTE]
-> If you run the `sudo nixos-rebuild switch` command before adding all of these
-> files to git, you will get an error, so it really is a requirement to have
-> your configuration in a git repository when you're using flakes.
+> If you run the `sudo nixos-rebuild switch` command, without the `--flake .`
+> it would look for the `flake.nix` file in `/etc/nixos`.
 
 You can notice that this also created a `flake.lock` file, containing the exact
 versions of all of the packages you're using. Let's add this file to git too:

@@ -73,8 +73,8 @@ to the `/etc/nixos` directory, to get my setup, like so:
 ```sh
 git init
 git remote add origin https://github.com/ItsDrike/nixdots
-git branch -C main
-git pull
+git branch -M main
+git pull origin main
 ```
 
 ## Create your own custom flake
@@ -127,13 +127,13 @@ Now you can run `sudo nixos-rebuild switch`. Yay, you're now using NixOS in flak
 > your configuration in a git repository when you're using flakes.
 
 You can notice that this also created a `flake.lock` file, containing the exact
-versions of all of the packages you're using. You can (but don't have to) add
-this file to git too: `git add flake.lock`.
+versions of all of the packages you're using. Let's add this file to git too:
+`git add flake.lock`.
 
-Let's make a commit:
+And now we're ready to make our first commit:
 
 ```sh
-git commit -a -m "Initial commit"
+git commit -m "Initial commit"
 ```
 
 ## Updating

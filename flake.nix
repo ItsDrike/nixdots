@@ -2,8 +2,7 @@
     description = "ItsDrike's NixOS configuration";
 
     inputs = {
-      # the version here should match your system.stateVersion in configuration.nix
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11"; 
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     };
 
     outputs = { self, nixpkgs, ...} @ inputs: {

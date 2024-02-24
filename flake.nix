@@ -3,14 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
 
-  outputs = { self, nixpkgs, ...} @ inputs: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
-      };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
   };
+
+  outputs = {nixpkgs, ...} @ inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = ["x86_64-linux"];
+
+      flake = {
+        nixosConfigurations = {
+          nixos = nixpkgs.lib.nixosSystem {
+            modules = [ ./configuration.nix ];
+          };
+        };
+      };
+    };
 }

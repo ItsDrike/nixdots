@@ -17,7 +17,7 @@
       flake = {
         nixosConfigurations = {
           nixos = nixpkgs.lib.nixosSystem {
-            modules = [ ./configuration.nix ];
+            modules = [ ./system ./hosts/vbox_nix ];
           };
         };
       };

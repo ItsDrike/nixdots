@@ -10,7 +10,4 @@
   };
 
   services.resolved.enable = true;
-
-  # Don't wait for network manager startup
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 }

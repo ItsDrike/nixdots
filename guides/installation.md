@@ -62,19 +62,6 @@ from this repository. Once done, you will have your system set up in the same
 way that I do. In the second option, I will go over a basic setup to create
 your own flake.
 
-## Set up with my configuration
-
-Finally, we're ready to migrate to flakes. At this point, you can simply pull this repository
-to the `/etc/nixos` directory, to get my setup, like so:
-
-```sh
-git init
-git remote add origin https://github.com/ItsDrike/nixdots
-git branch -M main
-git pull origin main
-nixos-rebuild switch --flake .
-```
-
 ## Create your own custom flake
 
 Initialize an empty git repository:
@@ -104,10 +91,6 @@ Create a very basic `./flake.nix`:
     };
 }
 ```
-
-This flake will still rely on your `configuration.nix`, we will eventually get
-to a config which does not need this file, but to make starting out with flakes
-simple, we'll do it in this way for now.
 
 Let's add things to git!
 

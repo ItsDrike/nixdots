@@ -8,7 +8,7 @@
     timeout = 3;
   };
 
-  networking.hostName = "nixos";
+  networking.hostName = "vboxnix";
 
   # NixOS release from which this machine was first installed.
   # (for stateful data, like file locations and db versions)

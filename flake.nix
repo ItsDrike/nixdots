@@ -14,12 +14,8 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = ["x86_64-linux"];
 
-      flake = {
-        nixosConfigurations = {
-          vboxnix = nixpkgs.lib.nixosSystem {
-            modules = [ ./system ./hosts/vbox_nix ];
-          };
-        };
-      };
+      imports = [
+        ./hosts
+      ];
     };
 }

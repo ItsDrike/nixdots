@@ -1,11 +1,8 @@
-{self, inputs, ...}: {
-  flake.nixosConfigurations = let
-    inherit (inputs.nixpkgs.lib) nixosSystem;
-    specialArgs = {inherit inputs self;};
-  in {
-    vboxnix = nixosSystem {
-      inherit specialArgs;
-      modules = [ ../system ./vbox_nix ];
-    };
+{self, inputs, ...}: let
+  inherit (inputs.nixpkgs) lib;
+in {
+  vboxnix = lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [ ../system ./vbox_nix ];
   };
 }

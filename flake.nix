@@ -3,19 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
   };
 
-  outputs = {nixpkgs, ...} @ inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = ["x86_64-linux"];
-
-      imports = [
-        ./hosts
-      ];
-    };
+  outputs = {self, nixpkgs, ...} @ inputs: let
+  in {
+    nixosConfigurations = import ./hosts {inherit nixpkgs inputs self;};
+  };
 }

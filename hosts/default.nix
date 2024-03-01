@@ -3,6 +3,10 @@
 in {
   vboxnix = lib.nixosSystem {
     system = "x86_64-linux";
-    modules = [ ../system ./vbox_nix ];
+    modules = [ 
+      ../system
+      ./vbox_nix
+      ../modules/services/ssh.nix
+    ];
   };
 }

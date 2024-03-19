@@ -10,6 +10,7 @@ in {
       ../system/options/cachix.nix
       ../system/options/oomd.nix
       ../modules/services/ssh.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
   };
 }

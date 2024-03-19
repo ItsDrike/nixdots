@@ -1,11 +1,16 @@
-{lib, ...}:
+{ lib, pkgs, ...}:
 {
   imports = [ ./hardware-configuration.nix ];
 
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-    timeout = 3;
+  nix.settings = {
+    max-jobs = 6;
+    cores = 6;
+  };
+
+  security.sudo.package = pkgs.sudo.override { withInsults = true; };
+  security.polkit.enable = true;
+  services = {
+    udisks2.enable = true;
   };
 
   networking.hostName = "vboxnix";

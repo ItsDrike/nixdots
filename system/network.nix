@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 {
   networking = {
     firewall.enable = false;
@@ -10,17 +10,10 @@
   };
 
   services.resolved = {
-      enable = true;
-      fallbackDns = [
-          "9.9.9.9"
-          "2620:fe::fe"
-      ];
-  };
-
-  # don't wait for network to boot faster
-  # https://old.reddit.com/r/NixOS/comments/vdz86j/how_to_remove_boot_dependency_on_network_for_a
-  systemd = {
-      targets.network-online.wantedBy = lib.mkForce []; # default is [ "multi-user.target" ]
-      services.NetworkManager-wait-online.wantedBy = lib.mkForce []; # default is [ "network-online.target" ]
+    enable = true;
+    fallbackDns = [
+      "9.9.9.9"
+      "2620:fe::fe"
+    ];
   };
 }

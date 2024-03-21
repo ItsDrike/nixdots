@@ -19,6 +19,10 @@
       # Keep all dependencies used to build
       keep-outputs = true;
       keep-derivations = true;
+
+      # Give these users/groups additional rights when connecting to the Nix daemon
+      # like specifying extra binary caches
+      trusted-users = [ "root" "@wheel" ];
     };
 
     # Enable automatic garbage collection, deleting entries older than 14 days

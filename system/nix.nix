@@ -1,5 +1,7 @@
 {pkgs, ...}:
 {
+  system.autoUpgrade.enable = false;
+
   nix = {
     settings = {
       # nix often takes up a lot of space, with /nix/store growing beyond reasonable sizes
@@ -8,6 +10,10 @@
       auto-optimise-store = true;
       # enable flakes support
       experimental-features = [ "nix-command" "flakes" ];
+
+      # Keep all dependencies used to build
+      keep-outputs = true;
+      keep-derivations = true;
     };
 
     # Enable automatic garbage collection, deleting entries older than 14 days
@@ -31,5 +37,5 @@
   nixpkgs.config.allowUnfree = true;
 
   # Git is needed for flakes
-  environment.systemPackages = with pkgs; [git];
+  environment.systemPackages = [pkgs.git];
 }

@@ -6,10 +6,7 @@ in {
     modules = [
       ./vbox_nix
       ../system
-      ../system/options/systemd-boot.nix
-      ../system/options/cachix.nix
-      ../system/options/oomd.nix
-      ../modules/services/ssh.nix
+      ../options
       inputs.home-manager.nixosModules.home-manager
     ];
   };

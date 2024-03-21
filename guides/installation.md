@@ -77,7 +77,6 @@ Create a very basic `./flake.nix`:
     description = "ItsDrike's NixOS configuration";
 
     inputs = {
-      # the version here should match your system.stateVersion in configuration.nix
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     };
 
@@ -153,3 +152,42 @@ nixos-rebuild switch --flake .
 
 > [!TIP]
 > This replaces the legacy (non-flake) regime's command: `nixos-rebuild switch --upgrade`
+
+## Home-Manager
+
+Home-Manager is a way to bring nix features to your home directory. It allows
+you to version and manage your configuration files that usually live in your
+home directories, like `~/.config` with the usual nix tooling. This can help
+you achieve full reproducibility for the user side, not just the system side.
+
+First, let's add home-manager as an input to our flake:
+
+```nix
+home-manager = {
+  url = "github:nix-community/home-manager";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+```
+
+```nix
+{
+    description = "ItsDrike's NixOS configuration";
+
+    inputs = {
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    outputs = { self, nixpkgs, ...} @ inputs: {
+        nixosConfigurations = {
+            nixos = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = [ ./configuration.nix ];
+            };
+        };
+    };
+}
+```

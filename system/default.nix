@@ -1,13 +1,12 @@
-{lib, ...}:
-{
-    imports = [
-        ./network.nix
-        ./users.nix
-        ./nix.nix
-        ./packages.nix
-    ];
-
-    # Internationalisation properties
-    time.timeZone = "CET";
-    i18n.defaultLocale = "en_US.UTF-8";
+_: {
+  imports = [
+    ./hardware
+    ./boot
+    ./services
+    ./programs
+    ./system.nix
+    ./nix.nix
+    ./network.nix
+    ./localisation.nix
+  ];
 }

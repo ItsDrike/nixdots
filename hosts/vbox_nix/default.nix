@@ -1,4 +1,4 @@
-{ lib, pkgs, ...}:
+{ lib, pkgs, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
 
@@ -13,10 +13,18 @@
     udisks2.enable = true;
   };
 
-  networking.hostName = "vboxnix";
-
   # NixOS release from which this machine was first installed.
   # (for stateful data, like file locations and db versions)
   # Leave this alone!
   system.stateVersion = lib.mkForce "23.11";
+
+  myOptions = {
+    system = {
+      hostname = "vboxnix";
+      username = "itsdrike";
+    };
+    device = {
+      cpu.type = "vm-amd";
+    };
+  };
 }

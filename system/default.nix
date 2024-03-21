@@ -4,8 +4,8 @@ _: {
     ./boot
     ./services
     ./programs
+    ./nix
     ./system.nix
-    ./nix.nix
     ./network.nix
     ./localisation.nix
   ];

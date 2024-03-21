@@ -1,5 +1,10 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
+
+  imports = [
+    ./cachix.nix
+  ];
+
   system.autoUpgrade.enable = false;
 
   nix = {
@@ -37,5 +42,6 @@
   nixpkgs.config.allowUnfree = true;
 
   # Git is needed for flakes
-  environment.systemPackages = [pkgs.git];
+  environment.systemPackages = [ pkgs.git ];
 }
+

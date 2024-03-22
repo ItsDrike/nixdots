@@ -7,14 +7,14 @@ _: {
       auto-optimise-store = true;
     };
 
-    # Enable automatic garbage collection, deleting entries older than 14 days
-    # you can also run this manually with `nix-store --gc --delete-older-than 14d`.
+    # Enable automatic garbage collection, deleting entries older than 7 days
+    # you can also run this manually with `nix-store --gc --delete-older-than 7d`.
     # If a result still exists in the file system, all the dependencies used to build
     # it will be kept.
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
 
     # Also run garbage colleciton whenever there is not enough space left,

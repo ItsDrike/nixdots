@@ -3,44 +3,30 @@
 
   imports = [
     ./cachix.nix
+    ./gc.nix
   ];
 
   system.autoUpgrade.enable = false;
 
   nix = {
     settings = {
-      # nix often takes up a lot of space, with /nix/store growing beyond reasonable sizes
-      # this turns on automatic optimisation of the nix store that will run during every build
-      # (alternatively, you can do this manually with `nix-store --optimise`)
-      auto-optimise-store = true;
       # enable flakes support
       experimental-features = [ "nix-command" "flakes" ];
 
-      # Keep all dependencies used to build
+      # Keep the built outputs of derivations in Nix store, even if the package is no longer needed
+      # - prevents the need to rebuild/redownload if it becomes a dependency again
+      # - helps with debugging or reverting to previous state
       keep-outputs = true;
+      # Keep the derivations themselves too. A derivation describes how to build a package.
+      # - allows inspecting the build process of a package for debugging or educational purposes
+      # - allows rebuilding a package from its exact specification without having to fetch again
+      # - ensures we can reproduce a build even if the original online source goes down/changes
       keep-derivations = true;
 
       # Give these users/groups additional rights when connecting to the Nix daemon
       # like specifying extra binary caches
       trusted-users = [ "root" "@wheel" ];
     };
-
-    # Enable automatic garbage collection, deleting entries older than 14 days
-    # you can also run this manually with `nix-store --gc --delete-older-than 14d`.
-    # If a result still exists in the file system, all the dependencies used to build
-    # it will be kept.
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
-
-    # Also run garbage colleciton whenever there is not enough space left,
-    # freeing up to 1 GiB whenever there is less than 512MiB left.
-    extraOptions = ''
-      min-free = ${toString (512 * 1024 * 1024)}
-      max-free = ${toString (1024 * 1024 * 1024)}
-    '';
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -48,4 +34,3 @@
   # Git is needed for flakes
   environment.systemPackages = [ pkgs.git ];
 }
-

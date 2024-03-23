@@ -6,6 +6,7 @@ My NixOS and home-manager flake
 
 - [`flake.nix`](./flake.nix): Starting point of the configuration, declaring entrypoints.
 - [`system`](./system/): Basic core configurations for the system itself.
+- [`home`](./home): Home-Manager configuration.
 - [`options`](./options/): Declaration of the configurable options, that should be set by the individual machines.
 - [`hosts`](./hosts): Configuration of the individual hosts/computers
 

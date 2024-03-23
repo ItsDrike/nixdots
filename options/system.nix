@@ -3,13 +3,13 @@ in
 {
   options.myOptions.system = {
     hostname = mkOption {
-      description = "hostname for this system";
       type = types.str;
+      description = "Hostname for this system";
     };
 
     username = mkOption {
-      description = "username for the primary admin account for this system";
       type = types.str;
+      description = "Username for the primary admin account for this system";
     };
   };
 }

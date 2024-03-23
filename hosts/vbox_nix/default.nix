@@ -27,5 +27,9 @@
       virtual-machine = true;
       cpu.type = "amd";
     };
+    home-manager = {
+      enabled = true;
+      stateVersion = "23.11";
+    };
   };
 }

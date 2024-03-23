@@ -24,7 +24,8 @@
       username = "itsdrike";
     };
     device = {
-      cpu.type = "vm-amd";
+      virtual-machine = true;
+      cpu.type = "amd";
     };
   };
 }

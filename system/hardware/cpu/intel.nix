@@ -3,7 +3,7 @@ let
   dev = config.myOptions.device;
 in
 {
-  config = lib.mkIf (builtins.elem dev.cpu.type [ "intel" "vm-intel" ]) {
+  config = lib.mkIf (dev.cpu.type == "intel") {
     hardware.cpu.intel.updateMicrocode = true;
   };
 }

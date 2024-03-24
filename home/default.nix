@@ -1,14 +1,15 @@
 { config, lib, inputs, self, ... }:
 let
-  hmConf = config.myOptions.home-manager;
+  myHmConf = config.myOptions.home-manager;
   username = config.myOptions.system.username;
 in
 {
   imports = [
+    ./packages
     ./programs
   ];
 
-  home-manager = lib.mkIf hmConf.enabled {
+  home-manager = lib.mkIf myHmConf.enabled {
     # Use verbose mode for home-manager
     verbose = true;
 
@@ -36,7 +37,7 @@ in
       home = {
         inherit username;
         homeDirectory = "/home/${username}";
-        stateVersion = hmConf.stateVersion;
+        stateVersion = myHmConf.stateVersion;
       };
     };
   };

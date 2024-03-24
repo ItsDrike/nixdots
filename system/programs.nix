@@ -1,8 +1,4 @@
-{ pkgs, lib, ... }: {
-  imports = [
-    ./nano.nix
-  ];
-
+{ pkgs, ... }: {
   # Basic list of must-have packages for all systems
   environment.systemPackages = with pkgs; [
     vim

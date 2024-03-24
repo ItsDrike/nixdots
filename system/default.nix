@@ -3,8 +3,8 @@ _: {
     ./hardware
     ./boot
     ./services
-    ./programs
     ./nix
+    ./programs.nix
     ./system.nix
     ./network.nix
     ./localisation.nix

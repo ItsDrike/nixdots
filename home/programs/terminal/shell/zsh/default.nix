@@ -1,18 +1,10 @@
-{ config, pkgs, ... }:
-let
-  username = config.myOptions.system.username;
-  hmCfg = config.home-manager.users.${username};
-in
-{
+{ config, pkgs, ... }: {
   imports = [
     ./plugins.nix
     ./aliases.nix
   ];
 
-  programs.zsh.enable = true;
-  users.users.${username}.shell = pkgs.zsh;
-
-  home-manager.users.${username} = {
+  config = {
     programs.zsh = {
       enable = true;
       dotDir = ".config/zsh";
@@ -25,7 +17,7 @@ in
         share = true;
 
         # don't clutter $HOME
-        path = "${hmCfg.xdg.dataHome}/zsh/zsh_history";
+        path = "${config.xdg.dataHome}/zsh/zsh_history";
 
         # save timestamps to histfile
         extended = true;

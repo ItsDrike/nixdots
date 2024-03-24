@@ -4,11 +4,6 @@ let
   username = config.myOptions.system.username;
 in
 {
-  imports = [
-    ./packages
-    ./programs
-  ];
-
   home-manager = lib.mkIf myHmConf.enabled {
     # Use verbose mode for home-manager
     verbose = true;
@@ -31,13 +26,23 @@ in
     extraSpecialArgs = { inherit inputs self; };
 
     users.${username} = {
-      # Let home-manager manage itself in standalone mode
-      programs.home-manager.enable = true;
+      # These imports will be scoped under this key so all settings
+      # in them will be added to `home-manager.users.${username}`..
+      imports = [
+        ./packages
+        ./programs
+      ];
 
-      home = {
-        inherit username;
-        homeDirectory = "/home/${username}";
-        stateVersion = myHmConf.stateVersion;
+      config = {
+        # Let home-manager manage itself in standalone mode
+        programs.home-manager.enable = true;
+
+        # Basic user config
+        home = {
+          inherit username;
+          homeDirectory = "/home/${username}";
+          stateVersion = myHmConf.stateVersion;
+        };
       };
     };
   };

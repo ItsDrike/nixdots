@@ -37,6 +37,10 @@ setopt PUSHD_SILENT         # do not print the directory stack
 # History Configuration #
 #########################
 
+# Append history list to history file once the session exits, rather than replacing
+# the history file, erasing any past entries
+setopt APPEND_HISTORY
+
 # If the internal history needs to be trimmed to add the current command line, setting this
 # option will cause the oldest history event that has a duplicate to be lost before losing a
 # unique event from the list. You should be sure to set the value of HISTSIZE to a larger

@@ -15,7 +15,7 @@ in
         ${readFile ./rc/functions.zsh}
       '';
 
-      completionInit = '''
+      completionInit = ''
         ${readFile ./rc/completion.zsh}
       '';
 

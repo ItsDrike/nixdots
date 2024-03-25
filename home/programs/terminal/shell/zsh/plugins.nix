@@ -10,11 +10,6 @@ in
       file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
     }
     {
-      name = "zsh-vi-mode";
-      src = pkgs.zsh-vi-mode;
-      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-    }
-    {
       name = "fast-syntax-highlighting";
       src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
     }

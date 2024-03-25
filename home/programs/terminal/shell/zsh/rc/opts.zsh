@@ -15,6 +15,7 @@ setopt AUTO_CD              # cd by typing directory name if it's not a command
 setopt AUTO_LIST            # automatically list choices on ambiguous completion
 setopt AUTO_MENU            # automatically use menu completion
 setopt MENU_COMPLETE        # insert first match immediately on ambiguous completion
+setopt AUTO_PARAM_SLASH     # if a parameter is completed with a directory, add trailing slash instead of space
 setopt ALWAYS_TO_END        # move cursor to end if word had one match
 setopt INTERACTIVE_COMMENTS # allow comments in interactive mode
 setopt MAGIC_EQUAL_SUBST    # enable filename expansion for arguments of form `x=expression`

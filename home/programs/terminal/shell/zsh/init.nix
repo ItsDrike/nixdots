@@ -13,6 +13,7 @@ in
 
         ${readFile ./rc/aliases.zsh}
         ${readFile ./rc/functions.zsh}
+        ${readFile ./rc/misc.zsh}
       '';
 
       completionInit = ''

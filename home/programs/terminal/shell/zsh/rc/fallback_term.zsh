@@ -6,4 +6,4 @@ if [ -z "$TERM" ]; then
 elif ! infocmp "$TERM" &>/dev/null; then
   export TERM=xterm
   echo "TERM set to xterm due to missing terminfo entry."
-end
+fi

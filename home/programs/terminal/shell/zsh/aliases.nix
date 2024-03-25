@@ -50,9 +50,9 @@ in
     # Get global IP address by querying opendns directly
     # (much better than using some random "what is my ip" service)
     # <https://unix.stackexchange.com/a/81699>
-    canihazip = "${getExe pkgs.dig} @resolver4.opendns.com myip.opendns.com +short";
-    canihazip4 = "${getExe pkgs.dig} @resolver4.opendns.com myip.opendns.com +short -4";
-    canihazip6 = "${getExe pkgs.dig} @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6";
+    ip = "${getExe pkgs.dig} @resolver4.opendns.com myip.opendns.com +short";
+    ip4 = "${getExe pkgs.dig} @resolver4.opendns.com myip.opendns.com +short -4";
+    ip6 = "${getExe pkgs.dig} @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6";
 
     # Expand aliases from sudo
     sudo = "sudo ";

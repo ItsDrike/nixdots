@@ -1,0 +1,3 @@
+{
+  programs.bash.enable = false;
+}

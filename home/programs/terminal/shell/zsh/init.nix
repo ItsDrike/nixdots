@@ -5,11 +5,15 @@ in
 {
   config = {
     programs.zsh = {
+      initExtraFirst = ''
+        # Do this early so anything that relies on $TERM can work properly
+        ${readFile ./rc/fallback_term.zsh}
+      '';
+
       initExtra = ''
         ${readFile ./rc/opts.zsh}
         ${readFile ./rc/prompt.zsh}
         ${readFile ./rc/keybinds.zsh}
-        ${readFile ./rc/fallback_term.zsh}
 
         ${readFile ./rc/aliases.zsh}
         ${readFile ./rc/functions.zsh}

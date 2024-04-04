@@ -6,5 +6,6 @@ _: {
     ./man.nix
     ./ssh.nix
     ./zoxide.nix
+    ./tealdeer.nix
   ];
 }

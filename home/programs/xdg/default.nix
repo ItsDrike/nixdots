@@ -1,4 +1,4 @@
-{config, ...}: {
+{config, pkgs, ...}: {
   imports = [
     ./mime-apps.nix
     ./user-dirs.nix
@@ -16,4 +16,8 @@
   home.sessionVariables = {
     "XDG_RUNTIME_DIR" = "/run/user/$UID";
   };
+
+  # xdg-ninja is a CLI tool that checks $HOME for unwanted
+  # files/dirs and shows how to move them to XDG dirs
+  home.packages = [ pkgs.xdg-ninja ];
 }

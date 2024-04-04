@@ -5,5 +5,6 @@ _: {
     ./eza.nix
     ./man.nix
     ./ssh.nix
+    ./zoxide.nix
   ];
 }

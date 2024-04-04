@@ -1,0 +1,3 @@
+{
+  programs.hyfetch.enable = true;
+}

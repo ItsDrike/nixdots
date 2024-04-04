@@ -7,5 +7,6 @@ _: {
     ./ssh.nix
     ./zoxide.nix
     ./tealdeer.nix
+    ./hyfetch.nix
   ];
 }

@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./yazi
+    ./xplr
   ];
 }
 

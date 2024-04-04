@@ -12,9 +12,11 @@
     stateHome = "${config.home.homeDirectory}/.local/state";
   };
 
-  # Set XDG_RUNTIME_DIR manually (not supported via xdg configuration)
+  # These are not supported via xdg configuration, set them manually
+  # Defined in /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
     "XDG_RUNTIME_DIR" = "/run/user/$UID";
+    "XDG_BIN_HOME" = "${config.home.homeDirectory}/.local/bin";
   };
 
   # xdg-ninja is a CLI tool that checks $HOME for unwanted

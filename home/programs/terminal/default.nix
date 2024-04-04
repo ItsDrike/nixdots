@@ -3,5 +3,6 @@ _: {
     ./shell
     ./tools
     ./editors
+    ./file-managers
   ];
 }

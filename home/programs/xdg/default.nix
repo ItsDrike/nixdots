@@ -11,4 +11,9 @@
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
   };
+
+  # Set XDG_RUNTIME_DIR manually (not supported via xdg configuration)
+  home.sessionVariables = {
+    "XDG_RUNTIME_DIR" = "/run/user/$UID";
+  };
 }

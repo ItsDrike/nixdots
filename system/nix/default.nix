@@ -26,6 +26,13 @@
       # Give these users/groups additional rights when connecting to the Nix daemon
       # like specifying extra binary caches
       trusted-users = [ "root" "@wheel" ];
+
+      # Tell nix to use xdg base directories
+      # If you're just setting this, you will need to move the directories
+      # manually, nix won't do it for you:
+      # - mv "$HOME/.nix-defexpr" "$XDG_STATE_HOME/nix/defexpr"
+      # - mv "$HOME/.nix-profile" "$XDG_STATE_HOME/nix/profile" 
+      use-xdg-base-directories = true;
     };
   };
 

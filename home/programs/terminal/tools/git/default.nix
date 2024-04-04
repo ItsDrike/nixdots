@@ -9,9 +9,6 @@ in
     ./aliases.nix
   ];
 
-  # TODO: Figure out how to manage gpg keys properly in nix/home-manager
-  # (right now, I'm importing my keys manually)
-
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;

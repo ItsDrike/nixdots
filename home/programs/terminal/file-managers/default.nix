@@ -7,6 +7,7 @@ _: {
     ./yazi
     ./xplr
     ./vifm
+    ./ranger.nix
   ];
 }
 

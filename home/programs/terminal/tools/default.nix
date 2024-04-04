@@ -4,5 +4,6 @@ _: {
     ./gpg.nix
     ./eza.nix
     ./man.nix
+    ./ssh.nix
   ];
 }

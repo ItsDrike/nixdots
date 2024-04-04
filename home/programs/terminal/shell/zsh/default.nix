@@ -10,7 +10,8 @@
       enable = true;
       dotDir = ".config/zsh";
       enableCompletion = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
 
       history = {
         # don't clutter $HOME

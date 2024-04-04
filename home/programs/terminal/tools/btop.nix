@@ -6,6 +6,8 @@
       proc_sorting = "memory";
       proc_tree = true; # show processes in  tree view (showing parent/child relationships)
       base_10_sizes = false; # us KB instead of KiB
+      clock_format = "%X";
+      log_level = "WARNING";
     };
   };
 }

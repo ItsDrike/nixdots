@@ -2,6 +2,7 @@
   imports = [
     ./mime-apps.nix
     ./user-dirs.nix
+    ./config-files.nix
   ];
 
   xdg = {

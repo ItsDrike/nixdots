@@ -9,5 +9,6 @@ _: {
     ./tealdeer.nix
     ./hyfetch.nix
     ./btop.nix
+    ./bottom.nix
   ];
 }

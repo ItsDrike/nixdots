@@ -10,5 +10,6 @@ _: {
     ./hyfetch.nix
     ./btop.nix
     ./bottom.nix
+    ./bat.nix
   ];
 }

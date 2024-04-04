@@ -8,5 +8,6 @@ _: {
     ./zoxide.nix
     ./tealdeer.nix
     ./hyfetch.nix
+    ./btop.nix
   ];
 }

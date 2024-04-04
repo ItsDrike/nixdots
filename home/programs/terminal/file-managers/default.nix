@@ -6,7 +6,6 @@ _: {
   imports = [
     ./yazi
     ./xplr
-    ./vifm
     ./ranger.nix
   ];
 }

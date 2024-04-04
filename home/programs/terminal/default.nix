@@ -4,5 +4,6 @@ _: {
     ./tools
     ./editors
     ./file-managers
+    ./emulators
   ];
 }

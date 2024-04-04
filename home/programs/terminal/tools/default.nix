@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./git
+    ./newsboat
     ./gpg.nix
     ./eza.nix
     ./man.nix

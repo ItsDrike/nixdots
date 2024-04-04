@@ -1,6 +1,10 @@
 { lib, ... }: with lib; let
 in
 {
+  imports = [
+    ./git.nix
+  ];
+
   options.myOptions.home-manager = {
     enabled = mkOption {
       type = types.bool;

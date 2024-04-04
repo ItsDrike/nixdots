@@ -1,6 +1,5 @@
 _: {
   imports = [
-    ./shell
-    ./tools
+    ./git
   ];
 }

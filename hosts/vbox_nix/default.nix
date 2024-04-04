@@ -30,6 +30,7 @@
     home-manager = {
       enabled = true;
       stateVersion = "23.11";
+      git.signing.key = "FA2745890B7048C0";
     };
   };
 }

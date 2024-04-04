@@ -27,10 +27,6 @@ in
       profileExtra = ''
         ${readFile ./rc/profile.zsh}
       '';
-
-      envExtra = ''
-        ${readFile ./rc/environment.zsh}
-      '';
     };
   };
 }

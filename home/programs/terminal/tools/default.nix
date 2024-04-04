@@ -3,5 +3,6 @@ _: {
     ./git
     ./gpg.nix
     ./eza.nix
+    ./man.nix
   ];
 }

@@ -6,7 +6,6 @@
     unzip # extraction util for .zip files
     file # show type of file
     rsync # incremental file transfer util
-    btop # system monitor
     hyperfine # benchmarker
     delta # git delta viewer
     gnupg # encryption
@@ -28,12 +27,10 @@
     ripgrep # better grep
     fd # better find
     du-dust # better du
-    bat # better cat
 
     # Development
     gcc # GNU C compiler
     cmake # build system generator
     meson # C/C++ build system
-    gh # GitHub CLI tool
   ];
 }

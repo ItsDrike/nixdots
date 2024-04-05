@@ -2,6 +2,17 @@
 in
 {
   options.myOptions.home-manager.git = {
+    userName = mkOption {
+      type = types.str;
+      default = "";
+      description = "The default git user name.";
+    };
+    userEmail = mkOption {
+      type = types.str;
+      default = "";
+      description = "The default git user email.";
+    };
+
     signing = {
       enabled = mkOption {
         type = types.bool;

@@ -30,7 +30,11 @@
     home-manager = {
       enabled = true;
       stateVersion = "23.11";
-      git.signing.key = "FA2745890B7048C0";
+      git = {
+        userName = "ItsDrike";
+        userEmail = "itsdrike@protonmail.com";
+        signing.key = "FA2745890B7048C0";
+      };
     };
   };
 }

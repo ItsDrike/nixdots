@@ -13,8 +13,8 @@ in
     enable = true;
     package = pkgs.gitAndTools.gitFull;
 
-    userName = "ItsDrike";
-    userEmail = "itsdrike@protonmail.com";
+    userName = myGitConf.userName;
+    userEmail = myGitConf.userEmail;
 
     signing = {
       signByDefault = myGitConf.signing.enabled;

@@ -28,7 +28,7 @@
       cpu.type = "amd";
     };
     home-manager = {
-      enabled = true;
+      enable = true;
       stateVersion = "23.11";
       git = {
         userName = "ItsDrike";

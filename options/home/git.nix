@@ -1,4 +1,5 @@
 { lib, ... }: with lib; let
+  inherit (lib) mkEnableOption mkOption;
 in
 {
   options.myOptions.home-manager.git = {
@@ -14,11 +15,10 @@ in
     };
 
     signing = {
-      enabled = mkOption {
-        type = types.bool;
-        default = true;
-        description = "Should commits and tags be sgined by default?";
-      };
+      enabled = mkEnableOption ''
+        git commit signing.
+        Requires `myOptions.home-manager.git.signing.key` to be set.
+      '';
       key = mkOption {
         type = types.str;
         default = "";

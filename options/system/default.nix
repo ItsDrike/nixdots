@@ -1,6 +1,9 @@
 { lib, ... }: with lib; let
+  inherit (lib) mkOption;
 in
 {
+  imports = [ ];
+
   options.myOptions.system = {
     hostname = mkOption {
       type = types.str;

@@ -1,4 +1,5 @@
 { lib, ... }: with lib; let
+  inherit (lib) mkEnableOption mkOption;
 in
 {
   imports = [
@@ -6,11 +7,7 @@ in
   ];
 
   options.myOptions.home-manager = {
-    enabled = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Should home-manager be enabled for this host?";
-    };
+    enable = mkEnableOption "home-manager";
 
     stateVersion = mkOption {
       type = types.str;

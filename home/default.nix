@@ -4,7 +4,7 @@ let
   username = config.myOptions.system.username;
 in
 {
-  home-manager = lib.mkIf myHmConf.enabled {
+  home-manager = lib.mkIf myHmConf.enable {
     # Use verbose mode for home-manager
     verbose = true;
 

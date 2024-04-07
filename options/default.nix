@@ -2,6 +2,6 @@ _: {
   imports = [
     ./device
     ./home
-    ./system.nix
+    ./system
   ];
 }

@@ -34,6 +34,18 @@ in
             umount /mnt
           '';
         in ''
+          # Simply deleting a subvolume with btrfs subvolume delete will not work,
+          # if that subvolume contains other btrfs subvolumes. Because of that, we
+          # instead use this function to delete subvolumes, whihc will first perform
+          # a recursive deletion of any nested subvolumes.
+          #
+          # This is necessary, because the root subvolume will actually usually contain
+          # other subvolumes, even if the user haven't created those explicitly. It seems
+          # that NixOS creates these automatically. Namely, I observed these in root subvol:
+          # - root/srv
+          # - root/var/lib/portables
+          # - root/var/lib/machines
+          # - root/var/tmp
           delete_subvolume_recursively() {
             IFS=$'\n'
             for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do

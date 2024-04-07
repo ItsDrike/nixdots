@@ -607,6 +607,10 @@ The resulting file should then look something like this:
   boot.supportedFilesystems = [ "btrfs" ];
   hardware.enableAllFirmware = true;
 
+  # My flake disables password-based SSH authentication.
+  # either set up a key based auth, or uncomment this
+  #services.openssh.settings.PasswordAuthentication = lib.mmkForce true;
+
   nix.settings = {
     max-jobs = 6;
     cores = 6;
@@ -642,6 +646,13 @@ The resulting file should then look something like this:
 }
 ```
 
+> [!WARNING]
+> I'm currently working on making impermanence config in my flake directly. This will mean you will eventually be
+> expected to just enable impermanence through myOptions. Right now, the config above includes `impermanence.nix`
+> that we have enabled earlier. This will work, however note that flakes are a bit stricter with fetchTarball, and
+> require a sha256 hash to be specified. You can specify it, or use the `--impure` flag for now. Once impermanence
+> will be integrated into my flake, it will be handled as an input, and you won't have to worry about anything.
+
 ### Commit and switch
 
 Once you've declared everything, make a commit and run `nix flake check` to make sure you everything checks out,
@@ -657,6 +668,122 @@ Finally, you should now be ready to switch:
 
 ```shell
 sudo nixos-rebuild switch --flake .
+```
+
+If everything went well, you should now be left with a system configured to my specification.
+
+### Last steps
+
+Now that you've managed set up my flake, there are a few last steps to take.
+
+First, you will probably now still be in a bash shell, I however use zsh, so you will want to re-login.
+
+### Neovim
+
+> [!WARNING]
+> If you're logged in through SSH, you will need to set up a key based authentication,
+> since password auth for SSH is disabled in my flake.
+
+Once in zsh, another important step to set up neovim. Since I use a custom configuration, which relies on a lot of
+plugins and other utilities, you will want to run neovim in headless mode for the first time, and leave it to install
+all of these automatically:
+
+```shell
+nvim --headless +q
+```
+
+Once this completes, run neovim. Note that you will still see Mason installing a bunch of tools now, which will cause a
+lot of notifications. Don't be alarmed by that, it is normal. Once the notifications stop, the installation process will
+be truly complete. You can then close neovim.
+
+### XDG base dirs
+
+My flake exports various environment variables and does a bunch of other things to force applications into following XDG
+base directory specification and not cluttering `$HOME`.
+
+However, since we used a bunch of applications already, before moving to my flake. There will be a bunch of files or
+directories that already got made. We will need to move these to their appropriate XDG locations, or even delete them
+entirely, if we're not using these applications anymore, or if these applications are capable of automatically
+recreating these directories trivially:
+
+```shell
+rm "$HOME/.nix-defexpr"
+rm "$HOME/.bash_history"
+```
+
+### GPG keys and commit signing
+
+Another important thing is to finish up setting your git commit signing. As you've probably noticed from the myOptions
+config, I have already defined my signing key there, however you will need to import this gpg key manually.
+
+Export your public and private keys with GPG and make them available on this machine. To do so, you can run these
+commands from another machine:
+
+```shell
+gpg --output ./my-key.pub.gpg --armor --export [key-id]
+gpg --output ./my-key.priv.gpg --armor --export-secret-keys [key-id]
+# Now get these files to the new machine
+# you can use sftp, or just a flash drive or whatever other method you prefer
+```
+
+Once the keys are available, run these commands from the new machine:
+
+```shell
+gpg --import ./my-key.pub.gpg
+gpg --import ./my-key.priv.gpg
+```
+
+You might also want to change the trust level for this key, which you can do with:
+
+```shell
+gpg --edit-key [key-id]
+# In the interactive session, run `trust`, select your trust level and finally run `save`
+```
+
+My flake already configured your git to enable commit signing using the key you specified earlier (even though it wasn't
+yet available at that point). Any new commits that you make from now on will be signed
+
+### Git credentials
+
+> [!WARNING]
+> I don't yet have a proper set up for git credentials handled, for now, you can
+> just use the HTTPS based authentication with store credential helper. Like what's
+> described below. This category will however be completely rewritten and moved to
+> SSH keys once I have support for them ready in the flake.
+
+```shell
+git config --local credential.helper "store --file ~/.config/git/git-credentials"
+```
+
+Now, once you run `git push`, you will be asked for a password, which will get stored
+to `~/.config/git/git-credentials` (in plain-text, though the file is protected by file-system permissions, and only the
+owner can read it).
+
+### Push to git
+
+First, let's remove our temporary hack with git local configuration we used to allow us to make commits:
+
+```shell
+git config --local --unset user.name
+git config --local --unset user.email
+```
+
+Now that you have git set up, let's ammend our previous commits, which will recreate it, and this time, git will use our
+global configuration with the gpg keys configured to sign the commits.
+
+The following command will rebase all commits until we reach the `main` branch, from which we branched off, which means
+it will sign all commits in our `temp` branch:
+
+```shell
+git rebase --exec 'git commit --amend --no-edit -n -S' -i main
+```
+
+Now that our commits are signed, we're ready to merge and push:
+
+```shell
+git checkout main
+git rebase temp
+git push
 ```
 
 ## Sources / Attribution

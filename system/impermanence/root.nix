@@ -1,4 +1,6 @@
-{ config }: let
+{ config, lib, ... }: let
+  inherit (lib) mkIf mkForce;
+
   cfgSystem = config.myOptions.system;
   cfg = config.myOptions.system.impermanence.root;
 in
@@ -60,51 +62,5 @@ in
         type = "ed25519";
       }
     ];
-
-    boot.initrd.systemd = let
-      cfgWipe = cfg.autoBtrfsWipe;
-    in {
-      enable = true; # This enables systemd support in stage 1 - required for below setup
-      services.rollback-root = {
-        description = "Rollback BTRFS root subvolume to a pristine state";
-        enable = cfgWipe.enable;
-        wantedby = [ "initrd.target" ];
-        # Make sure it's done after decryption (i.e. LUKS/TPM process)
-        after = [ "systemd-cryptsetup@cryptfs.service" ];
-        # mount the root fs before clearing
-        before = [ "sysroot.mount" ];
-        unitConfig.DefaultDependencies = "no";
-        serviceConfig.Type = "oneshot";
-        script = ''
-          # Mount the BTRFS root to /mnt, so we can manipulate the subvolumes
-          mount --mkdir ${cfgWipe.devicePath} /mnt
-          
-          # To restore the root subvolume, we will first delete it, and then create
-          # a new snapshot from the blank snapshot, which will become our new root subvolume
-
-          # However, at this point, root subvol is already populated and contains a number
-          # of subvolumes, which would make `btrfs subvolume delete` fail.
-          #
-          # These existing subvolumes get created automatically, and we can safely remove
-          # them. They are: /srv, /var/lib/portables, /var/lib/machines, /var/tmp
-          sudo btrfs subvolume list -o "/mnt/${cfgWipe.subvolumePath}" | cut -f9 -d' ' |
-            while read subvolme; do
-              echo "deleting $subvolume subvolume..." &&
-              btrfs subvolume delete "/mnt/$subvolume"
-            done
-
-          # Now we can remove the root subvolume, and restore it from a snapshot
-          echo "deleting ${cfgWipe.subvolumePath} (root) subvolume..."
-          btrfs subvolume delete "/mnt/${cfg.subvolumePath}"
-          echo "restoring ${cfgWipe.subvolumePath} (root) subvolume..."
-          btrfs subvolume snapshot "/mnt/${cfgWipe.cleanSnapshotPath}"
-          "/mnt/${cfgWipe.subvolumePath}"
-
-          # Once we're done rolling back to a blank snapshot,
-          # we can unmount /mnt and continue on the boot process
-          umount /mnt
-        '';
-      };
-    };
   };
 }

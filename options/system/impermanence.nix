@@ -1,5 +1,5 @@
 { lib, config, ... }: with lib; let
-  inherit (lib) mkEnableOption mkOption literalExpression;
+  inherit (lib) mkEnableOption mkOption literalExpression types;
 
   cfg = config.myOptions.system.impermanence;
 in
@@ -12,6 +12,7 @@ in
 
       extraFiles = mkOption {
         default = [];
+        type = types.listOf types.path;
         example = literalExpression ''["/etc/nix/id_rsa"]'';
         description = ''
           Additional files in root to link to persistent storage.
@@ -20,6 +21,7 @@ in
 
       extraDirectories = mkOption {
         default = [];
+        type = types.listOf types.path;
         example = literalExpression ''["/etc/nix/id_rsa"]'';
         description = ''
           Additional directories in root to link to persistent storage.
@@ -34,47 +36,52 @@ in
           system state files.
         '';
       };
+    };
 
-      autoBtrfsWipe = {
-        enable = mkOption {
-          default = true;
-          description = ''
-            Enable automatic wiping of the root BTRFS subvolume from initrd.
+    autoWipeBtrfs = let
+      btrfsDeviceOptionType = types.submodule {
+        options = {
+          subvolumes = mkOption {
+            type = types.listOf types.str;
+            default = [];
+            description = ''
+              List of BTRFS subvolumes to be wiped from the device.
 
-            Generally, you will want to keep this enabled, as otherwise setting up
-            impermanence is pointless. However in case you're using a non-BTRFS
-            system, or you wish to set up a custom handling for this auto-wiping,
-            which the current handling doesn't support, disable this.
-          '';
+              These subvolumes will be wiped from initrd, before the subvolumes are mounted.
+            '';
+            example = literalExpression ''[ "root" "home" ]'';
+          };
         };
+      };
+    in {
+      enable = mkEnableOption ''
+          automatic wiping of specified BTRFS subvolumes from initrd.
 
-        devicePath = mkOption {
-          default = "/dev/mapper/cryptfs";
-          description = ''
-            Path to the BTRFS block device containing the subvolume to be wiped.
+          If you're using BTRFS, you will generally want to enable this, however
+          with a non-BTRFS system, or in case you wish to set up some custom handling
+          which this module doesn't support, you will need to write your own logic
+          for automatic root wiping.
 
-            This device will be mounted from initrd.
-          '';
-        };
+          One option is is to simply have your root get mounted from tmpfs, making it 
+          live in RAM. This does however require dedicating a concrete chunk of RAM.
+        '';
 
-        subvolumePath = mkOption {
-          default = "root";
-          description = ''
-            Path to the BTRFS subvolume to be wiped.
-
-            This is a relative path, starting from the BTRFS root.
-          '';
-        };
-
-        cleanSnapshotPath = mkOption {
-          default = "root-blank";
-          description = ''
-            Path to the BTRFS snapshot (subvolume) to be restore 
-            `myOptions.system.impermanence.root.autoWipe.btrfsSubvolume` to.
-
-            This should be a blank snapshot to achieve a complete wipe.
-          '';
-        };
+      devices = mkOption {
+        default = {};
+        type = types.attrsOf btrfsDeviceOptionType;
+        description = ''
+          BTRFS devices and their subvolumes to be wiped.
+        '';
+        example = literalExpression ''
+          {
+            "/dev/sda1" = {
+              subvolumes = [ "root" ];
+            };
+            "/dev/mapper/cryptfs" = {
+              subvolumes = [ "homeJohn" "homeBob" ];
+            };
+          }
+        '';
       };
     };
   };

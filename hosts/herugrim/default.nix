@@ -23,16 +23,18 @@
       hostname = "herugrim";
       username = "itsdrike";
 
-      impermanence.root = {
-        enable = true;
-        # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
-        # I much prefer using a standalone subvolume for this though.
-        persistentMountPoint = "/persist";
+      impermanence = {
+        root = {
+          enable = true;
+          # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
+          # I much prefer using a standalone subvolume for this though.
+          persistentMountPoint = "/persist";
+        };
+
         # Configure automatic root subvolume wiping on boot from initrd
-        autoBtrfsWipe = {
-          devicePath = "/dev/disk/by-label/NIXROOT";
-          subvolumePath = "root";
-          cleanSnapshotPath = "root-blank";
+        autoWipeBtrfs = {
+          enable = true;
+          devices."/dev/disk/by-label/NIXROOT".subvolumes = [ "root" ];
         };
       };
     };

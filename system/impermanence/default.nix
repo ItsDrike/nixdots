@@ -2,5 +2,6 @@
 {
   imports = [
     ./root.nix
+    ./autowipe.nix
   ];
 }

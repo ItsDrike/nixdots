@@ -2,7 +2,9 @@
   inherit (lib) mkOption;
 in
 {
-  imports = [ ];
+  imports = [
+    ./impermanence.nix
+  ];
 
   options.myOptions.system = {
     hostname = mkOption {

@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./impermanence.nix
   ];
 
   boot.supportedFilesystems = [ "btrfs" ];
@@ -23,11 +22,26 @@
     system = {
       hostname = "herugrim";
       username = "itsdrike";
+
+      impermanence.root = {
+        enable = true;
+        # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
+        # I much prefer using a standalone subvolume for this though.
+        persistentMountPoint = "/persist";
+        # Configure automatic root subvolume wiping on boot from initrd
+        autoBtrfsWipe = {
+          devicePath = "/dev/disk/by-label/NIXROOT";
+          subvolumePath = "root";
+          cleanSnapshotPath = "root-blank";
+        };
+      };
     };
+
     device = {
       virtual-machine = false;
       cpu.type = "intel";
     };
+
     home-manager = {
       enable = true;
       stateVersion = "23.11";

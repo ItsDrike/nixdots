@@ -4,6 +4,7 @@ _: {
     ./boot
     ./services
     ./nix
+    ./impermanence
     ./programs.nix
     ./system.nix
     ./network.nix

@@ -17,4 +17,12 @@ in
       inputs.home-manager.nixosModules.home-manager
     ] ++ shared;
   };
+
+  herugrim = lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      ./herugrim
+      inputs.home-manager.nixosModules.home-manager
+    ] ++ shared;
+  };
 }

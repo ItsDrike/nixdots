@@ -18,6 +18,12 @@ in
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
         script = let
+          # TODO: Consider adding support for moving the subvolume to something like old-roots
+          #      instead of deleting it. This would allow for easier recovery in case of a mistake.
+          # The subvolume can live here for a certain amount of time, before it's deleted, or there
+          # can be a certain amount of total roots kept. See the example configuration here:
+          # <https://github.com/nix-community/impermanence> which demonstrates keepping 30 days
+          # worth of old roots.
           wipeScript = devicePath: subvolumes: ''
             # Mount the BTRFS device root to a temporary mount point
             echo "Mounting BTRFS root from ${devicePath} to /mnt"

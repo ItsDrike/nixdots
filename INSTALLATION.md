@@ -4,7 +4,7 @@ This will walk you through the installation process from the minimal NixOS ISO t
 
 This guide will walk you through setting up LUKS encryption with BTRFS filesystem.
 
-The system can optionally have the root directory will be wiped after every reboot. Such a setup is possible because
+The system can optionally have the root directory wiped after every reboot. Such a setup is possible because
 NixOS only needs `/boot` and `/nix` in order to boot, all other system files are simply links to files in `/nix`.
 
 ## Partitioning
@@ -148,7 +148,7 @@ fileSystems."/" =
     };
 ```
 
-Where you will change the `deivce` like so:
+Where you will change the `device` like so:
 
 ```nix
 fileSystems."/" =

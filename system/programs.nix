@@ -1,6 +1,10 @@
 { pkgs, ... }: {
-  # Basic list of must-have packages for all systems
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+
+  # Install an actually usable system-wide editor
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
+  };
 }

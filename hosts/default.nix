@@ -15,6 +15,7 @@ in
     modules = [
       ./vbox_nix
       inputs.home-manager.nixosModules.home-manager
+      inputs.impermanence.nixosModules.impermanence
     ] ++ shared;
   };
 
@@ -23,6 +24,7 @@ in
     modules = [
       ./herugrim
       inputs.home-manager.nixosModules.home-manager
+      inputs.impermanence.nixosModules.impermanence
     ] ++ shared;
   };
 }

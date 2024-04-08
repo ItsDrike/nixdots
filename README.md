@@ -4,6 +4,7 @@ My NixOS and home-manager flake
 
 ## Structure
 
+- [`docs`](./docs): Directory with various documents explaining the installation process, or other relevant topics.
 - [`flake.nix`](./flake.nix): Starting point of the configuration, declaring entrypoints.
 - [`system`](./system/): Basic core configurations for the system itself.
 - [`home`](./home): Home-Manager configuration.

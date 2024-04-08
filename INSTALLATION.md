@@ -62,18 +62,6 @@ btrfs subvolume create /mnt/nix
 btrfs subvolume create /mnt/log
 btrfs subvolume create /mnt/persist
 btrfs subvolume create /mnt/data
-```
-
-We will now take a read-only snapshot of the root subvolume.
-This snapshot will be eventually used for rolling back to on every boot (impermanence).
-
-```shell
-btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
-```
-
-And finally, we can unmount the btrfs root.
-
-```shell
 umount /mnt
 ```
 
@@ -226,7 +214,11 @@ fileSystems."/" =
 ### Subvolumes needed for boot
 
 In order to correctly persist `/var/log`, the respective subvolume need to be mounted early enough in
-the boot process. To do this, we will want to add `neededForBoot = true;`, so the entry will look like this:
+the boot process. To do this, we will want to add `neededForBoot = true;`. Additionally, we will also
+need to add this parameter for our `/persisr` subvolume. This is because we will be storing the user
+password (including root password) in a password file there (mentioned later on).
+
+So the entries will look like this:
 
 ```nix
 fileSystems."/var/log" =
@@ -235,10 +227,14 @@ fileSystems."/var/log" =
       options = [ "subvol=log" "noatime" "compress=zstd:3" ];
       neededForBoot = true;
     };
-```
 
-Additionally, we will also need to add `neededForBoot = true;` to our `/persist` subvolume. This is because
-we will be storing the root users password file in there.
+fileSystems."/persist" =
+    { device = "/dev/disk/by-label/NIXFS";
+      fsType = "btrfs";
+      options = [ "subvol=persist" "noatime" "compress=zstd:3" ];
+      neededForBoot = true;
+    };
+```
 
 ## Minimal config
 
@@ -310,12 +306,11 @@ screen. Log in as root, set your password (`passwd itsdrike`), log out and re-lo
 
 This is an optional step, if you don't want your root partition to get auto-reset on each boot, you can simply skip this.
 
-### Auto-restore root-blank snapshot
+### Auto-wipe root partition
 
-Remember how we create the empty snapshot of our root subvolume? Well now comes the time when we put it to use. We will
-restore this snapshot from initrd, which runs in a temporary file-system, before our actual file-system is even mounted.
-This makes it a perfect place to run a script which will restore our root subvolume to the blank snapshot before each
-boot.
+To reset the root subvolume on every boot, we can simply delete it and create a new one in its place. We will be doing
+this from initrd, which runs in a temporary file-system, before the actual file-system is properly mounted (following
+fstab). This makes it a perfect place to run a script, which will wipe the root subvolume before each boot.
 
 I will set this up using a systemd-based initrd, because I will need systemd for TPM unlocking later on. If you don't
 care about that, it is also possible to do this without systemd. You can a guide for such setup
@@ -338,41 +333,37 @@ boot.initrd.systemd = {
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
-      mkdir -p /mnt
+      # Mount the BTRFS root to /mnt so we can manipulate btrfs subvolumes
+      mount --mkdir /dev/mapper/cryptfs /mnt
 
-      # We first mount the btrfs root to /mnt
-      # so we can manipulate btrfs subvolumes.
-      mount /dev/mapper/cryptfs /mnt
-
-      # While we're tempted to just delete /root and create
-      # a new snapshot from /root-blank, /root is already
-      # populated at this point with a number of subvolumes,
-      # which makes `btrfs subvolume delete` fail.
-      # So, we remove them first.
+      # Simply deleting a subvolume with btrfs subvolume delete will not work,
+      # if that subvolume contains other btrfs subvolumes. Because of that, we
+      # instead use this function to delete subvolumes, whihc will first perform
+      # a recursive deletion of any nested subvolumes.
       #
-      # /root contains subvolumes:
-      # - /root/var/lib/portables
-      # - /root/var/lib/machines
-      #
-      # These are probably related to systemd-nspawn, but
-      # since I don't use it, I'm not 100% sure.
-      # Anyhow, deleting these subvolumes hasn't resulted in
-      # any issues so far, except for fairly benign-looking
-      # errors from systemd-tmpfiles.
-      btrfs subvolume list -o /mnt/root |
-        cut -f9 -d' ' |
-        while read subvolume; do
-          echo "deleting /$subvolume subvolume..."
-          btrfs subvolume delete "/mnt/$subvolume"
-        done &&
-        echo "deleting /root subvolume..." &&
-        btrfs subvolume delete /mnt/root
+      # This is necessary, because the root subvolume will actually usually contain
+      # other subvolumes, even if the user haven't created those explicitly. It seems
+      # that NixOS creates these automatically. Namely, I observed these in root subvol:
+      # - root/srv
+      # - root/var/lib/portables
+      # - root/var/lib/machines
+      # - root/var/tmp
+      delete_subvolume_recursively() {
+        IFS=$'\n'
+        for x in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+          delete_subvolume_recursively "/mnt/$x"
+        done
 
-      echo "restoring blank /root subvolume..."
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
+        echo "Deleting subvolume $1"
+        btrfs subvolume delete "$1"
+      }
 
-      # Once we're done rolling back to a blank snapshot,
-      # we can unmount /mnt and continue on the boot process.
+      # Recreate the root subvolume
+      delete_subvolume_recursively "/mnt/root"
+      echo "Re-creating root subvolume"
+      btrfs subvolume create "/mnt/root"
+
+      # we can now unmount /mnt and continue on the boot process.
       umount /mnt
     '';
   };
@@ -407,12 +398,6 @@ in
     ];
     files = [
       "/etc/machine-id"
-
-      # ssh stuff
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
     ];
   };
 
@@ -421,6 +406,21 @@ in
     "L /var/lib/NetworkManager/secret_key - - - - /persist/system/var/lib/NetworkManager/secret_key"
     "L /var/lib/NetworkManager/seen-bssids - - - - /persist/system/var/lib/NetworkManager/seen-bssids"
     "L /var/lib/NetworkManager/timestamps - - - - /persist/system/var/lib/NetworkManager/timestamps"
+  ];
+
+  # Define host key paths in the persistent mount point instead of using impermanence for these.
+  # This works better, because these keys also get auto-created if they don't already exist.
+  services.openssh.hostKeys = mkForce [
+    {
+      bits = 4096;
+      path = "/persist/system/etc/ssh/ssh_host_rsa_key";
+      type = "rsa";
+    }
+    {
+      bits = 4096;
+      path = "/persist/system/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
   ];
 }
 ```
@@ -436,23 +436,25 @@ Note that with impermanence, your user passwords will get erased too (with the `
 you can create password files, which will contain the password hashes for each user:
 
 ```shell
-mkpasswd -m sha-512 > /persist/system/passwords/root
-mkpasswd -m sha-512 > /persist/system/passwords/itsdrike
+mkdir -p /persist/passwords
+chmod 700 /persist/passwords
+mkpasswd -m sha-512 > /persist/passwords/root
+mkpasswd -m sha-512 > /persist/passwords/itsdrike
+chmod 600 /persist/passwords/*
 ```
 
 And declare these in our `configuration.nix` or `impermanence.nix`
 
 ```nix
 users = {
-  # This option makes it that users are not mutable outside our configuration
-  # If you are using impermanence, this will actually be the case regardless of this setting,
-  # however, setting this explicitly is a good idea, because nix will warn us if
-  # our users don't have passwords set
+  # This option makes it that users are not mutable outside of our configuration.
+  # If you're using root impermanence, this will actually be the case regardless
+  # of this setting, however, setting this explicitly is a good idea, because nix
+  # will warn us if our users don't have passwords set, preventing lock outs.
   mutableUsers = false;
 
-  # Each existing user needs to have a password file defined here
-  # otherwise, they will not be available to login.
-  # These password files can be generated using the following command:
+  # Each existing user needs to have a password file defined here, otherwise
+  # they will not be available to login. These password files can be generated with:
   # mkpasswd -m sha-512 > /persist/passwords/myuser
   users = {
     root = {
@@ -601,7 +603,6 @@ The resulting file should then look something like this:
 {
   imports = [
     ./hardware-configuration.nix
-    ./impermanence.nix
   ];
 
   boot.supportedFilesystems = [ "btrfs" ];
@@ -625,6 +626,21 @@ The resulting file should then look something like this:
     system = {
       hostname = "anduril";
       username = "itsdrike";
+
+      impermanence = {
+        root = {
+          enable = true;
+          # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
+          # I much prefer using a standalone subvolume for this though.
+          persistentMountPoint = "/persist";
+        };
+
+        # Configure automatic root subvolume wiping on boot from initrd
+        autoWipeBtrfs = {
+          enable = true;
+          devices."/dev/disk/by-label/NIXROOT".subvolumes = [ "root" ];
+        };
+      };
     };
     device = {
       virtual-machine = false;
@@ -646,12 +662,14 @@ The resulting file should then look something like this:
 }
 ```
 
-> [!WARNING]
-> I'm currently working on making impermanence config in my flake directly. This will mean you will eventually be
-> expected to just enable impermanence through myOptions. Right now, the config above includes `impermanence.nix`
-> that we have enabled earlier. This will work, however note that flakes are a bit stricter with fetchTarball, and
-> require a sha256 hash to be specified. You can specify it, or use the `--impure` flag for now. Once impermanence
-> will be integrated into my flake, it will be handled as an input, and you won't have to worry about anything.
+> [!NOTE]
+> You may notice that this configuration also includes custom options for impermanence,
+> and that the impermanence.nix is no longer declared in imports. This is because my
+> flake already contains a fully custom support (mostly similar to what I've shown here)
+> to handle impermanence. This allows me to re-use this impermanence across multiple
+> machines very easily.
+>
+> You can now therefore delete the `impermanence.nix` file.
 
 ### Commit and switch
 

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkDefault;
 
-  enabled = config.device.hasTPM;
+  enabled = config.myOptions.device.hasTPM;
 in {
   config = mkIf enabled {
     security.tpm2 = {

@@ -23,7 +23,7 @@ in
     hasTPM = mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Does this device have a TPM (Trusted Platform Module)?"
-    }
+      description = "Does this device have a TPM (Trusted Platform Module)?";
+    };
   };
 }

@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, pkgs, lib, ... }:
 let
-  username = config.myOptions.system.username;
+  nr = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";
 in
 {
   programs.zsh.shellAliases = {
@@ -29,6 +29,9 @@ in
     rf = "rm -f";
     rrf = "rm -rf";
     vimdiff = "nvim -d";
+
+    # Nix aliases
+    rebuild = "nix-store --verify; pushd ~/dots; ${nr} switch --flake .#$1 --use-remote-sudo ; popd";
 
     # Expand aliases from sudo
     sudo = "sudo ";

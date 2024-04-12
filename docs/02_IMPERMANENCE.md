@@ -225,7 +225,7 @@ reboot
 
 You should now be back in your system, with the root subvolume wiped and auto-reconstructed by NixOS.
 
-You can now move on to the next file: [MY_FLAKE](./99_MY_FLAKE.md).
+You can now move on to the next file: [SECURE_BOOT](./03_SECURE_BOOT.md).
 
 ## Why?
 

@@ -4,6 +4,7 @@ in
 {
   imports = [
     ./impermanence.nix
+    ./secure-boot.nix
   ];
 
   options.myOptions.system = {

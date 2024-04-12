@@ -37,6 +37,8 @@
           devices."/dev/disk/by-label/NIXROOT".subvolumes = [ "root" ];
         };
       };
+
+      secure-boot.enabled = true;
     };
 
     device = {

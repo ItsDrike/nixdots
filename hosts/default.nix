@@ -25,6 +25,7 @@ in
       ./herugrim
       inputs.home-manager.nixosModules.home-manager
       inputs.impermanence.nixosModules.impermanence
+      inputs.lanzaboote.nixosModules.lanzaboote
     ] ++ shared;
   };
 }

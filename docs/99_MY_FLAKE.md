@@ -133,6 +133,10 @@ The resulting file should then look something like this:
       #    devices."/dev/disk/by-label/NIXROOT".subvolumes = [ "root" ];
       #  };
       #};
+
+      # Enable secure boot (requires running some commands afterwards, see the
+      # option's docs)
+      #secure-boot.enabled = true;
     };
     device = {
       virtual-machine = false;

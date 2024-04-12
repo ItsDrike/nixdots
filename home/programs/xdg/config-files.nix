@@ -90,7 +90,7 @@ in {
 
   # Set the following aliases to force applications to use a config file
   # in the proper XDG location
-  environment.shellAliases = {
+  home.shellAliases = {
     wget = "wget --hsts-file='\${XDG_DATA_HOME}/wget-hsts'";
   };
 }

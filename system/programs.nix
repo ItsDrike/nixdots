@@ -7,4 +7,14 @@
     vimAlias = true;
     viAlias = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    curl
+    wget
+    pciutils
+    lshw
+    man-pages
+    rsync
+    bind.dnsutils
+  ];
 }

@@ -3,7 +3,12 @@
 in
 {
   options.myOptions.system.boot.plymouth = {
-    enable = mkEnableOption ''Plymouth boot splash.'';
+    enable = mkEnableOption ''
+      Plymouth boot splash.
+
+      Works best on devices with slower boot times, otherwise it might just appear
+      for a second or two, at which point it's probably not worth enabling.
+    '';
 
     withThemes = mkEnableOption ''
       Whether or not themes from https://github.com/adi1090x/plymouth-themes

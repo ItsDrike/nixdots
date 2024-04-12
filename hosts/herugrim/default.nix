@@ -6,6 +6,12 @@
 
   boot.supportedFilesystems = [ "btrfs" ];
 
+  # My flake disables this by default for security reasons. However,
+  # with an encrypted setup, which requires entering password before
+  # booting anyways, this is not a security concern, and changing the
+  # kernel params can be useful for debugging.
+  boot.loader.systemd-boot.editor = true;
+
   nix.settings = {
     max-jobs = 6;
     cores = 6;
@@ -38,7 +44,10 @@
         };
       };
 
-      secure-boot.enabled = true;
+      boot = {
+        secure-boot.enable = true;
+        tmpOnTmpfs = true;
+      };
     };
 
     device = {

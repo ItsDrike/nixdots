@@ -134,14 +134,21 @@ The resulting file should then look something like this:
       #  };
       #};
 
-      # Enable secure boot (requires running some commands afterwards, see the
-      # option's docs)
-      #secure-boot.enabled = true;
+      boot = {
+        # Enable secure boot (requires running some commands afterwards, see the
+        # option's docs before enabling)
+        #secure-boot.enable = true;
+
+        # I have enough RAM to afford using tmpfs for /tmp
+        tmpOnTmpfs = true;
+      };
     };
+
     device = {
       virtual-machine = false;
       cpu.type = "intel";
     };
+
     home-manager = {
       enabled = true;
       stateVersion = "23.11";

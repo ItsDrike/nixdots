@@ -1,6 +1,8 @@
 _: {
   imports = [
-    ./systemd-boot.nix
+    ./loaders
+    ./generic.nix
     ./secure-boot.nix
+    ./initrd.nix
   ];
 }

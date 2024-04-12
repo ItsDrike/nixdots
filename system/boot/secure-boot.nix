@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }: let
   inherit (lib) mkIf;
 
-  cfg = config.myOptions.system.secure-boot;
+  cfg = config.myOptions.system.boot.secure-boot;
 in {
-  config = mkIf cfg.enabled {
+  config = mkIf cfg.enable {
     # Secure Boot Key Manager
     environment.systemPackages = [ pkgs.sbctl ];
 

@@ -2,8 +2,8 @@
   inherit (lib) mkEnableOption;
 in
 {
-  options.myOptions.system.secure-boot = {
-     enabled = mkEnableOption ''
+  options.myOptions.system.boot.secure-boot = {
+     enable = mkEnableOption ''
       secure-boot using lanzaboote.
 
       Note that you will need to have UEFI firmware, and the rebuild

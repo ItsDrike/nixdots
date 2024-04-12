@@ -47,6 +47,13 @@
       boot = {
         secure-boot.enable = true;
         tmpOnTmpfs = true;
+
+        # Boot splash screen
+        plymouth = {
+          enable = true;
+          withThemes = true;  # enable adi1090x/plymouth-themes
+          selectedTheme = "colorful_loop";
+        };
       };
     };
 

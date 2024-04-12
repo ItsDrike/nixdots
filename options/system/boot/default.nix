@@ -5,6 +5,7 @@
 in {
   imports = [
     ./secure-boot.nix
+    ./plymouth.nix
   ];
 
   options.myOptions.system.boot = {

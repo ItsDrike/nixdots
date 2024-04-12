@@ -87,4 +87,10 @@ in {
       atexit.register(partial(write_history, readline, history_file))
     '';
   };
+
+  # Set the following aliases to force applications to use a config file
+  # in the proper XDG location
+  environment.shellAliases = {
+    wget = "wget --hsts-file='\${XDG_DATA_HOME}/wget-hsts'";
+  };
 }

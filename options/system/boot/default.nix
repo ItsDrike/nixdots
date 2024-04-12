@@ -23,5 +23,10 @@ in {
         This option defaults to `true` if the host provides patches to the kernel package in
         `boot.kernelPatches`
       '';
+
+    silentBoot = mkEnableOption ''
+      almost entirely silent boot process through `quiet` kernel parameter
+    ''
+    // { default = cfg.plymouth.enable; };
   };
 }

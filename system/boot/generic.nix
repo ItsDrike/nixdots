@@ -1,9 +1,9 @@
 { config, lib, ... }: let
-  inherit (lib) mkDefault;
+  inherit (lib) mkDefault optionals;
 
   cfg = config.myOptions.system.boot;
 in {
-  config.boot = {
+  boot = {
     # kernel console loglevel
     consoleLogLevel = 3;
 
@@ -38,5 +38,21 @@ in {
       # but should be tweaked based on your systems capabilities
       tmpfsSize = mkDefault "50%";
     };
+
+    kernelParams = (optionals cfg.silentBoot [
+      # tell the kernel to not be verbose
+      "quiet"
+
+      "loglevel=3" # 1: system is unusable | 3: error condition | 7: very verbose
+
+      # udev log message level
+      # rd prefix means systemd-udev will be used instead of initrd
+      "udev.log_level=3"
+      "rd.udev.log_level=3"
+
+      # disable systemd status messages
+      "systemd.show_status=auto"
+      "rd.systemd.show_status=auto"
+    ]);
   };
 }

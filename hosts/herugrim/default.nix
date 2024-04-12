@@ -53,6 +53,7 @@
     device = {
       virtual-machine = false;
       cpu.type = "intel";
+      hasTPM = true;
     };
 
     home-manager = {

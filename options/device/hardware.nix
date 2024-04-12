@@ -19,5 +19,11 @@ in
       default = false;
       description = "Is this system a virtual machine?";
     };
+
+    hasTPM = mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Does this device have a TPM (Trusted Platform Module)?"
+    }
   };
 }

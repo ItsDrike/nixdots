@@ -6,7 +6,7 @@ BAT_CAP="$BAT/capacity"
 
 POWER_SAVE_PERCENT=50 # Enter power-save mode if on bat and below this capacity
 
-HAS_PERFORMANCE="$(powerprofilesctl list | grep performance)"
+HAS_PERFORMANCE="$(powerprofilesctl list | grep "performance" || true)" # the || true ignores grep failing with non-zero code
 
 # monitor loop
 prev=0

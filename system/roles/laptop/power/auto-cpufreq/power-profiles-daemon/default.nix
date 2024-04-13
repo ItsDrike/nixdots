@@ -19,6 +19,7 @@ in {
     systemd.services."power-monitor" = let
       dependencies = with pkgs; [
         coreutils
+        gnugrep
         power-profiles-daemon
         inotify-tools
         jaq

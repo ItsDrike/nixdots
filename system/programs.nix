@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
 
   # Install an actually usable system-wide editor
   programs.neovim = {
@@ -7,14 +7,4 @@
     vimAlias = true;
     viAlias = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    curl
-    wget
-    pciutils
-    lshw
-    man-pages
-    rsync
-    bind.dnsutils
-  ];
 }

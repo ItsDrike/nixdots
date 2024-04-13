@@ -19,6 +19,6 @@
     compresscmd = "${lib.getExe' pkgs.zstd "zstd"}";
     compressoptions = " -Xcompression-level 10";
     compressext = "zst";
-    uncompresscmd = "${lib.getExe' pkgs.zstd "unzstd}";
+    uncompresscmd = "${lib.getExe' pkgs.zstd "unzstd"}";
   };
 }

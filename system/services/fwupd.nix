@@ -1,7 +1,7 @@
 {config, ...}: {
   # firmware updater for machine hardware
   services.fwupd = {
-    enbale = true;
+    enable = true;
     daemonSettings.EspLocation = config.boot.loader.efi.efiSysMountPoint;    
   };
 }

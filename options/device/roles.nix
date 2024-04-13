@@ -1,7 +1,7 @@
 { lib, config, ... }: let 
   inherit (lib) mkOption types;
 
-  cfg = config.myOptions.device;
+  cfg = config.myOptions.device.roles;
 in {
   options.myOptions.device.roles = {
     type = mkOption {

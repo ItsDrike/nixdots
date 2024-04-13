@@ -24,6 +24,7 @@
       username = "itsdrike";
     };
     device = {
+      type = "desktop";
       virtual-machine = true;
       cpu.type = "amd";
     };

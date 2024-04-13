@@ -145,8 +145,12 @@ The resulting file should then look something like this:
     };
 
     device = {
-      virtual-machine = false;
+      roles = {
+        type = "laptop";
+        virtual-machine = false;
+      };
       cpu.type = "intel";
+      hasTPM = true;
     };
 
     home-manager = {

@@ -14,12 +14,6 @@ in
       '';
     };
 
-    virtual-machine = mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Is this system a virtual machine?";
-    };
-
     hasTPM = mkOption {
       type = lib.types.bool;
       default = false;

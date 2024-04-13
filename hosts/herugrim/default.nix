@@ -51,7 +51,10 @@
     };
 
     device = {
-      virtual-machine = false;
+      roles = {
+        type = "laptop";
+        virtual-machine = false;
+      };
       cpu.type = "intel";
       hasTPM = true;
     };

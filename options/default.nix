@@ -3,5 +3,6 @@ _: {
     ./device
     ./home
     ./system
+    ./workstation
   ];
 }

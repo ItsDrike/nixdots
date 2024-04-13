@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }: let
+{ pkgs, lib, config, ...}: let
   inherit (lib) mkIf;
+  deviceType = config.myOptions.device.roles.type;
+  acceptedTypes = ["laptop" "desktop"];
 
   cfg = config.myOptions.workstation.printing;
 in {
-  config = mkIf cfg.enable {
+
+  config = mkIf (builtins.elem deviceType acceptedTypes && cfg.enable) {
     # enable cups and add some drivers for common printers
     services = {
       printing = {

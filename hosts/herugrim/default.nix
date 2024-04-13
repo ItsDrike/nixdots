@@ -59,6 +59,10 @@
       hasTPM = true;
     };
 
+    workstation = {
+      printing.enable = true;
+    };
+
     home-manager = {
       enable = true;
       stateVersion = "23.11";

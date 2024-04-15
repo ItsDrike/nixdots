@@ -59,6 +59,13 @@
       hasTPM = true;
     };
 
+    security = {
+      auditd = {
+        enable = true;
+        autoPrune.enable = true;
+      };
+    };
+
     workstation = {
       printing.enable = true;
     };

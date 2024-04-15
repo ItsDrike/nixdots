@@ -4,5 +4,6 @@ _: {
     ./home
     ./system
     ./workstation
+    ./security
   ];
 }

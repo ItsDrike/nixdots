@@ -6,6 +6,7 @@ _: {
     ./nix
     ./environment
     ./impermanence
+    ./security
     ./programs.nix
     ./system.nix
     ./network.nix

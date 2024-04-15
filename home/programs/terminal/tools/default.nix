@@ -12,5 +12,6 @@ _: {
     ./btop.nix
     ./bottom.nix
     ./bat.nix
+    ./nix-index.nix
   ];
 }

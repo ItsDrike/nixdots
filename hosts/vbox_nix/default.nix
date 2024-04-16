@@ -22,19 +22,48 @@
     system = {
       hostname = "vboxnix";
       username = "itsdrike";
+
+      impermanence = {
+        root.enable = false;
+        autoWipeBtrfs.enable = false;
+      };
+
+      boot = {
+        secure-boot.enable = false;
+        tmpOnTmpfs = false;
+      };
     };
+
     device = {
-      type = "desktop";
-      virtual-machine = true;
+      roles = {
+        type = "desktop";
+        virtual-machine = true;
+      };
       cpu.type = "amd";
+      hasTPM = false;
     };
+
+    security = {
+      auditd = {
+        enable = true;
+        autoPrune.enable = true;
+      };
+    };
+
+    workstation = {
+      printing.enable = false;
+    };
+
     home-manager = {
       enable = true;
       stateVersion = "23.11";
       git = {
         userName = "ItsDrike";
         userEmail = "itsdrike@protonmail.com";
-        signing.key = "FA2745890B7048C0";
+        signing = {
+          enabled = true;
+          key = "FA2745890B7048C0";
+        };
       };
     };
   };

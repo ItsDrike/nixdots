@@ -4,12 +4,9 @@
     # this provides `nix-locate` command.
     nix-index = {
       enable = true;
+      # Attempt to find the package that contains the non-existent command
       enableBashIntegration = config.programs.bash.enable;
       enableZshIntegration = config.programs.zsh.enable;
     };
-
-    # Allows interactive shells to show which Nix package (if any)
-    # provides a missing command.
-    command-not-found.enable = true;
   };
 }

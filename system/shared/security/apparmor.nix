@@ -27,7 +27,7 @@
     packages = [pkgs.apparmor-profiles];
 
     # AppArmor policies
-    policies = [
+    policies = {
       "default_deny" = {
         enforce = false;
         enable = false;
@@ -55,6 +55,6 @@
           }
         '';
       };
-    ];
+    };
   };
 }

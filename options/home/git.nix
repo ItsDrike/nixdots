@@ -15,7 +15,7 @@ in
     };
 
     signing = {
-      enabled = mkEnableOption ''
+      enable = mkEnableOption ''
         git commit signing.
         Requires `myOptions.home-manager.git.signing.key` to be set.
       '';

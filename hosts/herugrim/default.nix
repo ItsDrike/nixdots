@@ -77,7 +77,7 @@
         userName = "ItsDrike";
         userEmail = "itsdrike@protonmail.com";
         signing = {
-          enabled = true;
+          enable = true;
           key = "FA2745890B7048C0";
         };
       };

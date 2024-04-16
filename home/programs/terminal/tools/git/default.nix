@@ -17,7 +17,7 @@ in
     userEmail = myGitConf.userEmail;
 
     signing = {
-      signByDefault = myGitConf.signing.enabled;
+      signByDefault = myGitConf.signing.enable;
       key = myGitConf.signing.key;
     };
 

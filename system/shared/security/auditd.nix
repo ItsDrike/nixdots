@@ -35,7 +35,7 @@ in {
       services."clean-audit-log" = {
         script = ''
           set -eu
-          if [[ $(stat -c "%s" /var/log/audit/audit.log) -gt ${cfg.autoPrune.size} ]]; then
+          if [[ $(stat -c "%s" /var/log/audit/audit.log) -gt ${builtins.toString cfg.autoPrune.size} ]]; then
             echo "Clearing Audit Log";
             rm -rvf /var/log/audit/audit.log;
             echo "Done!"

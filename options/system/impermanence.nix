@@ -85,4 +85,13 @@ in
       };
     };
   };
+
+  config = {
+    assertions = [
+      {
+        assertion = cfg.autoWipeBtrfs.enable -> cfg.root.enable;
+        message = "myOptions.system.impermanence.autoWipeBtrfs requires myOptions.system.impermanence.root to be enabled.";
+      }
+    ];
+  };
 }

@@ -15,5 +15,5 @@ My NixOS and home-manager flake
 
 This configuration was massively inspired by the following amazing projects:
 
-- <https://git.notashelf.dev/NotAShelf/nyx/>
+- <https://git.notashelf.dev/NotAShelf/nyx> (major inspiration)
 - <https://git.jacekpoz.pl/jacekpoz/niksos>

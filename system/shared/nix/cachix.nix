@@ -10,6 +10,7 @@ _: {
       "https://numtide.cachix.org" # another unfree package cache
       "https://nixpkgs-wayland.cachix.org" # automated builds of *some* wayland packages
       "https://hyprland.cachix.org" # hyprland
+      "https://hyprland-community.cachix.org" # hyprland-community
       "https://ags.cachix.org" # ags
     ];
     trusted-public-keys = [
@@ -19,6 +20,7 @@ _: {
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "hyprland-community.cachix.org-1:5dTHY+TjAJjnQs23X+vwMQG4va7j+zmvkTKoYuSXnmE="
       "ags.cachix.org-1:naAvMrz0CuYqeyGNyLgE010iUiuf/qx6kYrUv3NwAJ8="
     ];
   };

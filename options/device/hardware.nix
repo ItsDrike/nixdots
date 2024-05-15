@@ -14,6 +14,16 @@ in
       '';
     };
 
+    gpu.type = mkOption {
+      type = with types; nullOr (enum [ "nvidia" "amd" "intel" ]);
+      default = null;
+      description = ''
+        The manifaturer/type of the primary system GPU.
+
+        Allows the correct GPU drivers to be loaded, potentially optimizing video output performance.
+      '';
+    };
+
     hasTPM = mkOption {
       type = lib.types.bool;
       default = false;

@@ -56,6 +56,7 @@
         virtual-machine = false;
       };
       cpu.type = "intel";
+      gpu.type = "nvidia";
       hasTPM = true;
     };
 

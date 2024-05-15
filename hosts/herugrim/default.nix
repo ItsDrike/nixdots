@@ -29,6 +29,9 @@
       hostname = "herugrim";
       username = "itsdrike";
 
+      sound.enable = true;
+      bluetooth.enable = true;
+
       impermanence = {
         root = {
           enable = true;

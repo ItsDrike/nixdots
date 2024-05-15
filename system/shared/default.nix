@@ -7,6 +7,7 @@ _: {
     ./environment
     ./impermanence
     ./security
+    ./multimedia
     ./programs.nix
     ./system.nix
     ./network.nix

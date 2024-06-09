@@ -4,6 +4,7 @@ in
 {
   imports = [
     ./git.nix
+    ./wms.nix
   ];
 
   options.myOptions.home-manager = {

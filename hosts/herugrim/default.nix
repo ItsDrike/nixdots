@@ -85,6 +85,7 @@
           key = "FA2745890B7048C0";
         };
       };
+      wms.hyprland.enable = true;
     };
   };
 }

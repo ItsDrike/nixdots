@@ -85,7 +85,12 @@
           key = "FA2745890B7048C0";
         };
       };
-      wms.hyprland.enable = true;
+      wms.hyprland = {
+        enable = true;
+        monitor = [
+          "eDP-1, 1920x1080@60, 0x0, 1"
+        ];
+      };
     };
   };
 }

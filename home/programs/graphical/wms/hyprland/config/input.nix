@@ -1,4 +1,9 @@
 {
+  osConfig,
+  ...
+}: let
+  cfg = osConfig.myOptions.home-manager.wms.hyprland;
+in {
   wayland.windowManager.hyprland.settings = {
     input = {
       # Keyboard layout settings
@@ -20,6 +25,8 @@
         natural_scroll = false;
       };
     };
+
+    monitor = cfg.monitor;
   };
 }
 

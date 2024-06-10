@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  inherit (import ./packages {inherit pkgs;}) hyprland-swap-workspace hyprland-move-window;
+  hyprPkgs = (import ./packages {inherit pkgs;});
 
   cfg = osConfig.myOptions.home-manager.wms.hyprland;
 in {
@@ -15,10 +15,11 @@ in {
   ];
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      hyprland-swap-workspace
-      hyprland-move-window
-      brightness
+    home.packages = [
+      hyprPkgs.hyprland-swap-workspace
+      hyprPkgs.hyprland-move-window
+      pkgs.brightnessctl
+      hyprPkgs.brightness
     ];
 
     wayland.windowManager.hyprland = {

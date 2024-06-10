@@ -38,11 +38,10 @@
       #
       # Brightness control
       #
-      "SUPER, Right, exec, brightness -i 5% -n"
-      "SUPER, Left, exec, brightness -d 5% -n"
-      ", XF86MonBrightnessUp, exec, brightness -i 5% -n"
-      ", XF86MonBrightnessDown, exec, brightness -d 5% -n"
-
+      "SUPER, Right, exec, brightness 5%+"
+      "SUPER, Left, exec, brightness 5%-"
+      ", XF86MonBrightnessUp, exec, brightness 5%+"
+      ", XF86MonBrightnessDown, exec, brightness 5%-"
 
       #
       # Audio/Volume control

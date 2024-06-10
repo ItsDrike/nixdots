@@ -16,7 +16,7 @@
         "SUPER, W, killactive,"
         "SUPER, F, togglefloating,"
         "SUPER, Space, fullscreen, 0"
-        "SUPER, Space, fullscreen, 1"  # maximize
+        "SUPER, Space_SHIFT, fullscreen, 1"  # maximize
         "SUPER_SHIFT, S, layoutmsg, togglesplit"
 
         #

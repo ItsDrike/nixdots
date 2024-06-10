@@ -66,4 +66,11 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # Enable prime-offload
+  # This machine has AMD igpu + nvidia dgpu, so we need hybrid
+  hardware.nvidia.prime = {
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:5:0:0";
+  };
 }

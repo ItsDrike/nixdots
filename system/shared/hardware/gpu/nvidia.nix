@@ -1,29 +1,36 @@
 { config, lib, pkgs, ... }:
 let
   dev = config.myOptions.device;
+  isWayland = config.myOptions.home-manager.wms.isWayland;
+
+  inherit (lib) mkIf mkDefault mkMerge;
 in
 {
-  config = lib.mkIf (dev.gpu.type == "nvidia") {
+  config = mkIf (builtins.elem dev.gpu.type ["nvidia" "hybrid-nvidia"]) {
     # Nvidia drivers are unfree software
     nixpkgs.config.allowUnfree = true;
 
     # Enable nvidia driver for Xorg and Wayland
     services.xserver.videoDrivers = ["nvidia"];
 
+    # blacklist nouveau module so that it does not conflict with nvidia drm stuff
+    # also the nouveau performance is horrible in comparison.
+    boot.blacklistedKernelModules = ["nouveau"];
+
     hardware = {
       nvidia = {
         # modeestting is required
-        modesetting.enable = lib.mkDefault true;
+        modesetting.enable = mkDefault true;
 
         # Nvidia power managerment. Experimental, and can cause sleep/suspend to fail.
         # Enable this if you have graphical corruption issues or application crashes after waking
         # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead of just
         # the bare essentials
-        powerManagement.enable = lib.mkDefault true;
+        powerManagement.enable = mkDefault true;
 
         # Fine-grained power management. Turns off GPU when not in use.
         # Experimental and only works on modern Nvidia GPUs (Turing or newer)
-        powerManagement.finegrained = lib.mkDefault false;
+        powerManagement.finegrained = mkDefault false;
 
         # Use the NVidia open source kernel module (not to be confused with the
         # independent third-party "nouveau" open source driver).
@@ -32,14 +39,27 @@ in
         #
         # Enable this by default, hosts may override this option if their gpu is not 
         # supported by the open source drivers
-        open = lib.mkDefault true;
+        open = mkDefault true;
 
         # Add the Nvidia settings package, accessible via `nvidia-settings`.
         # (useless on NixOS)
-        nvidiaSettings = false;
+        nvidiaSettings = mkDefault false;
 
         # This ensures all GPUs stay awake even during headless mode.
         nvidiaPersistenced = true;
+
+        # On Hybrid setups, using Nvidia Optimus PRIME is necessary
+        #
+        # There are various options/modes prime can work in, this will default to
+        # using the offload mode, which will default to running everything on igpu
+        # except apps that run with certain environmental variables set. To simplify
+        # things, this will also enable the `nvidia-offload` wrapper script/command.
+        prime.offload = let
+          isHybrid = dev.gpu.type == "hybrid-nvidia";
+        in {
+          enable = isHybrid;
+          enableOffloadCmd = isHybrid;
+        };
       };
 
       # Enable OpenGL
@@ -52,10 +72,6 @@ in
       };
     };
 
-    # blacklist nouveau module so that it does not conflict with nvidia drm stuff
-    # also the nouveau performance is horrible in comparison.
-    boot.blacklistedKernelModules = ["nouveau"];
-
     environment = {
       systemPackages = with pkgs; [
         mesa
@@ -67,12 +83,24 @@ in
 
         libva
         libva-utils
+
+        glxinfo
       ];
 
-      sessionVariables = {
-        LIBVA_DRIVER_NAME = "nvidia";
-        WLR_NO_HARDWARE_CURSORS = "1";
-      };
+      sessionVariables = mkMerge [
+        { LIBVA_DRIVER_NAME = "nvidia"; }
+
+        (mkIf isWayland {
+          WLR_NO_HARDWARE_CURSORS = "1";
+        })
+
+        # Run the compositor itself with nvidia GPU?
+        # Currently disabled
+        (mkIf (isWayland && (dev.gpu == "hybrid-nvidia")) {
+          #__NV_PRIME_RENDER_OFFLOAD = "1";
+          #WLR_DRM_DEVICES = mkDefault "/dev/dri/card1:/dev/dri/card0";
+        })
+      ];
     };
   };
 }

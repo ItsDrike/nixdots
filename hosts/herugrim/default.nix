@@ -59,7 +59,7 @@
         virtual-machine = false;
       };
       cpu.type = "amd";
-      gpu.type = "nvidia";
+      gpu.type = "hybrid-nvidia";
       hasTPM = true;
     };
 

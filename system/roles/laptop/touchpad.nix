@@ -4,7 +4,7 @@
   acceptedTypes = ["laptop"];
 in {
   config = mkIf (builtins.elem deviceType acceptedTypes) {
-    services.xserver.libinput = {
+    services.libinput = {
       # enable libinput
       enable = true;
 
@@ -17,7 +17,7 @@ in {
 
       # touchpad settings
       touchpad = {
-        naturalScrolling = false; # I'm weird like that
+        naturalScrolling = false; # I'm not natural
         tapping = true;
         clickMethod = "clickfinger";
         horizontalScrolling = true;

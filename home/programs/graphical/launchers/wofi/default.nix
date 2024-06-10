@@ -4,8 +4,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = osConfig.myOptions.programs.launchers.wofi;
-in: {
+  cfg = osConfig.myOptions.home-manager.programs.launchers.wofi;
+in {
   config = mkIf cfg.enable {
     programs.wofi = {
       enable = true;

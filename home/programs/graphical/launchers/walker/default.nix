@@ -5,8 +5,8 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = osConfig.myOptions.programs.launchers.walker;
-in: {
+  cfg = osConfig.myOptions.home-manager.programs.launchers.walker;
+in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       walker

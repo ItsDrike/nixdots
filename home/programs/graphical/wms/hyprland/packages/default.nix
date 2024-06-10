@@ -3,7 +3,7 @@
   ...
 }: let
   packages = {
-    hyprland-swap-workspace = pkgs.callPackage ./hyprland-swap-workspace.nix {};
+    hyprland-swap-workspace = pkgs.callPackage ./hyprland-swap-workspace {};
   };
 in
   packages

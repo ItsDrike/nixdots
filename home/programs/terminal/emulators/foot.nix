@@ -1,9 +1,5 @@
 {
-  osConfig,
-  lib,
-  config,
   pkgs,
-  inputs',
   ...
 }: {
   home.packages = with pkgs; [
@@ -19,7 +15,6 @@
         title = "foot";
         locked-title = "no";
         term = "xterm-256color";
-        pad = "16x16 center";
         shell = "zsh";
 
         # notifications
@@ -28,9 +23,14 @@
 
         # font and font rendering
         dpi-aware = false; # this looks more readable on a laptop, but it's unreasonably large
-        font = "Iosevka Nerd Font:size=14";
-        font-bold = "Iosevka Nerd Font:size=14";
-        vertical-letter-offset = "-0.90";
+        font = "Monaspace Krypton:size=11";
+        font-bold = "Monaspace Krypton:size=11";
+      };
+
+      colors = {
+        alpha = 0.9;
+        background = "191919";
+        foreground = "d8dee9";
       };
 
       scrollback = {

@@ -19,6 +19,10 @@ in
       };
     };
 
+    browsers = {
+      chromium.enable = mkEnableOption "Chromium browser";
+    };
+
     spotify.enable = mkEnableOption "Spotify";
   };
 }

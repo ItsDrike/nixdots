@@ -4,5 +4,6 @@ _: {
     ./launchers
     ./apps
     ./bars
+    ./browsers
   ];
 }

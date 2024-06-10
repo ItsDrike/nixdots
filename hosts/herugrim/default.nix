@@ -95,6 +95,10 @@
       };
 
       programs = {
+        browsers = {
+          chromium.enable = true;
+        };
+
         spotify.enable = true;
       };
     };

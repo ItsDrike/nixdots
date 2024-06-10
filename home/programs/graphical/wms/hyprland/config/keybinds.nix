@@ -23,6 +23,7 @@
         # Programs
         #
         "SUPER, Return, exec, kitty"
+        "SUPER, R, exec, walker"
         # TODO: requires programs
 
         #

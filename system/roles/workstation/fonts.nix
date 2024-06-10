@@ -16,6 +16,7 @@ in {
           ];
         in {
           monospace = [
+            "Monaspace Krypton"
             "Source Code Pro Medium"
             "Source Han Mono"
           ]
@@ -47,6 +48,7 @@ in {
         # programming fonts
         sarasa-gothic
         source-code-pro
+        monaspace
 
         # desktop fonts
         corefonts # MS fonts

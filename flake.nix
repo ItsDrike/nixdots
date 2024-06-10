@@ -18,9 +18,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Spotify + themes
     spicetify = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Sandbox wrappers for programs
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Schizophrenic Firefox
+    schizofox = {
+      url = "github:schizofox/schizofox";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
   };
 

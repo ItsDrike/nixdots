@@ -98,6 +98,7 @@
         browsers = {
           chromium.enable = true;
           mullvad-browser.enable = true;
+          schizofox.enable = true;
         };
 
         spotify.enable = true;

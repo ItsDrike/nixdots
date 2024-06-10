@@ -38,7 +38,10 @@
       #
       # Brightness control
       #
-      # TODO: requires script
+      "SUPER, Right, exec, brightness -i 5% -n"
+      "SUPER, Left, exec, brightness -d 5% -n"
+      ", XF86MonBrightnessUp, exec, brightness -i 5% -n"
+      ", XF86MonBrightnessDown, exec, brightness -d 5% -n"
 
 
       #

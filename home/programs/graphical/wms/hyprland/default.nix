@@ -18,6 +18,7 @@ in {
     home.packages = with pkgs; [
       hyprland-swap-workspace
       hyprland-move-window
+      brightness
     ];
 
     wayland.windowManager.hyprland = {

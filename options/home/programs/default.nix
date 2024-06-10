@@ -11,5 +11,7 @@ in
         description = "Enable Walker launcher.";
       };
     };
+
+    spotify.enable = mkEnableOption "Spotify";
   };
 }

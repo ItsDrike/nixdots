@@ -12,6 +12,7 @@ in
 {
   vboxnix = lib.nixosSystem {
     system = "x86_64-linux";
+    specialArgs = { inherit lib inputs self; };
     modules = [
       ./vbox_nix
       inputs.home-manager.nixosModules.home-manager
@@ -22,6 +23,7 @@ in
 
   herugrim = lib.nixosSystem {
     system = "x86_64-linux";
+    specialArgs = { inherit lib inputs self; };
     modules = [
       ./herugrim
       inputs.home-manager.nixosModules.home-manager

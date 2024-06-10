@@ -10,30 +10,47 @@ in {
   programs.kitty = {
     enable = true;
     settings = {
-      # General
-      background_opacity = "0.85";
-      font_family = "monospace";
-      font_size = 14;
+      # Font & Text style
+      font_family = "Monaspace Krypton";
+      font_size = 11;
       disable_ligatures = "never";
+
+      # Dark Theme
+      foreground = "#d8dee9";
+      background = "#191919";
+      # White theme (for screenshots in papers)
+      #foreground = "#191919";
+      #background = "#FFFFFF";
+
+      # URLs
+      url_color = "#0087bd";
+      url_style = "curly";
+
+      # Cursor
+      cursor = "#D0D0D0";
       cursor_shape = "underline";
       cursor_blink_interval = "0.5";
       cursor_stop_blinking_after = "15.0";
-      scrollback_lines = 10000;
-      click_interval = "0.5";
-      select_by_word_characters = ":@-./_~?&=%+#";
+
+      # Background
+      background_opacity = "0.9";
+      dynamic_background_opacity = "yes";
+      background_blur = 2;
+
+      # Window size
       remember_window_size = false;
-      allow_remote_control = true;
       initial_window_width = 640;
       initial_window_height = 400;
-      repaint_delay = 15;
-      input_delay = 3;
-      visual_bell_duration = "0.0";
-      url_style = "double";
-      open_url_with = "default";
-      confirm_os_window_close = 0;
-      enable_audio_bell = false;
-      window_padding_width = 15;
-      window_margin_width = 10;
+
+      # Bell
+      visual_bell_duration = "0.0"; # flash the screen for this duration when bell occurs
+      enable_audio_bell = false; # disable audio bells
+
+      # Misc
+      update_check_interval = 0; # don't check for updates, we have a package manager...
+      confirm_os_window_close = 0; # don't ask for confirmation if window gets closed
+      scrollback_lines = 10000; # Capture up to 10k lines for scrolling
+      select_by_word_characters = ":@-./_~?&=%+#"; # chars considered part of word when double clicking
     };
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";

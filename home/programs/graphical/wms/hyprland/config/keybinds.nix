@@ -89,7 +89,10 @@
       #
       # Move floating windows
       #
-      # TODO: requires script (move-window.sh)
+      "SUPER_ALT, left, exec, hyprland-move-window 100 l"
+      "SUPER_ALT, right, exec, hyprland-move-window 100 r"
+      "SUPER_ALT, up, exec, hyprland-move-window 100 u"
+      "SUPER_ALT, down, exec, hyprland-move-window 100 d"
 
       #
       # Override split direction for next window (manual tiling)

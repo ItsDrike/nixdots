@@ -3,7 +3,7 @@
     #./anyrun
     #./rofi
     #./tofi
-    #./walker
+    ./walker
     ./wofi
   ];
 }

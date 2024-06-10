@@ -97,6 +97,7 @@
       programs = {
         browsers = {
           chromium.enable = true;
+          mullvad-browser.enable = true;
         };
 
         spotify.enable = true;

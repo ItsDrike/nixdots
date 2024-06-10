@@ -21,6 +21,7 @@ in
 
     browsers = {
       chromium.enable = mkEnableOption "Chromium browser";
+      mullvad-browser.enable = mkEnableOption "Mullvad browser";
     };
 
     spotify.enable = mkEnableOption "Spotify";

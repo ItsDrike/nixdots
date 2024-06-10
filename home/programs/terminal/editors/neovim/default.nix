@@ -26,8 +26,8 @@
     source = pkgs.fetchFromGitHub {
       owner = "ItsDrike";
       repo = "AstroNvimUser";
-      rev = "v0.1.0";
-      sha256 = "sha256-2o25+2CHoDS90kDk5ixiQDE4MHybgvVLL7jr7AHWhqU=";
+      rev = "v0.1.2";
+      sha256 = "sha256-PPejIy8BGxilcFAvBZQVfVDwTNEm1Tu6e0AlzIZbYXY=";
     };
     recursive = true;
   };

@@ -58,7 +58,7 @@
         type = "laptop";
         virtual-machine = false;
       };
-      cpu.type = "intel";
+      cpu.type = "amd";
       gpu.type = "nvidia";
       hasTPM = true;
     };

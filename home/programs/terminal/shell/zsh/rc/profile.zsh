@@ -12,7 +12,7 @@ fi
 # Start graphical session automatically on tty1 if Hyprland or startx is available
 if [ "$(tty)" = "/dev/tty1" ] && [ "$UID" != 0 ]; then
     if command -v Hyprland >/dev/null; then
-      ! pidof -s Hyprland >/dev/null 2>&1 && launch-hypr
+      ! pidof -s Hyprland >/dev/null 2>&1 && Hyprland
     elif command -v startx >/dev/null; then
       ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
     fi

@@ -13,5 +13,6 @@ _: {
     ./network.nix
     ./bluetooth.nix
     ./localisation.nix
+    ./packages.nix
   ];
 }

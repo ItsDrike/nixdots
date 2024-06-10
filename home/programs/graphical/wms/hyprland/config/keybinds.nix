@@ -102,7 +102,15 @@
       #
       # Switch workspace (swapping to current monitor)
       #
-      # TODO: requires script (swap-workspace)
+      "SUPER, 1, exec, hyprland-swap-workspace 1"
+      "SUPER, 2, exec, hyprland-swap-workspace 2"
+      "SUPER, 3, exec, hyprland-swap-workspace 3"
+      "SUPER, 4, exec, hyprland-swap-workspace 4"
+      "SUPER, 5, exec, hyprland-swap-workspace 5"
+      "SUPER, 6, exec, hyprland-swap-workspace 6"
+      "SUPER, 7, exec, hyprland-swap-workspace 7"
+      "SUPER, 8, exec, hyprland-swap-workspace 8"
+      "SUPER, 9, exec, hyprland-swap-workspace 9"
 
       #
       # Move window to workspace

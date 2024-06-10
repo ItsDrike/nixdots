@@ -3,7 +3,7 @@
   ...
 }: let
   packages = {
-    dbus-hyprland-env = pkgs.callPackage ./dbus-hyprland-env.nix {};
+    hyprland-swap-workspace = pkgs.callPackage ./hyprland-swap-workspace.nix {};
   };
 in
   packages

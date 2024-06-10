@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  inherit (import ./packages {inherit pkgs;}) dbus-hyprland-env;
+  inherit (import ./packages {inherit pkgs;}) hyprland-swap-workspace;
 
   cfg = osConfig.myOptions.home-manager.wms.hyprland;
 in {
@@ -16,7 +16,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      dbus-hyprland-env
+      hyprland-swap-workspace
     ];
 
     wayland.windowManager.hyprland = {

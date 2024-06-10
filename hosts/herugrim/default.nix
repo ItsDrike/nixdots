@@ -77,6 +77,7 @@
     home-manager = {
       enable = true;
       stateVersion = "23.11";
+
       git = {
         userName = "ItsDrike";
         userEmail = "itsdrike@protonmail.com";
@@ -85,6 +86,7 @@
           key = "FA2745890B7048C0";
         };
       };
+
       wms.hyprland = {
         enable = true;
         monitor = [

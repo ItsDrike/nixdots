@@ -3,6 +3,7 @@
 in
 {
   imports = [
+    ./programs
     ./git.nix
     ./wms.nix
   ];

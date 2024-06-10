@@ -1,13 +1,20 @@
 {
+  osConfig,
   pkgs,
+  lib,
   ...
-}: {
-  home.packages = with pkgs; [
-    walker
-  ];
+}: let
+  inherit (lib) mkIf;
+  cfg = osConfig.myOptions.programs.launchers.walker;
+in: {
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      walker
+    ];
 
-  xdg.configFile = {
-    "walker/config.json".source = ./config.json;
-    "walker/style.css".source = ./style.css;
+    xdg.configFile = {
+      "walker/config.json".source = ./config.json;
+      "walker/style.css".source = ./style.css;
+    };
   };
 }

@@ -13,6 +13,7 @@ in {
     home.persistence."${cfg.persistentMountPoint}" = {
       directories = [
         ".cache/nix"
+        ".cache/nix-index"
       ] ++ cfg.extraDirectories;
 
       files = [

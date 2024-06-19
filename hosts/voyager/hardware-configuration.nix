@@ -34,12 +34,6 @@
       neededForBoot = true;
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-label/NIXOS-FS";
-      fsType = "btrfs";
-      options = [ "subvol=home" "noatime" "compress=zstd:3" ];
-    };
-
   fileSystems."/data" =
     { device = "/dev/disk/by-label/NIXOS-FS";
       fsType = "btrfs";

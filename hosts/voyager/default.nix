@@ -75,7 +75,7 @@
         # Configure automatic root subvolume wiping on boot from initrd
         autoWipeBtrfs = {
           enable = true;
-          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" "home" ];
+          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" ];
         };
       };
     };

@@ -83,7 +83,7 @@
     device = {
       roles = {
         type = "laptop";
-	virtual-machine = false;
+	      virtual-machine = false;
       };
       cpu.type = "amd";
       gpu.type = "amd";
@@ -110,18 +110,18 @@
 
       git = {
         userName = "ItsDrike";
-	userEmail = "itsdrike@protonmail.com";
-	signing = {
-	  enable = true;
+	      userEmail = "itsdrike@protonmail.com";
+	      signing = {
+	        enable = true;
           key = "FA2745890B7048C0";
-	};
+	      };
       };
 
       wms.hyprland = {
         enable = true;
-	monitor = [
-	  "eDP-1, 1920x1080@60, 0x0, 1"
-	];
+	      monitor = [
+	        "eDP-1, 1920x1080@60, 0x0, 1"
+	      ];
       };
 
       programs = {

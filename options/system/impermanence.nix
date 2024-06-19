@@ -34,6 +34,47 @@ in
           Path to a persistent directory (usually a mount point to a
           standalone partition / subvolume), which will hold the persistent
           system state files.
+
+          This should point to the entire persistent partition, this setup
+          then expects this directory to contain `passwords` and `system` subdirectories.
+        '';
+      };
+    };
+
+    home = {
+      enable = mkEnableOption ''
+        the Impermanence module for persisting important state directories.
+
+        This requires home-manager.
+      '';
+
+      extraFiles = mkOption {
+        default = [];
+        type = types.listOf types.str;
+        example = literalExpression ''[".zshrc"]'';
+        description = ''
+          Additional files in home to link to persistent storage.
+        '';
+      };
+
+      extraDirectories = mkOption {
+        default = [];
+        type = types.listOf types.str;
+        example = literalExpression ''["Downloads"]'';
+        description = ''
+          Additional directories in home to link to persistent storage.
+        '';
+      };
+
+      persistentMountPoint = mkOption {
+        default = "/persist/home";
+        description = ''
+          Path to a persistent directory (usually a mount point to a
+          standalone partition / subvolume), which will hold the persistent
+          system state files.
+
+          This does not expect any subdirectories, all of the persistent home files
+          will be put directly in here. The user should be the owner of this direcotry.
         '';
       };
     };

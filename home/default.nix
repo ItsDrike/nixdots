@@ -31,6 +31,7 @@ in
       imports = [
         ./packages
         ./programs
+        ./impermanence
       ];
 
       config = {

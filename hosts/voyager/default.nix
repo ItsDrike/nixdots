@@ -50,10 +50,32 @@
           ];
         };
 
+        home = {
+          enable = true;
+          persistentMountPoint = "/persist/home";
+          extraDirectories = [
+            "Downloads"
+            "Personal"
+            "Media"
+            "dots"
+
+            ".local/share/gnupg"
+            ".local/share/wakatime"
+            ".local/share/nvim"
+            ".local/state/nvim"
+            ".local/share/zsh"
+            ".local/cargo"
+            ".local/go"
+          ];
+          extraFiles = [
+            ".config/git/git-credentials"
+          ];
+        };
+
         # Configure automatic root subvolume wiping on boot from initrd
         autoWipeBtrfs = {
           enable = true;
-          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" ];
+          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" "home" ];
         };
       };
     };

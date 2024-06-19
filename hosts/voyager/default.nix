@@ -46,7 +46,7 @@
 	virtual-machine = false;
       };
       cpu.type = "amd";
-      gpu.type = null;
+      gpu.type = "amd";
       hasTPM = true;
     };
 

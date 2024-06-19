@@ -29,6 +29,7 @@ in
       # These imports will be scoped under this key so all settings
       # in them will be added to `home-manager.users.${username}`..
       imports = [
+        ./misc
         ./packages
         ./programs
         ./impermanence

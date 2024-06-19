@@ -16,6 +16,9 @@ in {
 
       # gnome's keyring manager
       seahorse.enable = true;
+
+      # registry for linux (thanks to Gnome)
+      dconf.enable = true;
     };
   };
 }

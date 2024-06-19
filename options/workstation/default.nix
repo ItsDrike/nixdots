@@ -11,6 +11,10 @@ in
 
         Also adds some drivers for common printers.
       '';
+
+      hplip.enable = mkEnableOption ''
+        HP printing support using hplip software.
+      '';
     };
   };
 }

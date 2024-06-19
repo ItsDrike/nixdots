@@ -98,7 +98,10 @@
     };
 
     workstation = {
-      printing.enable = true;
+      printing = {
+        enable = true;
+        hplip.enable = true;
+      };
     };
 
     home-manager = {

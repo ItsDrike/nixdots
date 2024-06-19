@@ -1,5 +1,5 @@
 { pkgs, lib, config, ...}: let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optional;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
 
@@ -26,5 +26,8 @@ in {
         openFirewall = true;
       };
     };
+
+    environment.systemPackages = optional cfg.hplip.enable pkgs.hplip;
+    myOptions.system.impermanence.home.extraDirectories = optional cfg.hplip.enable ".hplip";
   };
 }

@@ -31,4 +31,15 @@ in
       inputs.lanzaboote.nixosModules.lanzaboote
     ] ++ shared;
   };
+
+  voyager = lib.nixosSystem {
+    system = "x86_64-linux";
+    specialArgs = { inherit lib inputs self; };
+    modules = [
+      ./voyager
+      inputs.home-manager.nixosModules.home-manager
+      inputs.impermanence.nixosModules.impermanence
+      inputs.lanzaboote.nixosModules.lanzaboote
+    ] ++ shared;
+  };
 }

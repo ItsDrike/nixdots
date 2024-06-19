@@ -37,7 +37,21 @@
       sound.enable = true;
       bluetooth.enable = true;
 
-      # TODO: Impermanence
+      impermanence = {
+        root = {
+          enable = true;
+
+          # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
+          # I much prefer using a standalone subvolume for this though.
+          persistentMountPoint = "/persist";
+        };
+
+        # Configure automatic root subvolume wiping on boot from initrd
+        autoWipeBtrfs = {
+          enable = true;
+          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" ];
+        };
+      };
     };
 
     device = {

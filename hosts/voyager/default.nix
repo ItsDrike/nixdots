@@ -44,6 +44,10 @@
           # Some people use /nix/persist/system for this, leaving persistent files in /nix subvolume
           # I much prefer using a standalone subvolume for this though.
           persistentMountPoint = "/persist";
+
+          extraDirectories = [
+            "/var/log"
+          ];
         };
 
         # Configure automatic root subvolume wiping on boot from initrd

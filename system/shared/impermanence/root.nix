@@ -32,6 +32,9 @@ in
         "/etc/nixos" # NixOS configuration source
         "/etc/NetworkManager/system-connections" # saved network connections
         "/var/db/sudo" # keeps track of who got the sudo lecture already
+        # "/var/log" # I sometimes use a subvolume for this, added manually if not
+        "/var/lib/nixos"
+        "/var/lib/bluetooth"
         "/var/lib/systemd/coredump" # captured coredumps 
       ] ++ cfg.extraDirectories;
 

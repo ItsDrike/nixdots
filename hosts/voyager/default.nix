@@ -93,7 +93,7 @@
     security = {
       auditd = {
         enable = true;
-	autoPrune.enable = true;
+	      autoPrune.enable = true;
       };
     };
 

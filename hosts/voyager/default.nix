@@ -67,8 +67,8 @@
             ".local/share/nvim"
             ".local/state/nvim"
             ".local/share/zsh"
-            ".local/cargo"
-            ".local/go"
+            ".local/share/cargo"
+            ".local/share/go"
           ];
           extraFiles = [
             ".config/git/git-credentials"

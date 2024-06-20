@@ -136,6 +136,10 @@
           chromium.enable = true;
           mullvad-browser.enable = true;
         };
+        tools = {
+          fastfetch.enable = true;
+          hyfetch.enable = true;
+        };
         spotify.enable = true;
         stremio.enable = true;
         vesktop = {

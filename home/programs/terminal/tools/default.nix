@@ -9,6 +9,7 @@ _: {
     ./zoxide.nix
     ./tealdeer.nix
     ./hyfetch.nix
+    ./fastfetch.nix
     ./btop.nix
     ./bottom.nix
     ./bat.nix

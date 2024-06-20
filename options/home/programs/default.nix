@@ -32,5 +32,10 @@ in
       enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
       autoStart = mkEnableOption "Auto-Start for Vesktop";
     };
+
+    tools = {
+      fastfetch.enable = mkEnableOption "FastFetch (fast neofetch)";
+      hyfetch.enable = mkEnableOption "Neofetch with pride flags";
+    };
   };
 }

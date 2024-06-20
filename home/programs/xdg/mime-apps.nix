@@ -39,4 +39,9 @@
       "x-scheme-handler/msteams" = ["teams.desktop"]; # I need it for school, don't judge me
     };
   };
+
+  home.sessionVariables = {
+    BROWSER = "firefox";
+    DEFAULT_BROWSER = "firefox";
+  };
 }

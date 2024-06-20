@@ -62,6 +62,7 @@
             ".mozilla"
             ".mullvad"
             ".config/chromium"
+            ".config/spotify"
             ".config/vesktop"
             ".local/share/gnupg"
             ".local/share/zoxide"

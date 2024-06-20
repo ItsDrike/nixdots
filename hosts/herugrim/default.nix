@@ -97,6 +97,7 @@
       programs = {
         browsers = {
           chromium.enable = true;
+          firefox.enable = true;
           mullvad-browser.enable = true;
           schizofox.enable = true;
         };

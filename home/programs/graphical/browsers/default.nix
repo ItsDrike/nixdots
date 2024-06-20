@@ -3,6 +3,7 @@ _: {
     ./chromium
     ./mullvad
     ./schizofox
+    ./firefox
   ];
 }
 

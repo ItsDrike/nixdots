@@ -21,6 +21,7 @@ in
 
     browsers = {
       chromium.enable = mkEnableOption "Chromium browser";
+      firefox.enable = mkEnableOption "Firefox browser";
       mullvad-browser.enable = mkEnableOption "Mullvad browser";
       schizofox.enable = mkEnableOption "Schizophrenic version of Firefox browser";
     };

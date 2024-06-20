@@ -25,6 +25,7 @@ in {
           sansSerif = [
             "Lexend"
             "Noto Sans"
+            "Jost"
           ]
           ++ common;
 
@@ -63,6 +64,7 @@ in {
         inter
         lato
         lexend
+        jost
         dejavu_fonts
         noto-fonts
         noto-fonts-cjk
@@ -73,6 +75,7 @@ in {
         openmoji-color
         openmoji-black
         font-awesome
+        material-symbols
 
         # defaults worth keeping
         dejavu_fonts

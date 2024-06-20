@@ -28,5 +28,9 @@ in
 
     spotify.enable = mkEnableOption "Spotify";
     stremio.enable = mkEnableOption "Stremio free media center";
+    vesktop = {
+      enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
+      autoStart = mkEnableOption "Auto-Start for Vesktop";
+    };
   };
 }

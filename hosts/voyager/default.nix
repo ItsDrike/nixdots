@@ -62,6 +62,7 @@
             ".mozilla"
             ".mullvad"
             ".config/chromium"
+            ".config/vesktop"
             ".local/share/gnupg"
             ".local/share/zoxide"
             ".local/share/wakatime"
@@ -137,6 +138,10 @@
         };
         spotify.enable = true;
         stremio.enable = true;
+        vesktop = {
+          enable = true;
+          autoStart = true;
+        };
       };
     };
   };

@@ -15,7 +15,28 @@ in {
     };
 
     systemd.user.services = {
-      "eww" = {
+      "eww" = let 
+        # All dependencies required for eww and for the scripts/widgets it uses
+        dependencies = with pkgs; [
+          python3
+          bash
+          coreutils
+          gnugrep
+          gawk
+          netcat-openbsd
+          jq
+          util-linux
+          systemd
+          bluez
+          upower
+          wl-gammarelay-rs
+          gammastep
+          networkmanager
+          wireplumber
+          pulseaudio
+          hyprland
+        ];
+      in {
         Unit = {
           Description = "ElKowar's Wacky Widgets (eww) daemon";
           After = [ "graphical-session-pre.target" ];
@@ -24,7 +45,8 @@ in {
 
         Service = {
           Type = "simple";
-          Restart = "always";
+          Restart = "alwayss";
+          Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
           ExecStart = pkgs.writeShellScript "eww-daemon" ''
             ${pkgs.eww}/bin/eww daemon --no-daemonize
           '';

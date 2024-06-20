@@ -12,6 +12,13 @@ in
       };
     };
 
+    bars = {
+      eww = {
+        enable = mkEnableOption "Eww bar";
+        autostart.enable = mkEnableOption "auto-starting eww daemon on graphical-session.target";
+      };
+    };
+
     spotify.enable = mkEnableOption "Spotify";
   };
 }

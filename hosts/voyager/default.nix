@@ -125,6 +125,7 @@
       };
 
       programs = {
+        bars.eww.enable = true;
         spotify.enable = true;
       };
     };

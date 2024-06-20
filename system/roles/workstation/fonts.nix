@@ -24,6 +24,7 @@ in {
 
           sansSerif = [
             "Lexend"
+            "Noto Sans"
           ]
           ++ common;
 

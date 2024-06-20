@@ -23,9 +23,9 @@ in {
           ++ common;
 
           sansSerif = [
-            "Lexend"
             "Noto Sans"
             "Jost"
+            "Lexend"
           ]
           ++ common;
 

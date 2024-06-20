@@ -47,13 +47,13 @@ in
         name = mkOption {
           type = types.str;
           description = "The name of the font that will be used for GTK applications";
-          default = "Lexend"; # Noto Sans
+          default = "Noto Sans"; # Lexend
         };
 
         size = mkOption {
           type = types.int;
           description = "The size of the font";
-          default = 14;  # 10
+          default = 10;  # 10
         };
       };
     };

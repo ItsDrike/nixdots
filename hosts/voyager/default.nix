@@ -59,6 +59,9 @@
             "Media"
             "dots"
 
+            ".mozilla"
+            ".mullvad"
+            ".config/chromium"
             ".local/share/gnupg"
             ".local/share/wakatime"
             ".local/share/nvim"
@@ -126,6 +129,11 @@
 
       programs = {
         bars.eww.enable = true;
+        browsers = {
+          firefox.enable = true;
+          chromium.enable = true;
+          mullvad-browser.enable = true;
+        };
         spotify.enable = true;
       };
     };

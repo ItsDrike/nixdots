@@ -63,6 +63,7 @@
             ".mullvad"
             ".config/chromium"
             ".local/share/gnupg"
+            ".local/share/zoxide"
             ".local/share/wakatime"
             ".local/share/nvim"
             ".local/state/nvim"

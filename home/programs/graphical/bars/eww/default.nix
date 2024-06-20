@@ -25,6 +25,7 @@ in {
           gawk
           netcat-openbsd
           jq
+          bc
           util-linux
           systemd
           bluez

@@ -33,6 +33,7 @@ in
         ./packages
         ./programs
         ./impermanence
+        ./themes
       ];
 
       config = {

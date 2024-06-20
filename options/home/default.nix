@@ -6,6 +6,7 @@ in
     ./programs
     ./git.nix
     ./wms.nix
+    ./theme.nix
   ];
 
   options.myOptions.home-manager = {

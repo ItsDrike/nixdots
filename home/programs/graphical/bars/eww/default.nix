@@ -43,7 +43,7 @@ in {
         Unit = {
           Description = "Open %I eww (ElKowar's Wacky Widgets) window";
           After = [ "eww.service" ];
-          PartOf = [ "graphical-session-pre.target" ];
+          PartOf = [ "graphical-session.target" ];
         };
 
         Service = {

@@ -107,15 +107,15 @@
         #
         # Switch workspace (swapping to current monitor)
         #
-        "SUPER, 1, exec, hyprland-swap-workspace 1"
-        "SUPER, 2, exec, hyprland-swap-workspace 2"
-        "SUPER, 3, exec, hyprland-swap-workspace 3"
-        "SUPER, 4, exec, hyprland-swap-workspace 4"
-        "SUPER, 5, exec, hyprland-swap-workspace 5"
-        "SUPER, 6, exec, hyprland-swap-workspace 6"
-        "SUPER, 7, exec, hyprland-swap-workspace 7"
-        "SUPER, 8, exec, hyprland-swap-workspace 8"
-        "SUPER, 9, exec, hyprland-swap-workspace 9"
+        "SUPER, 1, focusworkspaceoncurrentmonitor, 1"
+        "SUPER, 2, focusworkspaceoncurrentmonitor, 2"
+        "SUPER, 3, focusworkspaceoncurrentmonitor, 3"
+        "SUPER, 4, focusworkspaceoncurrentmonitor, 4"
+        "SUPER, 5, focusworkspaceoncurrentmonitor, 5"
+        "SUPER, 6, focusworkspaceoncurrentmonitor, 6"
+        "SUPER, 7, focusworkspaceoncurrentmonitor, 7"
+        "SUPER, 8, focusworkspaceoncurrentmonitor, 8"
+        "SUPER, 9, focusworkspaceoncurrentmonitor, 9"
 
         #
         # Move window to workspace

@@ -16,7 +16,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      hyprPkgs.hyprland-swap-workspace
       hyprPkgs.hyprland-move-window
       pkgs.brightnessctl
       hyprPkgs.brightness

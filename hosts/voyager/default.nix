@@ -76,6 +76,7 @@
           ];
           extraFiles = [
             ".config/git/git-credentials"
+            ".cache/walker/history.gob"
           ];
         };
 

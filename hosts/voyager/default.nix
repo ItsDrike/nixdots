@@ -136,6 +136,7 @@
           mullvad-browser.enable = true;
         };
         spotify.enable = true;
+        stremio.enable = true;
       };
     };
   };

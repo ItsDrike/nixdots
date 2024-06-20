@@ -27,5 +27,6 @@ in
     };
 
     spotify.enable = mkEnableOption "Spotify";
+    stremio.enable = mkEnableOption "Stremio free media center";
   };
 }

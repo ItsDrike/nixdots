@@ -70,6 +70,7 @@
             ".local/share/nvim"
             ".local/state/nvim"
             ".local/share/zsh"
+            ".local/share/Smart Code ltd/Stremio"
             ".local/share/cargo"
             ".local/share/go"
           ];

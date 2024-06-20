@@ -101,5 +101,10 @@ in {
         })
       ];
     };
+
+    environment.systemPackages = with pkgs; [
+        # Tool for searching and previewing installed fonts
+        font-manager
+    ];
   };
 }

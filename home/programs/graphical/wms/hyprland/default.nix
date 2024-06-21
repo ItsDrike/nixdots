@@ -17,7 +17,9 @@ in {
   config = mkIf cfg.enable {
     home.packages = [
       hyprPkgs.hyprland-move-window
+      hyprPkgs.hyprland-screenshot
       pkgs.brightnessctl
+      pkgs.hyprpicker
       hyprPkgs.brightness
     ];
 

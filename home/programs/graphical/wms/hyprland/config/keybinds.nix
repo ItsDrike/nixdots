@@ -1,4 +1,4 @@
-{
+{ config, ... }: {
   wayland.windowManager.hyprland = {
     settings = {
       "$MOUSE_LMB" = "mouse:272";
@@ -8,6 +8,9 @@
       "$MOUSE_EX2" = "mouse:276";
 
       "$XF86Favorites" = "164";
+
+      "$SCREENSHOT_FORMAT" = "${config.xdg.userDirs.extraConfig.XDG_SCREENSHOTS_DIR}/Screenshot_''$(date +%Y-%m-%d_%H-%M-%S).png";
+      "$SCREENSHOT_DELAY" = "2000";
 
       bind = [
         # 
@@ -36,7 +39,21 @@
         #
         # Screenshots
         #
-        # TODO: requires script
+        "ALT, Print, exec, wl-copy \"$(hyprpicker)\" && notify-send 'Picked color' \"$(wl-paste) (saved to clipboard)\""
+        ", Print, exec, hyprland-screenshot --notify --copy --target area"
+        "SUPER, Print, exec, hyprland-screenshot --notify --copy --target area --edit"
+        "SHIFT, Print, exec, hyprland-screenshot --notify --save $SCREENSHOT_FORMAT --target area"
+        "CTRL, Print, exec, hyprland-screenshot --notify --copy --target area --delay $SCREENSHOT_DELAY"
+        "SUPER_SHIFT, Print, exec, hyprland-screenshot --notify --save $SCREENSHOT_FORMAT --target area --edit"
+        "SUPER_CTRL, Print, exec, hyprland-screenshot --notify --copy --target area --delay $SCREENSHOT_DELAY --edit"
+        "SUPER_SHIFT_CTRL, Print, exec, hyprland-screenshot --notify --save $SCREENSHOT_FORMAT --target area --delay $SCREENSHOT_DELAY --edit"
+        "CTRL, T, exec, hyprland-screenshot --save $SCREENSHOT_FORMAT --target all"
+        #" , Print, exec, screenshot --save $SCREENSHOT_FORMAT --target all"
+
+        # XF86Favorites key for recording
+        # (don't question me, I had it free)
+        ", $XF86Favorites, exec, quick-record --notify toggle"
+        "SUPER, $XF86Favorites, exec, quick-record toggle"
 
         #
         # Brightness control

@@ -18,6 +18,7 @@ in {
     home.packages = [
       hyprPkgs.hyprland-move-window
       hyprPkgs.hyprland-screenshot
+      hyprPkgs.quick-record
       pkgs.brightnessctl
       pkgs.hyprpicker
       hyprPkgs.brightness

@@ -19,9 +19,10 @@ in {
       hyprPkgs.hyprland-move-window
       hyprPkgs.hyprland-screenshot
       hyprPkgs.quick-record
+      hyprPkgs.toggle-fake-fullscreen
+      hyprPkgs.brightness
       pkgs.brightnessctl
       pkgs.hyprpicker
-      hyprPkgs.brightness
     ];
 
     wayland.windowManager.hyprland = {

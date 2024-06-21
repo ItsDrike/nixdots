@@ -20,6 +20,7 @@
         "SUPER, F, togglefloating,"
         "SUPER, Space, fullscreen, 0"
         "SUPER_SHIFT, Space, fullscreen, 1"  # maximize
+        "CTRL_SHIFT, Space, exec, toggle-fake-fullscreen" # fake fullscreen + custom border
         "SUPER_SHIFT, S, layoutmsg, togglesplit"
 
         #

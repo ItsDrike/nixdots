@@ -34,6 +34,7 @@ in
         ./programs
         ./impermanence
         ./themes
+        ./services
       ];
 
       config = {

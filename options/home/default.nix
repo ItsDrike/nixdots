@@ -7,6 +7,7 @@ in
     ./git.nix
     ./wms.nix
     ./theme.nix
+    ./services.nix
   ];
 
   options.myOptions.home-manager = {

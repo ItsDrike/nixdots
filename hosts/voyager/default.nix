@@ -178,6 +178,10 @@
           obs.enable = true;
         };
       };
+
+      services = {
+        dunst.enable = true;
+      };
     };
   };
 }

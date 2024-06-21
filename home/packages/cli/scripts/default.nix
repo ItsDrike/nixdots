@@ -9,5 +9,6 @@ in {
       bitcoin
       cheatsh
       colors256
+      unix
     ];
 }

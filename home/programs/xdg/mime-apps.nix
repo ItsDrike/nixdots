@@ -6,7 +6,7 @@
       emailClient = browser;
       pdfViewer = browser; # TODO: consider zathura (org.pwmt.zathura.desktop.desktop)
       fileManager = "pcmanfm-qt.desktop"; # TODO: change
-      archiveManager = "org.gnome.FileRoller.desktop";
+      archiveManager = "org.kde.ark.desktop";
       imageViewer = "org.nomacs.ImageLounge.desktop";
       videoPlayer = "mpv.desktop";
       audioPlayer = "mpv.desktop";

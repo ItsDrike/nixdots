@@ -10,5 +10,6 @@ in {
       cheatsh
       colors256
       unix
+      gh-notify
     ];
 }

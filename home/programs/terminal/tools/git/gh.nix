@@ -6,7 +6,7 @@
       gh-dash # dashboard with pull requess and issues
       gh-eco # explore the ecosystem
       gh-cal # contributions calendar terminal viewer
-      # TODO: Include meiji163/gh-notify
+      gh-notify # access and manage github notifications
     ];
     settings = {
       git_protocol = "ssh";

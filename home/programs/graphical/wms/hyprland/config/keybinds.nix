@@ -74,8 +74,11 @@
         #
         # Notifications
         #
-        # TODO: Requires notification daemon (dunst?)
-
+        "CTRL, grave, exec, dunstctl close"
+        "CTRL_SHIFT, grave, exec, dunstctl close-all"
+        "CTRL, period, exec, dunstctl history-pop"
+        "CTRL_SHIFT, period, exec, dunstctl context"
+        "SUPER_SHIFT, D, exec, toggle-notifications"
 
         #
         # Window groups

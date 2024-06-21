@@ -8,6 +8,7 @@
     hyprland-screenshot = pkgs.callPackage ./hyprland-screenshot {};
     quick-record = pkgs.callPackage ./quick-record {};
     toggle-fake-fullscreen = pkgs.callPackage ./toggle-fake-fullscreen {};
+    toggle-notifications = pkgs.callPackage ./toggle-notifications {};
   };
 in
   packages

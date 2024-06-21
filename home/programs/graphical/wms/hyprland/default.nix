@@ -20,6 +20,7 @@ in {
       hyprPkgs.hyprland-screenshot
       hyprPkgs.quick-record
       hyprPkgs.toggle-fake-fullscreen
+      hyprPkgs.toggle-notifications
       hyprPkgs.brightness
       pkgs.brightnessctl
       pkgs.hyprpicker

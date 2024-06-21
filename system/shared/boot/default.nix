@@ -4,6 +4,7 @@ _: {
     ./generic.nix
     ./secure-boot.nix
     ./initrd.nix
+    ./numlock.nix
     ./plymouth.nix
   ];
 }

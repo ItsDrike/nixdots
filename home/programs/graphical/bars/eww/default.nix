@@ -70,7 +70,7 @@ in {
         Unit = {
           Description = "Open bar0 eww (ElKowar's Wacky Widgets) window";
           After = [ "eww.service" ];
-          PartOf = [ "graphical-session.target" ];
+          PartOf = [ "graphical-session.target" "eww.service" ];
         };
 
         Service = {

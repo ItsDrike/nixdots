@@ -6,6 +6,8 @@
 }: let
   inherit (lib) mkIf;
 
+  scriptPkgs = (import ../../../../packages/cli/scripts/packages {inherit pkgs;});
+
   cfg = osConfig.myOptions.home-manager.programs.bars.eww;
 in {
   config = mkIf cfg.enable {
@@ -36,6 +38,7 @@ in {
           wireplumber
           pulseaudio
           hyprland
+          scriptPkgs.bitcoin
         ];
       in {
         Unit = {

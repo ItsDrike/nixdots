@@ -5,5 +5,6 @@ _: {
     ./nomacs.nix
     ./qbittorrent.nix
     ./mpv.nix
+    ./obs.nix
   ];
 }

@@ -174,6 +174,7 @@
             autoStart = true;
           };
           nomacs.enable = true;
+          qbittorrent.enable = true;
         };
       };
     };

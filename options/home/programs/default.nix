@@ -34,6 +34,7 @@ in
         autoStart = mkEnableOption "Auto-Start for Vesktop";
       };
       nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
+      qbittorrent.enable = mkEnableOption "Qbittorrent (Free software BitTorrent client)";
     };
 
     tools = {

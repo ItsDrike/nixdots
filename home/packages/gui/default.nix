@@ -3,5 +3,6 @@ _: {
     ./wayland.nix
     ./stremio.nix
     ./nomacs.nix
+    ./qbittorrent.nix
   ];
 }

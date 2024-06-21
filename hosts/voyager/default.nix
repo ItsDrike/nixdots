@@ -54,23 +54,36 @@
           enable = true;
           persistentMountPoint = "/persist/home";
           extraDirectories = [
+            # Nixos flake
+            "dots"
+
+            # Personal data
             "Downloads"
             "Personal"
             "Media"
-            "dots"
 
+            # Browsers
             ".mozilla"
             ".mullvad"
             ".config/chromium"
+
+            # Applications
             ".config/spotify"
             ".config/vesktop"
+            ".local/share/Smart Code ltd/Stremio"
+
+            # Tools
             ".local/share/gnupg"
             ".local/share/zoxide"
             ".local/share/wakatime"
             ".local/share/nvim"
             ".local/state/nvim"
             ".local/share/zsh"
-            ".local/share/Smart Code ltd/Stremio"
+
+            # Services
+            ".local/state/wireplumber"
+
+            # Language package managers
             ".local/share/cargo"
             ".local/share/go"
           ];

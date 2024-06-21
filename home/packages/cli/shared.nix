@@ -21,12 +21,15 @@
     dnsutils # DNS utilities
     dig # DNS utilities
     curl # CLI tool for transfering data with URLs
+    lm_sensors # tools for reading hw sensors
+    p7zip # 7zip fork with some improvements
 
     # Rust replacements
     procs # better ps
     ripgrep # better grep
     fd # better find
     du-dust # better du
+    skim # fuzzy finder
 
     # Development
     gcc # GNU C compiler

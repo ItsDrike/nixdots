@@ -62,9 +62,9 @@ in {
         Install.WantedBy = [ "graphical-session.target" ];
       };
 
-      "eww-window@" = {
+      "eww-window-bar0" = {
         Unit = {
-          Description = "Open %I eww (ElKowar's Wacky Widgets) window";
+          Description = "Open bar0 eww (ElKowar's Wacky Widgets) window";
           After = [ "eww.service" ];
           PartOf = [ "graphical-session.target" ];
         };
@@ -73,8 +73,8 @@ in {
           Type = "oneshot";
           RemainAfterExit = true;
           ExecStartPre = "${pkgs.eww}/bin/eww ping";
-          ExecStart = "${pkgs.eww}/bin/eww open %i";
-          ExecStop = "${pkgs.eww}/bin/eww close %i";
+          ExecStart = "${pkgs.eww}/bin/eww open bar0";
+          ExecStop = "${pkgs.eww}/bin/eww close bar0";
           Restart = "on-failure";
         };
 

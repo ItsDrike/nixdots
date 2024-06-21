@@ -70,6 +70,7 @@
             # Applications
             ".config/spotify"
             ".config/vesktop"
+            "./config/nomacs"
             ".local/share/Smart Code ltd/Stremio"
 
             # Tools
@@ -173,6 +174,7 @@
             enable = true;
             autoStart = true;
           };
+          mpv.enable = true;
           nomacs.enable = true;
           qbittorrent.enable = true;
           obs.enable = true;

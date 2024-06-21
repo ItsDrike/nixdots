@@ -78,10 +78,9 @@
             ".local/share/wakatime"
             ".local/share/nvim"
             ".local/state/nvim"
-            ".local/share/zsh"
 
             # Services
-            ".local/state/wireplumber"
+            ".local/state/wireplumber" # volume settings
 
             # Language package managers
             ".local/share/cargo"
@@ -90,6 +89,7 @@
           extraFiles = [
             ".config/git/git-credentials"
             ".cache/walker/history.gob"
+            ".local/share/zsh/zsh_history"
           ];
         };
 

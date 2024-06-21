@@ -35,6 +35,7 @@ in
       };
       nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
       qbittorrent.enable = mkEnableOption "Qbittorrent (Free software BitTorrent client)";
+      obs.enable = mkEnableOption "OBS (Free and oepn source software for video recording and live streaming)";
     };
 
     tools = {

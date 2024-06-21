@@ -175,6 +175,7 @@
           };
           nomacs.enable = true;
           qbittorrent.enable = true;
+          obs.enable = true;
         };
       };
     };

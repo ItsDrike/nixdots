@@ -1,4 +1,10 @@
 {
+  pkgs,
+  ...
+}: let
+
+  scriptPkgs = (import ./bin {inherit pkgs;});
+in {
   programs.git = {
     aliases = {
       quickclone = "clone --single-branch --depth=1";
@@ -48,7 +54,7 @@
       bD = "branch --delete --force";
       bm = "branch --move";
       bM = "branch --move --force";
-      bb = "!~/.local/bin/scripts/cli/better-git-branch";
+      bb = "!${scriptPkgs.better-git-branch}/bin/better-git-branch";
 
       r = "rebase";
       ri = "rebase -i";

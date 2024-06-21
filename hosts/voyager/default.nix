@@ -172,6 +172,7 @@
           enable = true;
           autoStart = true;
         };
+        nomacs.enable = true;
       };
     };
   };

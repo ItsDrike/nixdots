@@ -32,6 +32,7 @@ in
       enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
       autoStart = mkEnableOption "Auto-Start for Vesktop";
     };
+    nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
 
     tools = {
       fastfetch.enable = mkEnableOption "FastFetch (fast neofetch)";

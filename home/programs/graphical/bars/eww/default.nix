@@ -23,6 +23,7 @@ in {
           python3
           bash
           coreutils
+          findutils
           gnugrep
           gawk
           netcat-openbsd

@@ -9,7 +9,8 @@
 in {
   config = mkIf osConfig.myOptions.home-manager.wms.isWayland {
     home.packages = with pkgs; [
-      wlogout
+      wlogout # logout menu
+      swappy # screenshot editing
     ];
   };
 }

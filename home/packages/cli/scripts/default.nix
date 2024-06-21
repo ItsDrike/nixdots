@@ -7,5 +7,6 @@
 in {
     home.packages = with scriptPkgs; [
       bitcoin
+      cheatsh
     ];
 }

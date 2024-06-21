@@ -101,8 +101,9 @@
           mullvad-browser.enable = true;
           schizofox.enable = true;
         };
-
-        spotify.enable = true;
+        applications = {
+          spotify.enable = true;
+        };
       };
     };
   };

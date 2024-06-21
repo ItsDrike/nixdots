@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  cfg = osConfig.myOptions.home-manager.programs.vesktop;
+  cfg = osConfig.myOptions.home-manager.programs.applications.vesktop;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ vesktop ];

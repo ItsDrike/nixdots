@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkIf;
 
-  cfg = osConfig.myOptions.home-manager.programs.spotify;
+  cfg = osConfig.myOptions.home-manager.programs.applications.spotify;
   spicePkgs = inputs.spicetify.packages.${pkgs.system}.default;
 in {
   imports = [inputs.spicetify.homeManagerModule];

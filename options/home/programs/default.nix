@@ -26,13 +26,15 @@ in
       schizofox.enable = mkEnableOption "Schizophrenic version of Firefox browser";
     };
 
-    spotify.enable = mkEnableOption "Spotify";
-    stremio.enable = mkEnableOption "Stremio free media center";
-    vesktop = {
-      enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
-      autoStart = mkEnableOption "Auto-Start for Vesktop";
+    applications = {
+      spotify.enable = mkEnableOption "Spotify";
+      stremio.enable = mkEnableOption "Stremio free media center";
+      vesktop = {
+        enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
+        autoStart = mkEnableOption "Auto-Start for Vesktop";
+      };
+      nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
     };
-    nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
 
     tools = {
       fastfetch.enable = mkEnableOption "FastFetch (fast neofetch)";

@@ -166,13 +166,15 @@
           fastfetch.enable = true;
           hyfetch.enable = true;
         };
-        spotify.enable = true;
-        stremio.enable = true;
-        vesktop = {
-          enable = true;
-          autoStart = true;
+        applications = {
+          spotify.enable = true;
+          stremio.enable = true;
+          vesktop = {
+            enable = true;
+            autoStart = true;
+          };
+          nomacs.enable = true;
         };
-        nomacs.enable = true;
       };
     };
   };

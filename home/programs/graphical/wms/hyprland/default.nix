@@ -21,6 +21,7 @@ in {
       hyprPkgs.quick-record
       hyprPkgs.toggle-fake-fullscreen
       hyprPkgs.toggle-notifications
+      hyprPkgs.toggle-idle
       hyprPkgs.brightness
       pkgs.brightnessctl
       pkgs.hyprpicker

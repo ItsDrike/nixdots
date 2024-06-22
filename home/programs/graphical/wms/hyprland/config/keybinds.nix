@@ -36,6 +36,7 @@
         # TODO: Requires programs
         "SUPER_SHIFT, L, exec, wlogout -p layer-shell"
         "SUPER_CTRL, L, exec, loginctl lock-session"
+        "SUPER_SHIFT, T, exec, toggle-idle"
 
         #
         # Screenshots

@@ -11,7 +11,6 @@ _: {
     ./programs.nix
     ./system.nix
     ./network.nix
-    ./bluetooth.nix
     ./localisation.nix
     ./packages.nix
   ];

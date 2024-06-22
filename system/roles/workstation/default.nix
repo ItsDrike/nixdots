@@ -4,5 +4,6 @@
     ./programs
     ./fonts.nix
     ./runners.nix
+    ./display
   ];
 }

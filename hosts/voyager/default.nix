@@ -70,7 +70,6 @@
             # Applications
             ".config/spotify"
             ".config/vesktop"
-            ".config/nomacs"
             ".local/share/Smart Code ltd/Stremio"
 
             # Tools

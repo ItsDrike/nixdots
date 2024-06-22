@@ -3,6 +3,7 @@
     ./mime-apps.nix
     ./user-dirs.nix
     ./config-files.nix
+    ./portal.nix
   ];
 
   xdg = {

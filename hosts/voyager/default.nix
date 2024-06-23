@@ -35,7 +35,6 @@
       username = "itsdrike";
 
       sound.enable = true;
-      bluetooth.enable = true;
 
       impermanence = {
         root = {
@@ -115,6 +114,7 @@
       cpu.type = "amd";
       gpu.type = "amd";
       hasTPM = true;
+      bluetooth.enable = true;
     };
 
     security = {

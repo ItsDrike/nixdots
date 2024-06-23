@@ -6,14 +6,14 @@
 }: let
   inherit (lib) mkIf;
 
-  sys = config.myOptions.system.bluetooth;
+  cfg = config.myOptions.device.bluetooth;
 in {
-  config = mkIf sys.enable {
+  config = mkIf cfg.enable {
     hardware.bluetooth = {
       enable = true;
       package = pkgs.bluez5-experimental;
+      powerOnBoot = cfg.powerOnBoot; 
       #hsphfpd.enable = true;
-      powerOnBoot = true;
       disabledPlugins = ["sap"];
       settings = {
         General = {

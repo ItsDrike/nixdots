@@ -9,7 +9,7 @@
   inherit (lib.generators) toLua;
 
   cfg = config.myOptions.system.sound;
-  cfgBluetooth = config.myOptions.system.bluetooth;
+  cfgBluetooth = config.myOptions.device.bluetooth;
 in {
   config = mkIf cfg.enable {
     # in case pipewire was force disabled for whatever reason, fall

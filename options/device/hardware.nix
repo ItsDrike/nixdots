@@ -1,4 +1,5 @@
-{ lib, ... }: with lib; let
+{ lib, ... }: let
+  inherit (lib) mkOption mkEnableOption types;
 in
 {
   options.myOptions.device = {
@@ -34,9 +35,25 @@ in
     };
 
     hasTPM = mkOption {
-      type = lib.types.bool;
+      type = types.bool;
       default = false;
       description = "Does this device have a TPM (Trusted Platform Module)?";
+    };
+
+    bluetooth = {
+      enable = mkEnableOption "bluetooth modules, drivers and configuration program(s)";
+      powerOnBoot = mkOption {
+        type = types.bool;
+        default = false;
+        description = ''
+          Should bluetooth be powered on automatically during boot?
+
+          This will worsen the battery life and is not recommended. Instead, you can
+          always turn bluetooth on manually once booted, when you need it. Unless you
+          have constant need for bluetooth / have some devices to connect to automatically
+          you, leave this off.
+        '';
+      };
     };
   };
 }

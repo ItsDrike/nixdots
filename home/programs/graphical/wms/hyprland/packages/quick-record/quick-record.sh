@@ -37,7 +37,9 @@ start_recording() {
 
     # Wee need 'y' stdin to confirm that we want to override the file
     # since mktemp creates a blank file there already
-    echo "y" | wf-recorder -g "$geom" -f "$file"
+    # TODO: The -x 420p is a temporary fix to address the recordings appearing
+    # corrupted in firefox/discord/... See: <https://github.com/ammen99/wf-recorder/issues/218>
+    echo "y" | wf-recorder -g "$geom" -f "$file" -x yuv420p
 
     # If wf-recorder process ends directly, rather than a trap being hit
     # we also want to run the save_file func

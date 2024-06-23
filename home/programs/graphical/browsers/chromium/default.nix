@@ -14,7 +14,6 @@ in {
       enable = true;
 
       package = pkgs.ungoogled-chromium.override {
-        nss = pkgs.nss_latest;
         commandLineArgs = [
             # Ungoogled features
             "--disable-search-engine-collection"

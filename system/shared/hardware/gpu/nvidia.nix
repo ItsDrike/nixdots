@@ -63,7 +63,7 @@ in
       };
 
       # Enable OpenGL
-      opengl = {
+      graphics = {
         enable = true;
 
         # VA-API implementation using NVIDIA's NVDEC

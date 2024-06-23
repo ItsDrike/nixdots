@@ -23,16 +23,12 @@ in
     ];
 
     # Enable OpenGL
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
 
       # Enable OpenCL and AMDVLK
-      extraPackages = with pkgs; [
-        amdvlk
-      ];
-      extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
-      ];
+      extraPackages = with pkgs; [ amdvlk ];
+      extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
     };
   };
 }

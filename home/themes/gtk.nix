@@ -2,7 +2,6 @@
   osConfig,
   config,
   pkgs,
-  lib,
   ...
 }: let
   cfg = osConfig.myOptions.home-manager.theme.gtk;
@@ -76,5 +75,11 @@ in {
       gtk-error-bell = 0;
       gtk-application-prefer-dark-theme = true;
     };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface".gtk-theme = cfg.theme.name;
+    # For Gnome shell
+    "org/gnome/shell/extensions/user-theme".name = cfg.theme.name;
   };
 }

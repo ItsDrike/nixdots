@@ -62,19 +62,31 @@ in
       forceGtk = mkOption {
         type = types.bool;
         default = false;
-        description = "Whether to force QT applications to try and use the GTK theme.";
+        description = ''
+          Whether to force QT applications to try and use the GTK theme.
+
+          If false, qtct platform theme & Kvantum will be used instead.
+        '';
       };
 
       theme = {
         name = mkOption {
           type = types.str;
           default = "Catppuccin-Mocha-Dark";
-          description = "The name for the QT theme package";
+          description = ''
+            The name for the QT theme package.
+
+            This has no effect if forceGtk is set.
+          '';
         };
 
         package = mkOption {
           type = types.package;
-          description = "The theme package to be used for QT programs";
+          description = ''
+            The theme package to be used for QT programs.
+
+            This has no effect if forceGtk is set.
+          '';
           default = pkgs.catppuccin-kde.override {
             flavour = ["mocha"];
             accents = ["blue"];

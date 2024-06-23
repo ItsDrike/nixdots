@@ -12,7 +12,7 @@ As a first step, you will want to confirm that you really are on a UEFI system. 
 this is very likely the case. Nevertheless, let's check and make sure:
 
 ```shell
-bootctl info
+bootctl status
 ```
 
 Make sure the `Firmware` is reported as `UEFI`.

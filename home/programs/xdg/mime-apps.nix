@@ -70,5 +70,6 @@ in {
   home.sessionVariables = {
     BROWSER = "firefox";
     DEFAULT_BROWSER = "firefox";
+    TERMINAL = "kitty";
   };
 }

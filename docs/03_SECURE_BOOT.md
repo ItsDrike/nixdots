@@ -36,8 +36,9 @@ boot.
 > fact, if someone is able to get a hold of your machine, they can simply pull out the CMOS battery, which usually
 > resets the UEFI. That means turning off Secure Boot, and getting rid of the BIOS password.
 >
-> While UEFI is generally a good extra measure to have, it is by no means a reliable way to really prevent others from
-> ever being able to boot untrusted systems, unless you use a specialized motherboard, which persists the UEFI state.
+> While Secure Boot is generally a good extra measure to have, it is by no means a reliable way to really prevent
+> others from ever being able to boot untrusted systems, unless you use a specialized motherboard, which persists the
+> UEFI state.
 
 ## Create your keys
 

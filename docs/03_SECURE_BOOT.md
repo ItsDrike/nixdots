@@ -61,8 +61,8 @@ permissions of the secret key so that only root can read it.
 
 ## lanzaboote
 
-`lanzaboote` is a tool to help you set up secure boot in NixOS. To install it, you can add
-it as an input for your flake:
+`lanzaboote` is a tool to help you set up secure boot in NixOS. To install it, you can add it as an input for your
+flake:
 
 ```nix
 lanzaboote = {
@@ -111,7 +111,8 @@ Note that you shouldn't really need to use this.
 
 ## Enabling secure boot
 
-Now that NixOS is ready for secure-boot, we will set up firmware. At the end of this section, Secure Boot will be enabled on your system and your firmware will only boot binaries that are signed with your keys.
+Now that NixOS is ready for secure-boot, we will set up firmware. At the end of this section, Secure Boot will be
+enabled on your system and your firmware will only boot binaries that are signed with your keys.
 
 ### Enter Setup mode
 
@@ -138,11 +139,18 @@ You will now have to enroll your new keys to activate Secure Boot.
 sudo sbctl enroll-keys -m
 ```
 
-> [!NOTE]
+> [!WARNING]
 > The `-m` option (also known as `--microsoft`) will make sure to also include the Microsoft
 > signing keys. This is required by most motherboards, not using it could brick your device.
 
-This should automatically enable secure boot in user mode for you. You can now reboot the system.
+> [!NOTE]
+> If you encounter "File is immutable" warnings after running sbctl, it should be safe to simply add the `-i` (or
+> `--ignore-immutable`) flag, which will run `chattr` and remove the immutable flags from these files for you.
+>
+> If you still encounter errors even with this flag, it means you have probably done something wrong when entering the
+> setup mode. Try looking for a option like "Reset keys" in your UEFI, then try this again.
+
+This should automatically enable secure boot in user mode for you. You can now **reboot the system**.
 
 ### Make sure it worked
 

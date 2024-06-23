@@ -23,6 +23,7 @@
     curl # CLI tool for transfering data with URLs
     lm_sensors # tools for reading hw sensors
     p7zip # 7zip fork with some improvements
+    e2fsprogs # tools for creating and checking ext filesystems
 
     # Rust replacements
     procs # better ps

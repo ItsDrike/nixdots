@@ -99,6 +99,11 @@
           devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" ];
         };
       };
+
+      boot = {
+        secure-boot.enable = true;
+        #tmpOnTmpfs = true;
+      };
     };
 
     device = {

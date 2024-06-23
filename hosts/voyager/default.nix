@@ -174,7 +174,8 @@
             autoStart = true;
           };
           mpv.enable = true;
-          nomacs.enable = true;
+          nomacs.enable = true;  # TODO: probably disable
+          qimgv.enable = true;
           qbittorrent.enable = true;
           obs.enable = true;
         };

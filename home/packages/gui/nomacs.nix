@@ -29,6 +29,7 @@ in {
         hideAllPanels=true
         showMenuBar=false
         showRecentFiles=false
+        useLogFile=true
 
         [Crop]
         AspectRatioHorizontal=0
@@ -62,7 +63,7 @@ in {
         overwriteDialog-answer=16384
         saveEditDialog=false
         saveEditDialog-answer=16384
-        saveTabsDialog=true
+        saveTabsDialog=false
         saveTabsDialog-answer=16384
 
         [DkExplorer]

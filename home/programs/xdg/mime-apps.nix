@@ -1,5 +1,10 @@
 # Manage $XDG_CONFIG_HOME/mimeapps.list
 {
+  osConfig,
+  ...
+}: let
+  cfg = osConfig.myOptions.home-manager.programs;
+in {
   xdg.mimeApps = let 
       browser = "firefox.desktop";
       textEditor = browser; # nvim doesn't work properly with xdg-open, just use the browser
@@ -7,7 +12,12 @@
       pdfViewer = browser; # TODO: consider zathura (org.pwmt.zathura.desktop.desktop)
       fileManager = "pcmanfm-qt.desktop"; # TODO: change
       archiveManager = "org.kde.ark.desktop";
-      imageViewer = "org.nomacs.ImageLounge.desktop";
+      imageViewer = 
+        if cfg.applications.qimgv.enable
+        then "qimgv.desktop" 
+        else if cfg.applications.nomacs.enable
+        then "org.nomacs.ImageLounge.desktop"
+        else browser;
       videoPlayer = "mpv.desktop";
       audioPlayer = "mpv.desktop";
 

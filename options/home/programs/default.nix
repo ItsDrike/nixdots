@@ -34,6 +34,7 @@ in
         autoStart = mkEnableOption "Auto-Start for Vesktop";
       };
       nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
+      qimgv.enable = mkEnableOption "QImgV (Qt-based image viewer with video support)";
       qbittorrent.enable = mkEnableOption "Qbittorrent (Free software BitTorrent client)";
       obs.enable = mkEnableOption "OBS (Free and oepn source software for video recording and live streaming)";
       mpv.enable = mkEnableOption "MPV (General-purpose media player)";

@@ -6,5 +6,6 @@ _: {
     ./qbittorrent.nix
     ./mpv.nix
     ./obs.nix
+    ./qimgv.nix
   ];
 }

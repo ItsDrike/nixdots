@@ -33,6 +33,10 @@ in
         enable = mkEnableOption "Vesktop (An alternate client for Discord with Vencord built-in)";
         autoStart = mkEnableOption "Auto-Start for Vesktop";
       };
+      webcord = {
+        enable = mkEnableOption "Webcord (An electron-based Discord client implemented without Discord API with Vencord built-in)";
+        autoStart = mkEnableOption "Auto-Start for Webcord";
+      };
       nomacs.enable = mkEnableOption "Nomacs (Qt-based image viewer)";
       qimgv.enable = mkEnableOption "QImgV (Qt-based image viewer with video support)";
       qbittorrent.enable = mkEnableOption "Qbittorrent (Free software BitTorrent client)";

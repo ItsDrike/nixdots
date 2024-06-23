@@ -70,6 +70,7 @@
             # Applications
             ".config/spotify"
             ".config/vesktop"
+            ".config/WebCord"
             ".local/share/Smart Code ltd/Stremio"
 
             # Tools
@@ -178,6 +179,7 @@
             enable = true;
             autoStart = true;
           };
+          webcord.enable = true;
           mpv.enable = true;
           nomacs.enable = true;  # TODO: probably disable
           qimgv.enable = true;

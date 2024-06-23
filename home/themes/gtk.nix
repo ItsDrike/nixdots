@@ -78,7 +78,13 @@ in {
   };
 
   dconf.settings = {
+    # This is like a system-wide dark mode swithc that some apps respect it.
+    # Equivalent of the following dconf command:
+    # `conf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"`
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
     "org/gnome/desktop/interface".gtk-theme = cfg.theme.name;
+
     # For Gnome shell
     "org/gnome/shell/extensions/user-theme".name = cfg.theme.name;
   };

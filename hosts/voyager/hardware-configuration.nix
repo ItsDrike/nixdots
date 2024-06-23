@@ -46,6 +46,12 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/.btrfs" =
+    { device = "/dev/disk/by-label/NIXOS-FS";
+      fsType = "btrfs";
+      options = [ "noatime" "compress=zstd:3" ];
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-label/SWAP"; }
     ];

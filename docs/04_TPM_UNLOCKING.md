@@ -115,7 +115,7 @@ sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7+12 /dev/disk/by-labe
 > [!NOTE]
 > If you already had something in the tpm2 module, you'll want to add `--wipe-slot=tpm2` too.
 
-> [!NOTE]
+> [!TIP]
 > If you're extra paranoid, you can also provide `--tpm2-with-pin=yes`, to prompt for a PIN code on each boot.
 >
 > I have mentioned why you may want to do this in the beginning.

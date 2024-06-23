@@ -1,37 +1,15 @@
 { pkgs, lib, config, ...}: let
-  inherit (lib) mkIf mkDefault;
+  inherit (lib) mkIf;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop"];
 in {
   imports = [
-    ./auto-cpufreq
+    ./power-profiles-daemon
+    ./upower.nix
+    ./acpi.nix
   ];
 
   config = mkIf (builtins.elem deviceType acceptedTypes) {
-    hardware.acpilight.enable = true;
-
-    environment.systemPackages = with pkgs; [
-      acpi
-      powertop
-    ];
-
-    services = {
-      # handle ACPI events
-      acpid.enable = true;
-
-      # temperature target on battery
-      undervolt = {
-        tempBat = 65; # deg C
-        package = pkgs.undervolt;
-      };
-    };
-
-    boot = {
-      kernelModules = ["acpi_call"];
-      extraModulePackages = with config.boot.kernelPackages; [
-        acpi_call
-        cpupower
-      ];
-    };
+    environment.systemPackages = with pkgs; [ powertop ];
   };
 }

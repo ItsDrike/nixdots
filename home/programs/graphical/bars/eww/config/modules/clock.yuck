@@ -3,7 +3,7 @@
   (eventbox
     :tooltip {time.day}
     :class "module clock"
-    ;; :onclick "${EWW_CMD} open --toggle calendar"
+    :onclick "${EWW_CMD} open --toggle calendar"
 
     (box
       :space-evenly false

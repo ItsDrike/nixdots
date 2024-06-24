@@ -181,6 +181,12 @@
         "SUPER_SHIFT, mouse_up, focusmonitor, -1"
         "SUPER_SHIFT, bracketright, focusmonitor, +1"
         "SUPER_SHIFT, bracketleft, focusmonitor, -1"
+
+        #
+        # Global keybinds (passing keys to other programs)
+        #
+        "CTRL, F10, pass, ^(com\.obsproject\.Studio)$"
+
       ];
 
       # Mouse bindings

@@ -85,6 +85,7 @@
         # Window groups
         #
         "SUPER, G, togglegroup,"
+        "SUPER_SHIFT, G, lockactivegroup, toggle"
         "ALT, tab, changegroupactive, f"
         "ALT, grave, changegroupactive, b"
 

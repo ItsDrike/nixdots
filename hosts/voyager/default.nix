@@ -71,6 +71,7 @@
             ".config/vesktop"
             ".config/WebCord"
             ".local/share/Smart Code ltd/Stremio"
+            ".config/obs-studio"
 
             # Tools
             ".local/share/gnupg"

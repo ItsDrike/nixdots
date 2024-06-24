@@ -99,7 +99,7 @@
 
     decoration = {
       dim_inactive = false; # disabled for now
-      dim_strength = 0.05;
+      dim_strength = 0.02;
       dim_special = 0.2;
       inactive_opacity = 0.9;
     };

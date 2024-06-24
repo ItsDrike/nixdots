@@ -28,8 +28,10 @@ in {
       colorScheme = "mocha";
 
       enabledExtensions = with spicePkgs.extensions; [
+        #adblock # I currently have premium
+        volumePercentage
         fullAppDisplay
-        shuffle # shuffle+ (special characters are sanitized out of ext names)
+        shuffle
         hidePodcasts
         playlistIcons
         lastfm

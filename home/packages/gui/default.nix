@@ -4,7 +4,6 @@ _: {
     ./stremio.nix
     ./nomacs.nix
     ./qbittorrent.nix
-    ./mpv.nix
     ./obs.nix
     ./qimgv.nix
   ];

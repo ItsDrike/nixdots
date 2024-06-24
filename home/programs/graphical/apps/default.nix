@@ -3,5 +3,6 @@ _: {
     ./spotify
     ./vesktop
     ./webcord
+    ./mpv.nix
   ];
 }

@@ -4,6 +4,7 @@
     ./mount.nix
     ./printing.nix
     ./misc.nix
+    ./gnome-keyring.nix
   ];
 }
 

@@ -24,7 +24,7 @@ in {
     in {
       description = "Power Monitoring Service";
       environment.PATH = mkForce "/run/wrappers/bin:${makeBinPath dependencies}";
-      script = builtins.readFile ./scripts/power_monitor.sh;
+      script = builtins.readFile ./power_monitor.sh;
 
       serviceConfig = {
         Type = "simple";

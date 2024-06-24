@@ -4,5 +4,6 @@ _: {
     ./vesktop
     ./webcord
     ./mpv.nix
+    ./obs.nix
   ];
 }

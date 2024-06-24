@@ -230,10 +230,10 @@
       #
 
       # Useful to prevent keybind capturing (for games, etc)
-      # SUPER + Fn + F12 (Favorites)
-      bind = SUPER, XF86Favorites, exec, hyprctl dispatch submap isolate && notify-send "Keybind isolation" "Keybind isolation on"
+      # SUPER + End
+      bind = SUPER, End, exec, hyprctl dispatch submap isolate && notify-send "Keybind isolation" "Keybind isolation on"
       submap = isolate
-      bind = SUPER, XF86Favorites, exec, hyprctl dispatch submap reset && notify-send "Keybind isolation" "Keybind isolation off"
+      bind = SUPER, End, exec, hyprctl dispatch submap reset && notify-send "Keybind isolation" "Keybind isolation off"
       submap = reset
 
       #

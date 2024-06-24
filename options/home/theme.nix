@@ -125,13 +125,13 @@ in
     cursor = {
       name = mkOption {
         type = types.str;
-        default = "catppuccin-mocha-dark-cursors";
+        default = "BreezeX-RosePine-Linux";
         description = "The name of the cursor inside the package";
       };
 
       package = mkOption {
         type = types.package;
-        default = pkgs.catppuccin-cursors.mochaDark;
+        default = pkgs.rose-pine-cursor;
         description = "The package providing the cursors";
       };
 

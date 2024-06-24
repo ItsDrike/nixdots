@@ -14,5 +14,6 @@ _: {
     ./bottom.nix
     ./bat.nix
     ./nix-index.nix
+    ./iamb.nix
   ];
 }

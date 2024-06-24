@@ -2,6 +2,10 @@
   inherit (lib) mkEnableOption mkOption types;
 in
 {
+  imports = [
+    ./iamb.nix
+  ];
+
   options.myOptions.home-manager.programs = {
     launchers = {
       wofi.enable = mkEnableOption "Wofi launcher";

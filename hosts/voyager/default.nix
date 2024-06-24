@@ -186,6 +186,13 @@
           qimgv.enable = true;
           qbittorrent.enable = true;
           obs.enable = true;
+          iamb = {
+            enable = true;
+            profiles.default = {
+              userId = "@itsdrike:envs.net";
+              homeServer = "https://matrix.envs.net";
+            };
+          };
         };
       };
 

@@ -1,6 +1,3 @@
-# This sets up power management using auto-cpufreq,
-# alongside with upower and power-profiles-daemon.
-# Together, this provides a complete alternative to TLP
 { pkgs, lib, config, ...}: let
   inherit (lib) mkIf;
   inherit (lib.modules) mkForce;

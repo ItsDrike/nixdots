@@ -5,5 +5,6 @@ _: {
     ./apps
     ./bars
     ./browsers
+    ./file-managers
   ];
 }

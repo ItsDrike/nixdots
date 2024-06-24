@@ -48,6 +48,28 @@ in
       mpv.enable = mkEnableOption "MPV (General-purpose media player)";
     };
 
+    file-managers = {
+      pcmanfm-qt = {
+        enable = mkEnableOption "Pcmanfm-qt (extremely fast and lightweight file manager and the standard file manager of LXDE)";
+
+        terminalCmd = mkOption {
+          type = types.str;
+          default = "kitty";
+          description = ''
+            Command used to open the terminal emulator.
+          '';
+        };
+
+        archiverCmd = mkOption {
+          type = types.str;
+          default = "ark";
+          description = ''
+            Command used to open the archiver (zip/tar explorer).
+          '';
+        };
+      };
+    };
+
     tools = {
       fastfetch.enable = mkEnableOption "FastFetch (fast neofetch)";
       hyfetch.enable = mkEnableOption "Neofetch with pride flags";

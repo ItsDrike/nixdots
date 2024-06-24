@@ -6,11 +6,12 @@
   cfg = osConfig.myOptions.home-manager.programs;
 in {
   xdg.mimeApps = let 
+      # TODO: Make options for these
       browser = "firefox.desktop";
       textEditor = browser; # nvim doesn't work properly with xdg-open, just use the browser
       emailClient = browser;
       documentViewer = browser; # TODO: consider zathura (org.pwmt.zathura.desktop.desktop)
-      fileManager = "pcmanfm-qt.desktop"; # TODO: change
+      fileManager = "pcmanfm-qt.desktop";
       archiveManager = "org.kde.ark.desktop";
       imageViewer = 
         if cfg.applications.qimgv.enable

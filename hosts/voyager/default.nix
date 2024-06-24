@@ -88,9 +88,11 @@
             ".local/share/go"
           ];
           extraFiles = [
+            ".config/gtk-3.0/bookmarks"
             ".config/git/git-credentials"
             ".cache/walker/history.gob"
             ".local/share/zsh/zsh_history"
+            ".config/pcmanfm-qt/default/recent-files.conf"
           ];
         };
 
@@ -193,6 +195,9 @@
               homeServer = "https://matrix.envs.net";
             };
           };
+        };
+        file-managers = {
+          pcmanfm-qt.enable = true;
         };
       };
 

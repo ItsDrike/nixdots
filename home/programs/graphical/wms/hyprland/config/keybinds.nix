@@ -32,7 +32,8 @@ in {
         "SUPER, R, exec, ${cfgPreferences.launcher.command}"
         "SUPER, B, exec, ${cfgPreferences.browser.command}"
         "SUPER, X, exec, ${cfgPreferences.fileManager.command}"
-        # TODO: Add qalculate
+        "SUPER, C, exec, qalculate-gtk"
+        ", XF86Calculator, exec, qalculate-gtk"
 
         #
         # DE/WM Control programs

@@ -9,5 +9,6 @@ _: {
     ./qimgv.nix
     ./stremio.nix
     ./qbittorrent.nix
+    ./qalculate-gtk.nix
   ];
 }

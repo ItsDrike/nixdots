@@ -93,6 +93,7 @@
             ".cache/walker/history.gob"
             ".local/share/zsh/zsh_history"
             ".config/pcmanfm-qt/default/recent-files.conf"
+            ".config/qalculate/qalculate-gtk.cfg"
           ];
         };
 
@@ -195,6 +196,7 @@
               homeServer = "https://matrix.envs.net";
             };
           };
+          qalculate-gtk.enable = true;
         };
         file-managers = {
           pcmanfm-qt.enable = true;

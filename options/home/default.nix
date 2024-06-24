@@ -8,6 +8,7 @@ in
     ./wms.nix
     ./theme.nix
     ./services.nix
+    ./preferences.nix
   ];
 
   options.myOptions.home-manager = {

@@ -7,6 +7,7 @@
   inherit (lib) mkIf;
 
   cfg = osConfig.myOptions.home-manager.programs.file-managers.pcmanfm-qt;
+  cfgPreferences = osConfig.myOptions.home-manager.preferences;
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ lxqt.pcmanfm-qt ];
@@ -96,14 +97,14 @@ in {
       };
 
       System = {
-        Archiver = cfg.archiverCmd;
+        Archiver = cfgPreferences.archiveManager.command;
         FallbackIconThemeName = "oxygen";
         OnlyUserTemplates = false;
         SIUnit = false;
         SuCommand = "${pkgs.lxqt.lxqt-sudo}/bin/lxqt-sudo %s";
         TemplateRunApp = false;
         TemplateTypeOnce = false;
-        Terminal = cfg.terminalCmd;
+        Terminal = cfgPreferences.terminalEmulator.command;
       };
 
       Thumbnail = {

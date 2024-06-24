@@ -49,25 +49,7 @@ in
     };
 
     file-managers = {
-      pcmanfm-qt = {
-        enable = mkEnableOption "Pcmanfm-qt (extremely fast and lightweight file manager and the standard file manager of LXDE)";
-
-        terminalCmd = mkOption {
-          type = types.str;
-          default = "kitty";
-          description = ''
-            Command used to open the terminal emulator.
-          '';
-        };
-
-        archiverCmd = mkOption {
-          type = types.str;
-          default = "ark";
-          description = ''
-            Command used to open the archiver (zip/tar explorer).
-          '';
-        };
-      };
+      pcmanfm-qt.enable = mkEnableOption "Pcmanfm-qt (extremely fast and lightweight file manager and the standard file manager of LXDE)";
     };
 
     tools = {

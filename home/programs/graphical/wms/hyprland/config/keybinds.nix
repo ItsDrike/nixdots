@@ -1,4 +1,6 @@
-{ config, ... }: {
+{ config, osConfig, ... }: let
+  cfgPreferences = osConfig.myOptions.home-manager.preferences;
+in {
   wayland.windowManager.hyprland = {
     settings = {
       "$MOUSE_LMB" = "mouse:272";
@@ -26,14 +28,16 @@
         #
         # Programs
         #
-        "SUPER, Return, exec, kitty"
-        "SUPER, R, exec, walker"
-        # TODO: requires programs
+        "SUPER, Return, exec, ${cfgPreferences.terminalEmulator.command}"
+        "SUPER, R, exec, ${cfgPreferences.launcher.command}"
+        "SUPER, B, exec, ${cfgPreferences.browser.command}"
+        "SUPER, X, exec, ${cfgPreferences.fileManager.command}"
+        # TODO: Add qalculate
 
         #
         # DE/WM Control programs
         #
-        # TODO: Requires programs
+        # TODO: Add menuquit
         "SUPER_SHIFT, L, exec, wlogout -p layer-shell"
         "SUPER_CTRL, L, exec, loginctl lock-session"
         "SUPER_SHIFT, T, exec, toggle-idle"

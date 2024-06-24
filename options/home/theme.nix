@@ -10,19 +10,14 @@ in
       theme = {
         name = mkOption {
           type = types.str;
-          default = "Catppuccin-Mocha-Standard-Blue-dark";
+          default = "Tokyonight-Dark-BL";
           description = "The name for the GTK theme package";
         };
 
         package = mkOption {
           type = types.package;
           description = "The theme package to be used for GTK programs";
-          default = pkgs.catppuccin-gtk.override {
-            size = "standard";
-            accents = ["blue"];
-            variant = "mocha";
-            tweaks = ["normal"];
-          };
+          default = pkgs.tokyo-night-gtk;
         };
       };
 

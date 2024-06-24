@@ -16,8 +16,8 @@ in {
       then "gtk"
       else "qtct";
     style = mkIf (!cfg.forceGtk) {
-      name = "Kvantum";
-      package = cfg.theme.package;
+      # sets QT_STYLE_OVERRIDE
+      name = "kvantum";
     };
   };
 
@@ -25,10 +25,12 @@ in {
     packages = with pkgs;
       mkMerge [
         [
-          # libraries and programs to ensure that qt applications load without issue
-          # breeze-icons is added as a fallback
+          # QT5 & QT6 configuration tools
           libsForQt5.qt5ct
           kdePackages.qt6ct
+
+          # Icon theme (here as fallback)
+          cfg.iconTheme.package
           breeze-icons
         ]
 
@@ -46,8 +48,8 @@ in {
           qt6Packages.qtstyleplugin-kvantum
           libsForQt5.qtstyleplugin-kvantum
 
-          # Also add the theme package to path just in case
-          cfg.theme.package
+          # Also add the Kvantum theme package to path
+          cfg.kvantumTheme.package
         ])
       ];
 
@@ -67,10 +69,28 @@ in {
       # tell calibre to use the dark theme, because the light one hurts my eyes
       CALIBRE_USE_DARK_PALETTE = "1";
     };
+  };
 
-    xdg.configFile = mkIf (!cfg.forceGtk) {
-      "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-        General.theme = cfg.theme.name;
+  xdg.configFile = mkIf (!cfg.forceGtk) {
+    # Kvantum configuration
+    "Kvantum/kvantum.kvconfig" = {
+      text = lib.generators.toINI {} {
+        General.theme = cfg.kvantumTheme.name;
+      };
+    };
+    "Kvantum/${cfg.kvantumTheme.name}".source = "${cfg.kvantumTheme.package}/share/Kvantum/${cfg.kvantumTheme.name}";
+
+
+    # Set icon theme using qtct
+    "qt5ct/qt5ct.conf".text = lib.generators.toINI {} {
+      Appearance = {
+        icon_theme = cfg.iconTheme.name;
+      };
+    };
+
+    "qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
+      Appearance = {
+        icon_theme = cfg.iconTheme.name;
       };
     };
   };

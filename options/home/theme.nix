@@ -69,12 +69,15 @@ in
         '';
       };
 
-      theme = {
+      kvantumTheme = {
         name = mkOption {
           type = types.str;
-          default = "Catppuccin-Mocha-Dark";
+          default = "Catppuccin-Mocha-Blue";
           description = ''
-            The name for the QT theme package.
+            The name for the QT kvantum theme.
+
+            This needs to match the directory containing the kvconfig & svg files
+            for selected theme. The package should expose these in /share/Kvantum.
 
             This has no effect if forceGtk is set.
           '';
@@ -83,14 +86,42 @@ in
         package = mkOption {
           type = types.package;
           description = ''
-            The theme package to be used for QT programs.
+            The theme package to be used for QT kvantum theme.
+
+            This needs to expose a directory in /share/Kvantum with the
+            kvconfig & svg files. The name of this directory should match
+            the kvantumTheme.name option.
 
             This has no effect if forceGtk is set.
           '';
-          default = pkgs.catppuccin-kde.override {
-            flavour = ["mocha"];
-            accents = ["blue"];
-            winDecStyles = ["modern"];
+          default = pkgs.catppuccin-kvantum.override {
+            variant = "Mocha";
+            accent = "Blue";
+          };
+        };
+      };
+
+      iconTheme = {
+        name = mkOption {
+          type = types.str;
+          description = ''
+            The name for the icon theme that will be used for QT programs.
+
+            This has no effect if forceGtk is set.
+          '';
+          default = "Papirus-Dark";
+        };
+
+        package = mkOption {
+          type = types.package;
+          description = ''
+            The QT icon theme package to be used.
+
+            This has no effect if forceGtk is set.
+          '';
+          default = pkgs.catppuccin-papirus-folders.override {
+            accent = "blue";
+            flavor = "mocha";
           };
         };
       };

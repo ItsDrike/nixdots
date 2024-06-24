@@ -21,9 +21,5 @@ in
     sound = {
       enable = mkEnableOption "sound related programs and audio-dependent programs";
     };
-
-    bluetooth = {
-      enable = mkEnableOption "bluetooth modules, drivers and configuration program(s)";
-    };
   };
 }

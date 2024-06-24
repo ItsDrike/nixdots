@@ -13,7 +13,7 @@ in {
     home.packages = with pkgs; [ swappy ];
 
     xdg.configFile."swappy/config".text = lib.generators.toINI {} {
-      General = {
+      Default = {
         save_dir = "${config.xdg.userDirs.extraConfig.XDG_SCREENSHOTS_DIR}";
         save_filename_format = "Screenshot_%Y-%M-%d_%H-%M-%S.png";
         show_panel = false;

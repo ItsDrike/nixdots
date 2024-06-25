@@ -11,6 +11,9 @@
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
 
+  greetingMsg = "'Access is restricted to authorized personnel only.'";
+  tuiGreetTheme = "'border=magenta;text=cyan;prompt=green;time=red;action=white;button=yellow;container=black;input=gray'";
+
   sessionData = config.services.displayManager.sessionData.desktops;
   sessionPaths = concatStringsSep ":" [
     "${sessionData}/share/xsessions"
@@ -25,14 +28,16 @@
       "--remember"
       "--remember-user-session"
       "--asterisks"
+      "--greeting ${greetingMsg}"
       "--sessions '${sessionPaths}'"
+      "--theme ${tuiGreetTheme}"
     ];
   };
 in {
   config = mkIf (builtins.elem deviceType acceptedTypes) {
     services.greetd = {
       enable = true;
-      vt = 2;
+      vt = 1;
 
       # <https://man.sr.ht/~kennylevinsen/greetd/>
       settings = {

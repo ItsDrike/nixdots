@@ -59,5 +59,8 @@ in {
       TTYVHangup = true;
       TTYVTDisallocate = true;
     };
+
+    # Persist info about previous session & user
+    myOptions.system.impermanence.root.extraDirectories = [ "/var/cache/tuigreet" ];
   };
 }

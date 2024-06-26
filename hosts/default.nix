@@ -11,17 +11,6 @@ let
   ];
 in
 {
-  vboxnix = lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = { inherit lib inputs self; };
-    modules = [
-      ./vbox_nix
-      inputs.home-manager.nixosModules.home-manager
-      inputs.impermanence.nixosModules.impermanence
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ] ++ shared;
-  };
-
   herugrim = lib.nixosSystem {
     system = "x86_64-linux";
     specialArgs = { inherit lib inputs self; };

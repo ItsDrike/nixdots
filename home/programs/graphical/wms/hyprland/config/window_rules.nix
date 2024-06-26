@@ -40,9 +40,10 @@
       "float, class:^(com.github.wwmm.easyeffects)"
       "float, class:^(opensnitch_ui)$"
       "float, class:^(Brave-browser)$,title:^(_crx_.+)$"
-      "float, class:^(hyprland-share-picker)$"
-      "float,class:^(floating)$"
+      "float, class:^(floating)$"
 
+      # Float hyprland-share-picker & some extra actions
+      "float, class:^(hyprland-share-picker)$"
       "center, class:^(hyprland-share-picker)$"
       "animation slide, class:^(hyprland-share-picker)$"
 
@@ -76,6 +77,9 @@
       "float, class:^(error)$"
       "float, class:^(splash)$"
       "float, class:^(confirmreset)$"
+
+      # Float all windows that don't have a title nor a class
+      "float, class:^$,title:^$"
 
       #
       # Fixes

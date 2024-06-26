@@ -25,5 +25,18 @@ in {
       # Docker, etc. Requires NixOS configuration programs.fuse.userAllowOther = true;
       allowOther = true;
     };
+
+    home.persistence."${cfg.persistentDataMountPoint}" = {
+      directories = [
+
+      ] ++ cfg.extraDataDirectories;
+
+      files = [
+
+      ] ++ cfg.extraDataFiles;
+
+      # See comment for this above
+      allowOther = true;
+    };
   };
 }

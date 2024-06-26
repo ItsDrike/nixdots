@@ -60,7 +60,7 @@ in
       extraDirectories = mkOption {
         default = [];
         type = types.listOf types.str;
-        example = literalExpression ''["Downloads"]'';
+        example = literalExpression ''[".config/chromium"]'';
         description = ''
           Additional directories in home to link to persistent storage.
         '';
@@ -70,11 +70,44 @@ in
         default = "/persist/home";
         description = ''
           Path to a persistent directory (usually a mount point to a
-          standalone partition / subvolume), which will hold the persistent
+          standalone partition or subvolume), which will hold the persistent
           system state files.
 
-          This does not expect any subdirectories, all of the persistent home files
+          This does not create any subdirectories, all of the persistent home files
           will be put directly in here. The user should be the owner of this direcotry.
+        '';
+      };
+
+      persistentDataMountPoint = mkOption {
+        default = "/persist/home";
+        description = ''
+          Path to a persistent directory (usually a mount point to a
+          standalone partition or subvolume), which will hold the persistent
+          data files.
+
+          This does not create any subdirectories, all of the persistent home files
+          fill be put directly in here. The user should be the owner of this directory.
+
+          If you don't wish to distinguish between data and system / configuration files, 
+          you can point this to the same location.
+        '';
+      };
+
+      extraDataFiles = mkOption {
+        default = [];
+        type = types.listOf types.str;
+        example = literalExpression ''["notes.txt"]'';
+        description = ''
+          Additional files in home to link to persistent data storage.
+        '';
+      };
+
+      extraDataDirectories = mkOption {
+        default = [];
+        type = types.listOf types.str;
+        example = literalExpression ''["Downloads"]'';
+        description = ''
+          Additional directories in home to link to persistent data storage.
         '';
       };
     };

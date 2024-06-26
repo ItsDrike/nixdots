@@ -53,14 +53,6 @@
           enable = true;
           persistentMountPoint = "/persist/home";
           extraDirectories = [
-            # Nixos flake
-            "dots"
-
-            # Personal data
-            "Downloads"
-            "Personal"
-            "Media"
-
             # Browsers
             ".mozilla"
             ".mullvad"
@@ -95,6 +87,20 @@
             ".config/pcmanfm-qt/default/recent-files.conf"
             ".config/qalculate/qalculate-gtk.cfg"
           ];
+
+          persistentDataMountPoint = "/data/Data";
+          extraDataDirectories = [
+            # Nixos flake
+            "dots"
+
+            # XDG user dirs
+            "Downloads"
+            "Media"
+
+            # Other personal data
+            "Personal"
+          ];
+          extraDataFiles = [];
         };
 
         # Configure automatic root subvolume wiping on boot from initrd

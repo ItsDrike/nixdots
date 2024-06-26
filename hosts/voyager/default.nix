@@ -207,6 +207,9 @@
         file-managers = {
           pcmanfm-qt.enable = true;
         };
+        coding = {
+          python.enable = true;
+        };
       };
 
       services = {

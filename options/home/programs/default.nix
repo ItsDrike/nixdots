@@ -57,5 +57,9 @@ in
       fastfetch.enable = mkEnableOption "FastFetch (fast neofetch)";
       hyfetch.enable = mkEnableOption "Neofetch with pride flags";
     };
+
+    coding = {
+      python.enable = mkEnableOption "Python coding utilities";
+    };
   };
 }

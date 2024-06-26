@@ -39,8 +39,7 @@
     };
   };
 
-  outputs = {self, nixpkgs, ...} @ inputs: let
-  in {
-    nixosConfigurations = import ./hosts {inherit nixpkgs inputs self;};
+  outputs = {self, nixpkgs, ...} @ inputs: {
+    nixosConfigurations = import ./hosts {inherit inputs;};
   };
 }

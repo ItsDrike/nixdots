@@ -1,5 +1,6 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 let
+  inherit (inputs) self;
   inherit (inputs.nixpkgs) lib;
 
   # A list of shared modules that ALL systems need

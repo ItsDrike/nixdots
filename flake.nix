@@ -41,5 +41,6 @@
 
   outputs = {self, nixpkgs, ...} @ inputs: {
     nixosConfigurations = import ./hosts {inherit inputs;};
+    devShells = import ./shells {inherit inputs;};
   };
 }

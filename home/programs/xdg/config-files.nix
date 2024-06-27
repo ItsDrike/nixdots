@@ -57,34 +57,34 @@ in {
     '';
 
     "python/pythonrc.py".text = ''
-      import atexit
-      import os
-      import readline
-      from functools import partial
-      from pathlib import Path
-      from types import ModuleType
-
-      cache_xdg_dir = Path(
-          os.environ.get("XDG_CACHE_HOME", str(Path("~/.cache").expanduser()))
-      )
-      cache_xdg_dir.mkdir(exist_ok=True, parents=True)
-
-      history_file = cache_xdg_dir.joinpath("python_history")
-      history_file.touch()
-
-      readline.read_history_file(history_file)
+      def is_vanilla() -> bool:
+          import sys
+          return not hasattr(__builtins__, '__IPYTHON__') and 'bpython' not in sys.argv[0]
 
 
-      def write_history(readline: ModuleType, history_file: Path) -> None:
-          """
-          We need to get ``readline`` and ``history_file`` as arguments, as it
-          seems they get garbage collected when the function is registered and
-          the program ends, even though we refer to them here.
-          """
-          readline.write_history_file(history_file)
+      def setup_history():
+          import os
+          import atexit
+          import readline
+          from pathlib import Path
+
+          if state_home := os.environ.get('XDG_STATE_HOME'):
+              state_home = Path(state_home)
+          else:
+              state_home = Path.home() / '.local' / 'state'
+
+          history: Path = state_home / 'python_history'
+
+          # https://github.com/python/cpython/issues/105694
+          if not history.is_file():
+            readline.write_history_file(str(history)) # breaks on macos + python3 without this. 
+
+          readline.read_history_file(str(history))
+          atexit.register(readline.write_history_file, str(history))
 
 
-      atexit.register(partial(write_history, readline, history_file))
+      if is_vanilla():
+          setup_history()
     '';
   };
 

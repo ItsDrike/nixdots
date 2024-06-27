@@ -87,6 +87,7 @@
             ".cache/walker/history.gob"
             ".config/pcmanfm-qt/default/recent-files.conf"
             ".config/qalculate/qalculate-gtk.cfg"
+            ".local/state/python_history"
           ];
 
           persistentDataMountPoint = "/data/Data";

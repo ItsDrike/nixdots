@@ -217,6 +217,12 @@
 
       services = {
         dunst.enable = true;
+        hyprpaper = {
+          enable = true;
+          # This file intentionally lacks a file extension, it should be a symlink
+          # to whatever file you wish to actually be your wallpaper
+          wallpaperPath = "/data/Data/Media/Pictures/Wallpapers/active";
+        };
       };
     };
   };

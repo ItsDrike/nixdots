@@ -9,6 +9,13 @@ in {
     services.physlock = {
       enable = true;
       lockMessage = "System is locked...";
+
+      # Don't auto-lock the system with physlock, I prefer other (gui) lockers
+      # I only use physlock manually in some circumstances
+      lockOn = {
+        suspend = false;
+        hibernate = false;
+      };
     };
   };
 }

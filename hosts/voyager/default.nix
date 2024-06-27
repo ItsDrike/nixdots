@@ -69,6 +69,7 @@
             ".local/share/gnupg"
             ".local/share/zoxide"
             ".local/share/wakatime"
+            ".local/share/zsh"
             ".local/share/nvim"
             ".local/state/nvim"
 
@@ -83,7 +84,6 @@
             ".config/gtk-3.0/bookmarks"
             ".config/git/git-credentials"
             ".cache/walker/history.gob"
-            ".local/share/zsh/zsh_history"
             ".config/pcmanfm-qt/default/recent-files.conf"
             ".config/qalculate/qalculate-gtk.cfg"
           ];

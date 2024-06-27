@@ -66,6 +66,7 @@
             ".config/obs-studio"
 
             # Tools
+            ".ssh"
             ".local/share/gnupg"
             ".local/share/zoxide"
             ".local/share/wakatime"

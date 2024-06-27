@@ -56,12 +56,13 @@
       "float, class:^(firefox)$,title:^$"
 
       # Float some pcmanfm windows
-      "float, class:^(pcmanfm-qt)$,title:^(Mount)$"
-      "float, class:^(pcmanfm-qt)$,title:^(Preferences)$"
-      "float, class:^(pcmanfm-qt)$,title:^(Move files)$"
-      "float, class:^(pcmanfm-qt)$,title:^(Search Files)$"
-      "float, class:^(pcmanfm-qt)$,title:^(Copy Files)$"
-      "float, class:^(pcmanfm-qt)$,title:^(Confirm to replace files)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Mount)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Preferences)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Move files)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Search Files)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Copy Files)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Confirm to replace files)$"
+      "float, class:^(pcmanfm-qt|)$,title:^(Choose an Application)$"
 
       # Float some windows from other apps
       "float, class:^(Spotify)$,title:^(Ozone X11)$"

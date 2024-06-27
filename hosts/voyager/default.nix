@@ -79,6 +79,7 @@
             # Language package managers
             ".local/share/cargo"
             ".local/share/go"
+            ".config/rye"
           ];
           extraFiles = [
             ".config/gtk-3.0/bookmarks"

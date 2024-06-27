@@ -64,6 +64,10 @@
       "float, class:^(pcmanfm-qt|)$,title:^(Confirm to replace files)$"
       "float, class:^(pcmanfm-qt|)$,title:^(Choose an Application)$"
 
+      # Float some qimgv windows
+      "float, class:^(qimgv)$,title:^(Add shortcut)$"
+      "float, class:^(qimgv)$,title:^(Preferences — qimgv)$"
+
       # Float some windows from other apps
       "float, class:^(Spotify)$,title:^(Ozone X11)$"
       "float, class:^(python3)$,title:^(Tor Browser Launcher Settings)$"

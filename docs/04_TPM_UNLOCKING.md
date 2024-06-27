@@ -119,6 +119,10 @@ sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7+12 /dev/disk/by-labe
 > If you're extra paranoid, you can also provide `--tpm2-with-pin=yes`, to prompt for a PIN code on each boot.
 >
 > I have mentioned why you may want to do this in the beginning.
+>
+> In case you do want to go with a PIN, you can also safely drop PCR12, as you will be asked for credentials
+> each time anyways, and at that point, the TPM unlocking is basically just as secure as regular passphrase
+> unlocking, which systemd would fall back to if PCR12 wasn't met.
 
 You will now be prompted for an existing LUKS password (needed to add a new LUKS keyslot).
 

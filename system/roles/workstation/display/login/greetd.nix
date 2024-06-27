@@ -16,6 +16,20 @@
 
   sessionData = config.services.displayManager.sessionData.desktops;
 
+  # Run the session / application using the appropriate shell configured for this user.
+  # This will make sure all of the environment variables are set before the WM session
+  # is started. This is very important, as without it, variables for things like qt theme
+  # will not be set, and applications executed by the WM will not be themed properly.
+  sessionWrapperScript = pkgs.writeShellScriptBin "tuigreet-session-wrapper" ''
+    set -euo pipefail
+
+    script_name="$0"
+    shell="$(getent passwd itsdrike | awk -F: '{print $NF}')"
+    command=("$@")
+
+    exec "$shell" -c 'exec "$@"' "$script_name" "''${command[@]}"
+  '';
+
   defaultSession = {
     user = "greeter";
     command = concatStringsSep " " [
@@ -28,6 +42,8 @@
       "--theme ${tuiGreetTheme}"
       "--sessions '${sessionData}/share/wayland-sessions'"
       "--xsessions '${sessionData}/share/xsessions'"
+      "--session-wrapper ${sessionWrapperScript}/bin/tuigreet-session-wrapper"
+      "--xsession-wrapper ${sessionWrapperScript}/bin/tuigreet-session-wrapper startx /usr/bin/env \"$@\""
     ];
   };
 in {

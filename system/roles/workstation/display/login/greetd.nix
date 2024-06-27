@@ -15,10 +15,6 @@
   tuiGreetTheme = "'border=magenta;text=cyan;prompt=green;time=red;action=white;button=yellow;container=black;input=gray'";
 
   sessionData = config.services.displayManager.sessionData.desktops;
-  sessionPaths = concatStringsSep ":" [
-    "${sessionData}/share/xsessions"
-    "${sessionData}/share/wayland-sessions"
-  ];
 
   defaultSession = {
     user = "greeter";
@@ -29,8 +25,9 @@
       "--remember-user-session"
       "--asterisks"
       "--greeting ${greetingMsg}"
-      "--sessions '${sessionPaths}'"
       "--theme ${tuiGreetTheme}"
+      "--sessions '${sessionData}/share/wayland-sessions'"
+      "--xsessions '${sessionData}/share/xsessions'"
     ];
   };
 in {
@@ -52,7 +49,7 @@ in {
     # See: https://github.com/apognu/tuigreet/issues/68#issuecomment-1586359960
     systemd.services.greetd.serviceConfig = {
       Type = "idle";
-      StandardInputs = "tty";
+      StandardInput = "tty";
       StandardOutput = "tty";
       StandardError = "journal";
       TTYReset = true;

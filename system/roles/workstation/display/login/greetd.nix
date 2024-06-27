@@ -43,7 +43,7 @@
       "--sessions '${sessionData}/share/wayland-sessions'"
       "--xsessions '${sessionData}/share/xsessions'"
       "--session-wrapper ${sessionWrapperScript}/bin/tuigreet-session-wrapper"
-      "--xsession-wrapper ${sessionWrapperScript}/bin/tuigreet-session-wrapper startx /usr/bin/env \"$@\""
+      "--xsession-wrapper ${sessionWrapperScript}/bin/tuigreet-session-wrapper startx /usr/bin/env"
     ];
   };
 in {

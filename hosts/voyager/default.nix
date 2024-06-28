@@ -74,6 +74,7 @@
             ".local/share/zsh"
             ".local/share/nvim"
             ".local/state/nvim"
+            ".config/github-copilot"
 
             # Services
             ".local/state/wireplumber" # volume settings

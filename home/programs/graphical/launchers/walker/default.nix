@@ -1,4 +1,5 @@
 {
+  inputs,
   osConfig,
   pkgs,
   lib,
@@ -7,14 +8,14 @@
   inherit (lib) mkIf;
   cfg = osConfig.myOptions.home-manager.programs.launchers.walker;
 in {
+  imports = [ inputs.walker.homeManagerModules.walker ];
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      walker
-    ];
+    programs.walker = {
+      enable = true;
+      runAsService = true; # makes walker a lot faster when starting
 
-    xdg.configFile = {
-      "walker/config.json".source = ./config.json;
-      "walker/style.css".source = ./style.css;
+      config = builtins.fromJSON (builtins.readFile ./config.json);
+      style = builtins.readFile ./style.css;
     };
   };
 }

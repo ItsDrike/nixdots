@@ -68,6 +68,7 @@
             # Tools
             ".ssh"
             ".local/share/gnupg"
+            ".local/share/keyrings"
             ".local/share/zoxide"
             ".local/share/wakatime"
             ".local/share/zsh"

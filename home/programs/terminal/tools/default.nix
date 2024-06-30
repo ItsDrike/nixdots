@@ -15,5 +15,6 @@ _: {
     ./bat.nix
     ./nix-index.nix
     ./iamb.nix
+    ./direnv.nix
   ];
 }

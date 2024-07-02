@@ -51,6 +51,7 @@
       "float, class:^(firefox)$,title:^(Revert Bookmarks)$"
       "float, class:^(firefox)$,title:^(Library)$"
       "float, class:^(firefox)$,title:^(Extension: \(uBlock Origin\))"
+      "float, class:^(firefox)$,title:^(Extension: \(Bitwarden Password Manager\) - Bitwarden — Mozilla Firefox)$"
       "float, class:^(firefox)$,title:^(Firefox — Sharing Indicator)$"
       "float, class:^(firefox)$,title:^(Opening .+)$"
       "float, class:^(firefox)$,title:^$"

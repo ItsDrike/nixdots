@@ -75,6 +75,7 @@
             ".local/share/nvim"
             ".local/state/nvim"
             ".config/github-copilot"
+            ".config/ipython"
 
             # Services
             ".local/state/wireplumber" # volume settings

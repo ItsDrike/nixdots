@@ -6,5 +6,6 @@ _: {
     ./bars
     ./browsers
     ./file-managers
+    ./games
   ];
 }

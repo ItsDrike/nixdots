@@ -61,5 +61,9 @@ in
     coding = {
       python.enable = mkEnableOption "Python coding utilities";
     };
+
+    games = {
+      prismlauncher.enable = mkEnableOption "PrismLauncher";
+    };
   };
 }

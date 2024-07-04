@@ -64,6 +64,7 @@
             ".config/WebCord"
             ".local/share/Smart Code ltd/Stremio"
             ".config/obs-studio"
+            ".local/share/PrismLauncher"
 
             # Tools
             ".ssh"
@@ -215,6 +216,9 @@
         };
         coding = {
           python.enable = true;
+        };
+        games = {
+          prismlauncher.enable = true;
         };
       };
 

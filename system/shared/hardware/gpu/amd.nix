@@ -22,13 +22,24 @@ in
       vulkan-extension-layer
     ];
 
-    # Enable OpenGL
-    hardware.graphics = {
-      enable = true;
+    hardware = {
+      graphics = {
+        enable = true;
 
-      # Enable OpenCL and AMDVLK
-      extraPackages = with pkgs; [ amdvlk ];
-      extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+        # Enable AMDVLK (AMD's open-source Vulkan driver)
+        extraPackages = with pkgs; [ amdvlk ];
+        extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+      };
+
+      # OpenCL (Universal GPU computing API - not AMD specific)
+      # To check if this works, run: `nix run nixpkgs#clinfo` (after rebooting)
+      opengl.extraPackages = with pkgs; [rocmPackages.clr.icd];
     };
+
+    # HIP (SDK that allows running CUDA code on AMD GPUs)
+    # Most software has the paths hard-coded
+    systemd.tmpfiles.rules = [
+        "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    ];
   };
 }

@@ -64,9 +64,13 @@
             ".config/WebCord"
             ".local/share/Smart Code ltd/Stremio"
             ".config/obs-studio"
-            ".local/share/PrismLauncher"
             ".config/VirtualBox"
             ".local/share/VirtulBox VMs"
+
+            # Games
+            ".local/share/PrismLauncher"
+            ".local/share/Steam"
+            #".steam"
 
             # Tools
             ".ssh"
@@ -221,6 +225,7 @@
           python.enable = true;
         };
         games = {
+          steam.enable = true;
           prismlauncher.enable = true;
         };
       };

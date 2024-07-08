@@ -64,6 +64,7 @@ in
     };
 
     games = {
+      steam.enable = mkEnableOption "Steam client";
       prismlauncher.enable = mkEnableOption "PrismLauncher";
     };
   };

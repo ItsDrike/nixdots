@@ -65,7 +65,7 @@
             ".local/share/Smart Code ltd/Stremio"
             ".config/obs-studio"
             ".config/VirtualBox"
-            ".local/share/VirtulBox VMs"
+            ".local/share/VirtualBox VMs"
 
             # Games
             ".local/share/PrismLauncher"

@@ -70,7 +70,6 @@
             # Games
             ".local/share/PrismLauncher"
             ".local/share/Steam"
-            #".steam"
 
             # Tools
             ".ssh"
@@ -79,6 +78,7 @@
             ".local/share/zoxide"
             ".local/share/wakatime"
             ".local/share/zsh"
+            ".config/nvim"
             ".local/share/nvim"
             ".local/state/nvim"
             ".config/github-copilot"

@@ -17,6 +17,9 @@
       rustc
       cargo
       gcc
+      deadnix
+      statix
+      alejandra
     ];
   };
 }

@@ -47,6 +47,7 @@ in
       obs.enable = mkEnableOption "OBS (Free and oepn source software for video recording and live streaming)";
       mpv.enable = mkEnableOption "MPV (General-purpose media player)";
       qalculate-gtk.enable = mkEnableOption "qalculate-gtk (The ultimate desktop calculator)";
+      virtualbox.enable = mkEnableOption "VirtualBox";
     };
 
     file-managers = {

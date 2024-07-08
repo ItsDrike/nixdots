@@ -10,5 +10,6 @@ _: {
     ./stremio.nix
     ./qbittorrent.nix
     ./qalculate-gtk.nix
+    ./virtualbox.nix
   ];
 }

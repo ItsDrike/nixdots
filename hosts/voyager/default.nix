@@ -65,6 +65,8 @@
             ".local/share/Smart Code ltd/Stremio"
             ".config/obs-studio"
             ".local/share/PrismLauncher"
+            ".config/VirtualBox"
+            ".local/share/VirtulBox VMs"
 
             # Tools
             ".ssh"
@@ -210,6 +212,7 @@
             };
           };
           qalculate-gtk.enable = true;
+          virtualbox.enable = true;
         };
         file-managers = {
           pcmanfm-qt.enable = true;

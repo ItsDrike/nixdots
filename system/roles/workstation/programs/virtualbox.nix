@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (lib) mkIf;
+  cfgUser = config.myOptions.system.username;
   cfg = config.myOptions.home-manager.programs.applications.virtualbox;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
@@ -16,5 +17,7 @@ in {
       # if gui is desired, it can be installed separately on a per-user basis
       headless = true;
     };
+
+    users.extraGroups.vboxusers.members = [ "${cfgUser}" ];
   };
 }

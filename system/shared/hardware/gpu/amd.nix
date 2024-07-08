@@ -26,14 +26,17 @@ in
       graphics = {
         enable = true;
 
-        # Enable AMDVLK (AMD's open-source Vulkan driver)
-        extraPackages = with pkgs; [ amdvlk ];
+        extraPackages = with pkgs; [ 
+          # Enable AMDVLK (AMD's open-source Vulkan driver)
+          amdvlk
+
+          # OpenCL (Universal GPU computing API - not AMD specific)
+          # To check if this works, run: `nix run nixpkgs#clinfo` (after rebooting)
+          rocmPackages.clr.icd
+        ];
+        # AMDVLK for 32-bit applications
         extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
       };
-
-      # OpenCL (Universal GPU computing API - not AMD specific)
-      # To check if this works, run: `nix run nixpkgs#clinfo` (after rebooting)
-      opengl.extraPackages = with pkgs; [rocmPackages.clr.icd];
     };
 
     # HIP (SDK that allows running CUDA code on AMD GPUs)

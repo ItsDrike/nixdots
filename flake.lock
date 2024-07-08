@@ -671,11 +671,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720339391,
-        "narHash": "sha256-IHlZ1sUQzTJATSt8zw8CFXdQoZOBTvfSG9d9erOjS04=",
+        "lastModified": 1720452943,
+        "narHash": "sha256-YWIdYLBfd3XTdTJV2A12kmDmLh1YdhVnWsyqAvv8iT8=",
         "owner": "abenz1267",
         "repo": "walker",
-        "rev": "bf9bc52b328ce201c536ecff5d8542ba2232f603",
+        "rev": "23a6cfee69a9040f763f079aba56119dcbafb263",
         "type": "github"
       },
       "original": {

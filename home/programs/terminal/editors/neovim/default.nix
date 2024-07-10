@@ -20,6 +20,7 @@
       deadnix
       statix
       alejandra
+      nixd
     ];
   };
 }

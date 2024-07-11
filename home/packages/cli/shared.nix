@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     fzf # fuzzy finder
     jq # JSON processor
@@ -25,6 +25,7 @@
     p7zip # 7zip fork with some improvements
     e2fsprogs # tools for creating and checking ext filesystems
     lsof # list open files
+    comma # Run programs without installing them (convenient nix-index + nix-shell + nix-locate)
 
     # Rust replacements
     procs # better ps

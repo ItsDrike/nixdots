@@ -1,11 +1,16 @@
-{ pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf optional;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
 
   cfg = config.myOptions.workstation.printing;
+  cfgUser = config.myOptions.system.username;
 in {
-
   config = mkIf (builtins.elem deviceType acceptedTypes && cfg.enable) {
     # enable cups and add some drivers for common printers
     services = {
@@ -29,5 +34,11 @@ in {
 
     environment.systemPackages = optional cfg.hplip.enable pkgs.hplip;
     myOptions.system.impermanence.home.extraDirectories = optional cfg.hplip.enable ".hplip";
+
+    # Support for SANE (Scanner Access Now Easy) scanners
+    hardware.sane.enable = true;
+
+    users.extraGroups.scanner.members = ["${cfgUser}"];
+    users.extraGroups.lp.members = ["${cfgUser}"];
   };
 }

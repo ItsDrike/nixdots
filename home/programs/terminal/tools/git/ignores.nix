@@ -25,14 +25,6 @@
     # JavaScript + TypeScript
     "node_modules/"
 
-    # Editors
-    ".vscode/"
-    ".idea/"
-    ".replit"
-    ".spyproject/"
-    ".spyderproject"
-    ".neoconf.json"
-
     # Custom attributes for folders on Mac OS
     ".DS_Store"
   ];

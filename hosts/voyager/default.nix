@@ -196,7 +196,7 @@
           hyfetch.enable = true;
         };
         applications = {
-          spotify.enable = true;
+          #spotify.enable = true; # https://github.com/the-argus/spicetify-nix/issues/62
           stremio.enable = true;
           vesktop = {
             enable = true;

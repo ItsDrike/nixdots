@@ -8,39 +8,52 @@
   inherit (lib) mkIf;
 
   cfg = osConfig.myOptions.home-manager.programs.applications.spotify;
-  spicePkgs = inputs.spicetify.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify.legacyPackages.${pkgs.system};
 in {
-  imports = [inputs.spicetify.homeManagerModule];
+  imports = [inputs.spicetify.homeManagerModules.default];
   config = mkIf cfg.enable {
     programs.spicetify = {
       enable = true;
-      injectCss = true;
-      replaceColors = true;
-
-      overwriteAssets = true;
-      sidebarConfig = true;
-      enabledCustomApps = with spicePkgs.apps; [
-        lyrics-plus
-        new-releases
-      ];
 
       theme = spicePkgs.themes.catppuccin;
       colorScheme = "mocha";
 
+      enabledCustomApps = with spicePkgs.apps; [
+        # Official apps
+        lyricsPlus
+        newReleases
+
+        # Community apps
+        ncsVisualizer
+        historyInSidebar
+      ];
+
       enabledExtensions = with spicePkgs.extensions; [
-        #adblock # I currently have premium
-        volumePercentage
-        fullAppDisplay
-        shuffle
-        hidePodcasts
-        playlistIcons
-        lastfm
-        historyShortcut
+        # Official extensions
         bookmark
-        fullAlbumDate
-        groupSession
+        fullAppDisplay
+        loopyLoop
         popupLyrics
-        # TODO: genre, see: https://github.com/the-argus/spicetify-nix/issues/50
+        shuffle
+        trashbin
+
+        # Community extensions
+        groupSession
+        skipOrPlayLikedSongs
+        fullAlbumDate
+        goToSong
+        listPlaylistsWithSong
+        wikify
+        songStats
+        showQueueDuration
+        history
+        betterGenres
+        #hidePodcasts
+        #adblock # I currently have premium
+        playNext
+        volumePercentage
+        copyLyrics
+        playingSource
       ];
     };
   };

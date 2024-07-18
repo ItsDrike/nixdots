@@ -47,6 +47,11 @@ in {
         xorg.libX11
       ];
     };
+
+    # Some pre-compiled binaries hard-code ssl cert file to /etc/ssl/cert.pem
+    # instead of what NixOS uses (/etc/ssl/certs/ca-certificates.crt). Make a
+    # symlink there for compatibility.
+    # - For example the rye installed python binaries look there
+    environment.etc."ssl/cert.pem".source = "/etc/ssl/certs/ca-certificates.crt";
   };
 }
-

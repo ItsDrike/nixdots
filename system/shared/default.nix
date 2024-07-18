@@ -12,6 +12,5 @@ _: {
     ./system.nix
     ./network.nix
     ./localisation.nix
-    ./packages.nix
   ];
 }

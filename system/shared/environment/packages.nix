@@ -1,5 +1,7 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    killall
+    openssl
     curl
     wget
     pciutils

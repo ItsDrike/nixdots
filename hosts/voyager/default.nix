@@ -83,6 +83,7 @@
             ".local/state/nvim"
             ".config/github-copilot"
             ".config/ipython"
+            ".cache/pre-commit"
 
             # Services
             ".local/state/wireplumber" # volume settings

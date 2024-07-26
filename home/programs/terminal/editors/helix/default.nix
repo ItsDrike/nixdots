@@ -6,7 +6,14 @@
       theme = "tokyonight";
       editor = {
         line-number = "relative";
+        bufferline = "multiple";
+        cursor-shape.insert = "bar";
         lsp.display-messages = true;
+      };
+      keys = {
+        normal = {
+          esc = ["collapse_selection" "keep_primary_selection"];
+        };
       };
     };
 

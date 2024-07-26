@@ -1,7 +1,7 @@
-{ 
-  lib, 
-  pkgs, 
-  config, 
+{
+  lib,
+  pkgs,
+  config,
   ...
 }: let
   inherit (lib) mkIf;
@@ -9,7 +9,7 @@
   acceptedTypes = ["laptop" "desktop"];
 in {
   config = mkIf (builtins.elem deviceType acceptedTypes) {
-    # Unconditionally enable thunar file manager here as a relatively 
+    # Unconditionally enable thunar file manager here as a relatively
     # lightweight fallback option for my default file manager.
     programs.thunar = {
       enable = true;
@@ -34,4 +34,3 @@ in {
     services.tumbler.enable = true;
   };
 }
-

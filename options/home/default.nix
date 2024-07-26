@@ -1,7 +1,7 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkEnableOption mkOption;
-in
-{
+in {
   imports = [
     ./programs
     ./git.nix
@@ -21,4 +21,3 @@ in
     };
   };
 }
-

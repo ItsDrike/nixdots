@@ -14,7 +14,8 @@ in {
       enable = true;
 
       package = pkgs.ungoogled-chromium.override {
-        commandLineArgs = [
+        commandLineArgs =
+          [
             # Ungoogled features
             "--disable-search-engine-collection"
             "--extension-mime-request-handling=always-prompt-for-install"
@@ -60,12 +61,12 @@ in {
             "--disable-sync"
             "--disable-speech-api"
             "--disable-speech-synthesis-api"
-        ] ++ optionals isWayland [
+          ]
+          ++ optionals isWayland [
             "--ozone-platform=wayland"
             "--enable-features=UseOzonePlatform"
-        ];
+          ];
       };
     };
   };
 }
-

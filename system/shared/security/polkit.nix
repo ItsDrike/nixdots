@@ -1,4 +1,8 @@
-{ config, lib, ... }: {
+{
+  config,
+  lib,
+  ...
+}: {
   security.polkit = {
     enable = true;
     debug = lib.mkDefault true;

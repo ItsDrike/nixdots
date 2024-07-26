@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf mkDefault;
 
   enabled = config.myOptions.device.hasTPM;
@@ -21,6 +26,6 @@ in {
       pkcs11.enable = mkDefault false;
     };
 
-    environment.systemPackages = with pkgs; [ tpm2-tss tpm2-tools ];
+    environment.systemPackages = with pkgs; [tpm2-tss tpm2-tools];
   };
 }

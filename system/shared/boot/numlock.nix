@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   boot.initrd.systemd = {
     # Include setleds binary in the initrd
     # (the nix store doesn't exists in there yet, so we need to include
@@ -12,12 +12,12 @@
     services."numlock" = {
       enable = true;
       description = "Activate Numlock";
-      wantedBy = [ "initrd.target" ];
+      wantedBy = ["initrd.target"];
       # Delay disk decryption until this unit is started
-      before = [ "systemd-cryptsetup@cryptfs.service" ];
+      before = ["systemd-cryptsetup@cryptfs.service"];
       unitConfig.DefaultDependencies = "no";
       serviceConfig.Type = "oneshot";
-      # This is essentially runs the same code as present in the 
+      # This is essentially runs the same code as present in the
       # mkinitcpio-numlock hook on Arch Linux (AUR).
       script = ''
         #!/bin/bash

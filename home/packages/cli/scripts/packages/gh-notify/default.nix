@@ -1,5 +1,4 @@
-{pkgs, ...}:
-(pkgs.writeShellApplication {
+{pkgs, ...}: (pkgs.writeShellApplication {
   name = "gh-notify";
   runtimeInputs = with pkgs; [
     coreutils
@@ -12,5 +11,3 @@
     ${builtins.readFile ./gh-notify.sh}
   '';
 })
-
-

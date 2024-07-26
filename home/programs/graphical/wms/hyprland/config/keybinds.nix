@@ -1,4 +1,8 @@
-{ config, osConfig, ... }: let
+{
+  config,
+  osConfig,
+  ...
+}: let
   cfgPreferences = osConfig.myOptions.home-manager.preferences;
 in {
   wayland.windowManager.hyprland = {
@@ -15,13 +19,13 @@ in {
       "$SCREENSHOT_DELAY" = "2000";
 
       bind = [
-        # 
+        #
         # Active window
         #
         "SUPER, W, killactive,"
         "SUPER, F, togglefloating,"
         "SUPER, Space, fullscreen, 0"
-        "SUPER_SHIFT, Space, fullscreen, 1"  # maximize
+        "SUPER_SHIFT, Space, fullscreen, 1" # maximize
         "CTRL_SHIFT, Space, exec, toggle-fake-fullscreen" # fake fullscreen + custom border
         "SUPER_SHIFT, S, layoutmsg, togglesplit"
 
@@ -191,7 +195,6 @@ in {
         # Global keybinds (passing keys to other programs)
         #
         "CTRL, F10, pass, ^(com\.obsproject\.Studio)$"
-
       ];
 
       # Mouse bindings

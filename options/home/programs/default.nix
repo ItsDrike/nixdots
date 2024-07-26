@@ -1,7 +1,7 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkEnableOption mkOption types;
-in
-{
+in {
   imports = [
     ./iamb.nix
   ];

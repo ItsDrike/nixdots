@@ -7,7 +7,6 @@
   inherit (lib) mkIf getExe;
   inherit (lib.strings) concatStringsSep;
 
-
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
 
@@ -74,6 +73,6 @@ in {
     };
 
     # Persist info about previous session & user
-    myOptions.system.impermanence.root.extraDirectories = [ "/var/cache/tuigreet" ];
+    myOptions.system.impermanence.root.extraDirectories = ["/var/cache/tuigreet"];
   };
 }

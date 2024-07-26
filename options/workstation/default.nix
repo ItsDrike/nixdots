@@ -1,9 +1,13 @@
-{ lib, config, ... }: with lib; let
+{
+  lib,
+  config,
+  ...
+}:
+with lib; let
   inherit (lib) mkEnableOption mkOption literalExpression types;
 
   cfg = config.myOptions.workstation;
-in
-{
+in {
   options.myOptions.workstation = {
     printing = {
       enable = mkEnableOption ''

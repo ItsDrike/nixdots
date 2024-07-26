@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   programs = {
     # nix-index is a file database for nixpkgs
     # this provides `nix-locate` command.

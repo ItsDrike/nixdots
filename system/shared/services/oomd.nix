@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   systemd = {
     # OOMd: Out Of Memory daemon
     # By default, this will only kill cgroups. So either systemd services

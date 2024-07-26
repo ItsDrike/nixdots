@@ -1,7 +1,12 @@
-{ config, lib, pkgs, ... }: with lib; let
-  cfg = config.myOptions.system;
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.myOptions.system;
+in {
   networking.hostName = cfg.hostname;
 
   # Default shell for the user
@@ -10,7 +15,7 @@ in
   users = {
     users.${cfg.username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = ["wheel"];
       shell = pkgs.zsh;
     };
   };

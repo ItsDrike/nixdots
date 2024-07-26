@@ -43,4 +43,3 @@
     permissions_s = {fg = "darkgray";};
   };
 }
-

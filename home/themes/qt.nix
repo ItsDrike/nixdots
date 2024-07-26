@@ -11,8 +11,8 @@ in {
   qt = {
     enable = true;
     # just an override for QT_QPA_PLATFORMTHEME, takes "gtk", "gnome", "qtct" or "kde"
-    platformTheme.name = 
-      if cfg.forceGtk 
+    platformTheme.name =
+      if cfg.forceGtk
       then "gtk"
       else "qtct";
     style = mkIf (!cfg.forceGtk) {
@@ -79,7 +79,6 @@ in {
       };
     };
     "Kvantum/${cfg.kvantumTheme.name}".source = "${cfg.kvantumTheme.package}/share/Kvantum/${cfg.kvantumTheme.name}";
-
 
     # Set icon theme using qtct
     "qt5ct/qt5ct.conf".text = lib.generators.toINI {} {

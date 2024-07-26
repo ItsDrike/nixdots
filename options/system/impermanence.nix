@@ -1,9 +1,13 @@
-{ lib, config, ... }: with lib; let
+{
+  lib,
+  config,
+  ...
+}:
+with lib; let
   inherit (lib) mkEnableOption mkOption literalExpression types;
 
   cfg = config.myOptions.system.impermanence;
-in
-{
+in {
   options.myOptions.system.impermanence = {
     root = {
       enable = mkEnableOption ''
@@ -88,7 +92,7 @@ in
           This does not create any subdirectories, all of the persistent home files
           fill be put directly in here. The user should be the owner of this directory.
 
-          If you don't wish to distinguish between data and system / configuration files, 
+          If you don't wish to distinguish between data and system / configuration files,
           you can point this to the same location.
         '';
       };
@@ -129,16 +133,16 @@ in
       };
     in {
       enable = mkEnableOption ''
-          automatic wiping of specified BTRFS subvolumes from initrd.
+        automatic wiping of specified BTRFS subvolumes from initrd.
 
-          If you're using BTRFS, you will generally want to enable this, however
-          with a non-BTRFS system, or in case you wish to set up some custom handling
-          which this module doesn't support, you will need to write your own logic
-          for automatic root wiping.
+        If you're using BTRFS, you will generally want to enable this, however
+        with a non-BTRFS system, or in case you wish to set up some custom handling
+        which this module doesn't support, you will need to write your own logic
+        for automatic root wiping.
 
-          One option is is to simply have your root get mounted from tmpfs, making it 
-          live in RAM. This does however require dedicating a concrete chunk of RAM.
-        '';
+        One option is is to simply have your root get mounted from tmpfs, making it
+        live in RAM. This does however require dedicating a concrete chunk of RAM.
+      '';
 
       devices = mkOption {
         default = {};

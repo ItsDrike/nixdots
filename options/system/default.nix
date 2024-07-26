@@ -1,7 +1,7 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkOption;
-in
-{
+in {
   imports = [
     ./boot
     ./impermanence.nix

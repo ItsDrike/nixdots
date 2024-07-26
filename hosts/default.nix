@@ -1,5 +1,4 @@
-{ inputs, ... }:
-let
+{inputs, ...}: let
   inherit (inputs) self;
   inherit (inputs.nixpkgs) lib;
 
@@ -9,27 +8,30 @@ let
     ../home
     ../options
   ];
-in
-{
+in {
   herugrim = lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = { inherit lib inputs self; };
-    modules = [
-      ./herugrim
-      inputs.home-manager.nixosModules.home-manager
-      inputs.impermanence.nixosModules.impermanence
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ] ++ shared;
+    specialArgs = {inherit lib inputs self;};
+    modules =
+      [
+        ./herugrim
+        inputs.home-manager.nixosModules.home-manager
+        inputs.impermanence.nixosModules.impermanence
+        inputs.lanzaboote.nixosModules.lanzaboote
+      ]
+      ++ shared;
   };
 
   voyager = lib.nixosSystem {
     system = "x86_64-linux";
-    specialArgs = { inherit lib inputs self; };
-    modules = [
-      ./voyager
-      inputs.home-manager.nixosModules.home-manager
-      inputs.impermanence.nixosModules.impermanence
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ] ++ shared;
+    specialArgs = {inherit lib inputs self;};
+    modules =
+      [
+        ./voyager
+        inputs.home-manager.nixosModules.home-manager
+        inputs.impermanence.nixosModules.impermanence
+        inputs.lanzaboote.nixosModules.lanzaboote
+      ]
+      ++ shared;
   };
 }

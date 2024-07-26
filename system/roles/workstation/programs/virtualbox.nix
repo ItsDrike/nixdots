@@ -18,6 +18,6 @@ in {
       headless = true;
     };
 
-    users.extraGroups.vboxusers.members = [ "${cfgUser}" ];
+    users.extraGroups.vboxusers.members = ["${cfgUser}"];
   };
 }

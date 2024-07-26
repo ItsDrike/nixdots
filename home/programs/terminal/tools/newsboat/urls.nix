@@ -57,4 +57,3 @@
     {url = "https://kiszamolo.hu/feed";}
   ];
 }
-

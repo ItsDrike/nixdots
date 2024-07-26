@@ -1,5 +1,9 @@
 # Config copied from https://git.notashelf.dev/NotAShelf/nyx
-{ pkgs, lib, ... }: let 
+{
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) getExe;
 
   mpv = "${getExe pkgs.mpv}";
@@ -69,5 +73,5 @@ in {
       macro v set browser "${mpv} %u" ; open-in-browser ; set browser "firefox %u" -- "Open video on mpv"
       macro , open-in-browser
     '';
-   };
+  };
 }

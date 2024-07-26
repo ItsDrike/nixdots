@@ -1,12 +1,9 @@
-_:
-let
+_: let
   inherit (builtins) readFile;
-in
-{
-
-  # I prefer having the rc files split across multiple files in my system rather 
+in {
+  # I prefer having the rc files split across multiple files in my system rather
   # than just using readFile and putting them all into the generated zshrc
-  # this also allows me to source them individually if I need to 
+  # this also allows me to source them individually if I need to
   # (like in the anonymize function with my prompt)
   home.file = {
     # TODO: Load these dynamically, by going over all files in ./rc

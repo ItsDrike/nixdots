@@ -1,8 +1,11 @@
-{ config, pkgs, lib, ... }:
-let
-  nr = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";
-in
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  nr = "${pkgs.nixos-rebuild}/bin/nixos-rebuild";
+in {
   programs.zsh.shellAliases = {
     # I'm not the greatest typist
     sl = "ls";

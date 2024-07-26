@@ -11,7 +11,6 @@ in {
         Hyprland wayland compositor.
       '';
 
-
       monitor = mkOption {
         type = types.listOf types.str;
         default = [];

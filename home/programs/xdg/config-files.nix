@@ -1,5 +1,5 @@
 # Attribute set of files to link into the user's XDG directories
-{ config, ... }: let
+{config, ...}: let
   XDG_CACHE_HOME = config.xdg.cacheHome;
   XDG_CONFIG_HOME = config.xdg.configHome;
   XDG_DATA_HOME = config.xdg.dataHome;
@@ -7,7 +7,6 @@
   XDG_RUNTIME_DIR = config.home.sessionVariables.XDG_RUNTIME_DIR;
   XDG_BIN_HOME = config.home.sessionVariables.XDG_BIN_HOME;
 in {
-
   # Variables set to force apps into the XDG base directories
   # These will get set at login
   # Defined in /etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh
@@ -47,7 +46,7 @@ in {
   };
 
   # Create the following files in XDG_CONFIG_HOME, for purposes of
-  # forcing apps to use the XDG base directories 
+  # forcing apps to use the XDG base directories
   xdg.configFile = {
     "npm/npmrc".text = ''
       prefix=${XDG_DATA_HOME}/npm
@@ -77,7 +76,7 @@ in {
 
           # https://github.com/python/cpython/issues/105694
           if not history.is_file():
-            readline.write_history_file(str(history)) # breaks on macos + python3 without this. 
+            readline.write_history_file(str(history)) # breaks on macos + python3 without this.
 
           readline.read_history_file(str(history))
           atexit.register(readline.write_history_file, str(history))

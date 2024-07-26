@@ -11,7 +11,7 @@ in {
   config = mkIf cfgEnabled {
     systemd.services = {
       # Seat management daemon
-      # (Takes care of mediating access to shared devices (graphics, input), without requiring 
+      # (Takes care of mediating access to shared devices (graphics, input), without requiring
       # applications like Wayland compositors being granted root privileges)
       seatd = {
         enable = true;

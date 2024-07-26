@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];

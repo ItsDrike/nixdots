@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
@@ -15,29 +20,33 @@ in {
             "Noto Color Emoji"
           ];
         in {
-          monospace = [
-            "Monaspace Krypton"
-            "Source Code Pro Medium"
-            "Source Han Mono"
-          ]
-          ++ common;
+          monospace =
+            [
+              "Monaspace Krypton"
+              "Source Code Pro Medium"
+              "Source Han Mono"
+            ]
+            ++ common;
 
-          sansSerif = [
-            "Noto Sans"
-            "Jost"
-            "Lexend"
-          ]
-          ++ common;
+          sansSerif =
+            [
+              "Noto Sans"
+              "Jost"
+              "Lexend"
+            ]
+            ++ common;
 
-          serif = [
-            "Noto Serif"
-          ]
-          ++ common;
+          serif =
+            [
+              "Noto Serif"
+            ]
+            ++ common;
 
-          emoji = [
-            "Noto Color Emoji"
-          ]
-          ++ common;
+          emoji =
+            [
+              "Noto Color Emoji"
+            ]
+            ++ common;
         };
       };
 
@@ -103,8 +112,8 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-        # Tool for searching and previewing installed fonts
-        font-manager
+      # Tool for searching and previewing installed fonts
+      font-manager
     ];
   };
 }

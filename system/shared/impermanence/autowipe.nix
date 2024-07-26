@@ -1,8 +1,11 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf concatStringsSep flatten mapAttrsToList;
   cfg = config.myOptions.system.impermanence.autoWipeBtrfs;
-in
-{
+in {
   config = mkIf cfg.enable {
     boot.initrd.systemd = {
       enable = true; # This enables systemd support in stage 1 - required for below setup
@@ -10,11 +13,11 @@ in
       services.rollback = {
         description = "Rollback BTRFS subvolumes to a pristine state";
         enable = true;
-        wantedBy = [ "initrd.target" ];
+        wantedBy = ["initrd.target"];
         # Make sure it's done after decryption (i.e. LUKS/TPM process)
-        after = [ "systemd-cryptsetup@cryptfs.service" ];
+        after = ["systemd-cryptsetup@cryptfs.service"];
         # mount the root fs before clearing
-        before = [ "sysroot.mount" ];
+        before = ["sysroot.mount"];
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
         script = let
@@ -31,9 +34,10 @@ in
 
             # Recreate each specified subvolume
             ${concatStringsSep "\n" (map (subvolume: ''
-              delete_subvolume_recursively "/mnt/${subvolume}"
-              btrfs subvolume create "/mnt/${subvolume}"
-            '') subvolumes)}
+                delete_subvolume_recursively "/mnt/${subvolume}"
+                btrfs subvolume create "/mnt/${subvolume}"
+              '')
+              subvolumes)}
 
             # Cleanup: unmount the device
             echo "Unmounting BTRFS root from ${devicePath}"
@@ -62,9 +66,11 @@ in
             btrfs subvolume delete "$1"
           }
 
-          ${concatStringsSep "\n" (mapAttrsToList (devicePath: deviceOpts:
-            wipeScript devicePath deviceOpts.subvolumes
-          ) cfg.devices)}
+          ${concatStringsSep "\n" (mapAttrsToList (
+              devicePath: deviceOpts:
+                wipeScript devicePath deviceOpts.subvolumes
+            )
+            cfg.devices)}
         '';
       };
     };

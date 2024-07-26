@@ -1,6 +1,6 @@
 {
   wayland.windowManager.hyprland.settings = {
-    general.layout =  "dwindle";
+    general.layout = "dwindle";
 
     dwindle = {
       # Don't change the split (side/top) regardless of what happens to the container

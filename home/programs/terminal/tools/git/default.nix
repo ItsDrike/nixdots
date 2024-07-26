@@ -1,8 +1,10 @@
-{ osConfig, pkgs, ... }:
-let
-  myGitConf = osConfig.myOptions.home-manager.git;
-in
 {
+  osConfig,
+  pkgs,
+  ...
+}: let
+  myGitConf = osConfig.myOptions.home-manager.git;
+in {
   imports = [
     ./gh.nix
     ./ignores.nix

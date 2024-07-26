@@ -1,7 +1,4 @@
-{
-  osConfig,
-  ...
-}: let
+{osConfig, ...}: let
   cfg = osConfig.myOptions.home-manager.theme.cursor;
 in {
   home = {

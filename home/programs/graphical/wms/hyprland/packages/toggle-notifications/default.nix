@@ -10,6 +10,3 @@ pkgs.writeShellApplication {
     ${builtins.readFile ./toggle-notifications.sh}
   '';
 }
-
-
-

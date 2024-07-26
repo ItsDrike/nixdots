@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop" "desktop"];
@@ -14,7 +19,7 @@ in {
     programs.seahorse.enable = true;
 
     xdg.portal.config.common = {
-      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      "org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
     };
   };
 }

@@ -1,7 +1,10 @@
-{ lib, pkgs, ... }: let
-  inherit (lib) mkEnableOption mkOption types;
-in 
 {
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+in {
   options.myOptions.home-manager.theme = {
     gtk = {
       enable = mkEnableOption "GTK theming optionss";
@@ -48,7 +51,7 @@ in
         size = mkOption {
           type = types.int;
           description = "The size of the font";
-          default = 10;  # 10
+          default = 10; # 10
         };
       };
     };
@@ -141,6 +144,5 @@ in
         description = "The size of the cursor";
       };
     };
-
   };
 }

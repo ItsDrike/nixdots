@@ -1,10 +1,13 @@
-{ lib, pkgs, ... }:
 {
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  boot.supportedFilesystems = [ "btrfs" ];
+  boot.supportedFilesystems = ["btrfs"];
 
   # My flake disables this by default for security reasons. However,
   # with an encrypted setup, which requires entering password before
@@ -42,7 +45,7 @@
         # Configure automatic root subvolume wiping on boot from initrd
         autoWipeBtrfs = {
           enable = true;
-          devices."/dev/disk/by-label/NIXROOT".subvolumes = [ "root" ];
+          devices."/dev/disk/by-label/NIXROOT".subvolumes = ["root"];
         };
       };
 

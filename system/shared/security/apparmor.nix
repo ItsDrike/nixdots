@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.dbus.apparmor = "enabled";
 
   environment.systemPackages = with pkgs; [

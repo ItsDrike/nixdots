@@ -16,4 +16,3 @@ in {
     ${(optionalString config.programs.kitty.enable "set preview_images_method kitty")}
   '';
 }
-

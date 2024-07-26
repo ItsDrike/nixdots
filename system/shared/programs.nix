@@ -1,7 +1,6 @@
 {lib, ...}: let
   inherit (lib) mkForce;
 in {
-
   programs = {
     # Explicitly disable nano, it sucks and I don't want it
     nano.enable = mkForce false;

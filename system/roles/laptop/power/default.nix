@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   deviceType = config.myOptions.device.roles.type;
   acceptedTypes = ["laptop"];
@@ -10,6 +15,6 @@ in {
   ];
 
   config = mkIf (builtins.elem deviceType acceptedTypes) {
-    environment.systemPackages = with pkgs; [ powertop ];
+    environment.systemPackages = with pkgs; [powertop];
   };
 }

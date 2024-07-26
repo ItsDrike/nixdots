@@ -1,20 +1,26 @@
-{ config, lib, pkgs, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkIf;
   cfg = config.myOptions.system.boot.plymouth;
 in {
   config = mkIf cfg.enable {
     boot = {
-      plymouth = {
-        enable = true;
-        theme = cfg.selectedTheme;
-      }
-      // lib.optionalAttrs cfg.withThemes {
-        themePackages = [
-          (pkgs.adi1090x-plymouth-themes.override {
-            selected_themes = [ cfg.selectedTheme ];
-          })
-        ];
-      };
+      plymouth =
+        {
+          enable = true;
+          theme = cfg.selectedTheme;
+        }
+        // lib.optionalAttrs cfg.withThemes {
+          themePackages = [
+            (pkgs.adi1090x-plymouth-themes.override {
+              selected_themes = [cfg.selectedTheme];
+            })
+          ];
+        };
 
       kernelParams = ["splash"];
     };

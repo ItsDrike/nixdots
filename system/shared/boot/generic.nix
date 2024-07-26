@@ -1,4 +1,8 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkDefault optionals;
 
   cfg = config.myOptions.system.boot;
@@ -25,7 +29,7 @@ in {
 
     tmp = {
       # /tmp on tmpfs, lets it live on your ram
-      # it defaults to false, which means you will use disk space instead of ram 
+      # it defaults to false, which means you will use disk space instead of ram
       # enable tmpfs tmp on anything where you have ram to spare
       useTmpfs = cfg.tmpOnTmpfs;
 
@@ -39,7 +43,7 @@ in {
       tmpfsSize = mkDefault "50%";
     };
 
-    kernelParams = (optionals cfg.silentBoot [
+    kernelParams = optionals cfg.silentBoot [
       # tell the kernel to not be verbose
       "quiet"
 
@@ -53,6 +57,6 @@ in {
       # disable systemd status messages
       "systemd.show_status=auto"
       "rd.systemd.show_status=auto"
-    ]);
+    ];
   };
 }

@@ -8,7 +8,7 @@
   inherit (lib) mkIf;
   cfg = osConfig.myOptions.home-manager.programs.launchers.walker;
 in {
-  imports = [ inputs.walker.homeManagerModules.walker ];
+  imports = [inputs.walker.homeManagerModules.walker];
   config = mkIf cfg.enable {
     programs.walker = {
       enable = true;
@@ -25,13 +25,13 @@ in {
         fullscreen = false;
         scrollbar_policy = "automatic";
         websearch = {
-         engines = ["google" "duckduckgo"];
+          engines = ["google" "duckduckgo"];
         };
         hyprland = {
           context_aware_history = false;
         };
         applications = {
-          enable_cache = false;  # disabling doesn't cause slowdowns, and allows picking up new apps automatically
+          enable_cache = false; # disabling doesn't cause slowdowns, and allows picking up new apps automatically
         };
 
         # Mode for picking the entry with keyboard using labels
@@ -48,7 +48,7 @@ in {
           hide_spinner = false;
         };
         runner = {
-          excludes = ["rm"];  # commands to be excluded from the runner
+          excludes = ["rm"]; # commands to be excluded from the runner
         };
         clipboard = {
           max_entries = 10;
@@ -82,7 +82,7 @@ in {
         };
         orientation = "vertical";
         icons = {
-          theme = "";  # GTK Icon theme (default)
+          theme = ""; # GTK Icon theme (default)
           hide = false;
           size = 28;
           image_height = 200;
@@ -127,7 +127,7 @@ in {
             switcher_exclusive = true;
           }
           {
-            name = "websearch";  # uses google
+            name = "websearch"; # uses google
             prefix = "";
             switcher_exclusive = true;
           }

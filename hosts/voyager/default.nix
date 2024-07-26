@@ -1,16 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-  boot.supportedFilesystems = [ "btrfs" ];
+  boot.supportedFilesystems = ["btrfs"];
   hardware.enableAllFirmware = true;
 
   # My flake disables this by default for security reasons. However, with an encrypted setup,
@@ -120,7 +122,7 @@
         # Configure automatic root subvolume wiping on boot from initrd
         autoWipeBtrfs = {
           enable = true;
-          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = [ "root" ];
+          devices."/dev/disk/by-label/NIXOS-FS".subvolumes = ["root"];
         };
       };
 
@@ -133,7 +135,7 @@
     device = {
       roles = {
         type = "laptop";
-	      virtual-machine = false;
+        virtual-machine = false;
       };
       cpu.type = "amd";
       gpu.type = "amd";
@@ -144,7 +146,7 @@
     security = {
       auditd = {
         enable = true;
-	      autoPrune.enable = true;
+        autoPrune.enable = true;
       };
     };
 
@@ -161,28 +163,28 @@
 
       git = {
         userName = "ItsDrike";
-	      userEmail = "itsdrike@protonmail.com";
-	      signing = {
-	        enable = true;
+        userEmail = "itsdrike@protonmail.com";
+        signing = {
+          enable = true;
           key = "FA2745890B7048C0";
-	      };
+        };
       };
 
       wms.hyprland = {
         enable = true;
-	      monitor = [
-	        # Primary / laptop display
-	        "eDP-1, 1920x1200@60, 0x1080, 1"
+        monitor = [
+          # Primary / laptop display
+          "eDP-1, 1920x1200@60, 0x1080, 1"
 
           # HDMI-A-1 above primary
-	        "HDMI-A-1, 1920x1080@60, 0x0, 1"
+          "HDMI-A-1, 1920x1080@60, 0x0, 1"
 
-	        # HDMI-A-1 left to primary
-	        #"HDMI-A-1, 1920x1080@60, 1920x1080, 1"
+          # HDMI-A-1 left to primary
+          #"HDMI-A-1, 1920x1080@60, 1920x1080, 1"
 
-	        # Mirror the primary (laptop) monitor on externals
-	        ", preferred, auto, 1, mirror, eDP-1"
-	      ];
+          # Mirror the primary (laptop) monitor on externals
+          ", preferred, auto, 1, mirror, eDP-1"
+        ];
       };
 
       programs = {
@@ -205,7 +207,7 @@
           };
           webcord.enable = true;
           mpv.enable = true;
-          nomacs.enable = true;  # TODO: probably disable
+          nomacs.enable = true; # TODO: probably disable
           qimgv.enable = true;
           qbittorrent.enable = true;
           obs.enable = true;

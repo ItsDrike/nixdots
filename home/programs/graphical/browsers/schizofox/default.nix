@@ -34,7 +34,7 @@ in {
 
       search = {
         defaultSearchEngine = "Brave";
-        removeEngines = [ "Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "LibRedirect" ];
+        removeEngines = ["Bing" "Amazon.com" "eBay" "Twitter" "Wikipedia" "LibRedirect"];
         searxUrl = "https://searx.be";
         searxQuery = "https://searx.be/search?q={searchTerms}&categories=general";
 
@@ -47,32 +47,32 @@ in {
             URLTemplate = "https://search.brave.com/search?q={searchTerms}";
           }
           {
-              Name = "NixOS Packages";
-              Description = "NixOS Unstable package search";
-              Alias = "!np";
-              Method = "GET";
-              URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
+            Name = "NixOS Packages";
+            Description = "NixOS Unstable package search";
+            Alias = "!np";
+            Method = "GET";
+            URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
           }
           {
-              Name = "NixOS Options";
-              Description = "NixOS Unstable option search";
-              Alias = "!no";
-              Method = "GET";
-              URLTemplate = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";
+            Name = "NixOS Options";
+            Description = "NixOS Unstable option search";
+            Alias = "!no";
+            Method = "GET";
+            URLTemplate = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";
           }
           {
-              Name = "NixOS Wiki";
-              Description = "NixOS Wiki search";
-              Alias = "!nw";
-              Method = "GET";
-              URLTemplate = "https://nixos.wiki/index.php?search={searchTerms}";
+            Name = "NixOS Wiki";
+            Description = "NixOS Wiki search";
+            Alias = "!nw";
+            Method = "GET";
+            URLTemplate = "https://nixos.wiki/index.php?search={searchTerms}";
           }
           {
-              Name = "Home Manager Options";
-              Description = "Home Manager option search";
-              Alias = "!hm";
-              Method = "GET";
-              URLTemplate = "https://mipmip.github.io/home-manager-option-search?query={searchTerms}";
+            Name = "Home Manager Options";
+            Description = "Home Manager option search";
+            Alias = "!hm";
+            Method = "GET";
+            URLTemplate = "https://mipmip.github.io/home-manager-option-search?query={searchTerms}";
           }
           {
             Name = "MyNixOS";
@@ -82,25 +82,25 @@ in {
             URLTemplate = "https://mynixos.com/search?q={searchTerms}";
           }
           {
-              Name = "Arch Wiki";
-              Description = "Arch Wiki search";
-              Alias = "!aw";
-              Method = "GET";
-              URLTemplate = "https://wiki.archlinux.org/index.php?search={searchTerms}";
+            Name = "Arch Wiki";
+            Description = "Arch Wiki search";
+            Alias = "!aw";
+            Method = "GET";
+            URLTemplate = "https://wiki.archlinux.org/index.php?search={searchTerms}";
           }
           {
-              Name = "Gentoo Wiki";
-              Description = "Gentoo Wiki search";
-              Alias = "!gw";
-              Method = "GET";
-              URLTemplate = "https://wiki.gentoo.org/index.php?search={searchTerms}";
+            Name = "Gentoo Wiki";
+            Description = "Gentoo Wiki search";
+            Alias = "!gw";
+            Method = "GET";
+            URLTemplate = "https://wiki.gentoo.org/index.php?search={searchTerms}";
           }
           {
-              Name = "Debian Wiki";
-              Description = "Debian Wiki search";
-              Alias = "!dw";
-              Method = "GET";
-              URLTemplate = "https://wiki.debian.org/FrontPage?action=fullsearch&value={searchTerms}";
+            Name = "Debian Wiki";
+            Description = "Debian Wiki search";
+            Alias = "!dw";
+            Method = "GET";
+            URLTemplate = "https://wiki.debian.org/FrontPage?action=fullsearch&value={searchTerms}";
           }
         ];
       };
@@ -142,10 +142,10 @@ in {
             }
           ];
 
-          extraExtensions = builtins.foldl' (acc: ext: acc // {ext.id = { install_url = mkUrl ext.name;};}) {} extensions;
-        in extraExtensions;
+          extraExtensions = builtins.foldl' (acc: ext: acc // {ext.id = {install_url = mkUrl ext.name;};}) {} extensions;
+        in
+          extraExtensions;
       };
     };
   };
 }
-

@@ -1,4 +1,8 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./mime-apps.nix
     ./user-dirs.nix
@@ -23,5 +27,5 @@
 
   # xdg-ninja is a CLI tool that checks $HOME for unwanted
   # files/dirs and shows how to move them to XDG dirs
-  home.packages = [ pkgs.xdg-ninja ];
+  home.packages = [pkgs.xdg-ninja];
 }

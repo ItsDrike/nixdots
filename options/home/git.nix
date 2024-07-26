@@ -1,7 +1,7 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkEnableOption mkOption;
-in
-{
+in {
   options.myOptions.home-manager.git = {
     userName = mkOption {
       type = types.str;

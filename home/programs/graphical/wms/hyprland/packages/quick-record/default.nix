@@ -13,4 +13,3 @@ pkgs.writeShellApplication {
     ${builtins.readFile ./quick-record.sh}
   '';
 }
-

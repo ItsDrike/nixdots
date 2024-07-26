@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-let
-  inherit (pkgs) fetchFromGitHub;
-in
 {
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (pkgs) fetchFromGitHub;
+in {
   programs.zsh.plugins = [
     {
       name = "zsh-nix-shell";

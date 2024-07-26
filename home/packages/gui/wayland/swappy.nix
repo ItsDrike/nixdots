@@ -7,10 +7,9 @@
   ...
 }: let
   inherit (lib) mkIf;
-
 in {
   config = mkIf osConfig.myOptions.home-manager.wms.isWayland {
-    home.packages = with pkgs; [ swappy ];
+    home.packages = with pkgs; [swappy];
 
     xdg.configFile."swappy/config".text = lib.generators.toINI {} {
       Default = {

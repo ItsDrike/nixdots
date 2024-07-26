@@ -6,4 +6,3 @@
   # Without this, it defaults to `config.hardware.enableAllFirmware`.
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 }
-

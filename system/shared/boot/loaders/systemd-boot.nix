@@ -1,4 +1,8 @@
-{ config, lib, ... }: let 
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.myOptions.system.boot;
 in {
   boot.loader.systemd-boot = {

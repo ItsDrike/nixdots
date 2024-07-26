@@ -1,11 +1,14 @@
-{ config, lib, pkgs, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   dev = config.myOptions.device;
   isWayland = config.myOptions.home-manager.wms.isWayland;
 
   inherit (lib) mkIf mkDefault mkMerge;
-in
-{
+in {
   config = mkIf (builtins.elem dev.gpu.type ["nvidia" "hybrid-nvidia"]) {
     # Nvidia drivers are unfree software
     nixpkgs.config.allowUnfree = true;
@@ -35,9 +38,9 @@ in
         # Use the NVidia open source kernel module (not to be confused with the
         # independent third-party "nouveau" open source driver).
         # Support is limited to the Turing and later architectures. Full list of
-        # supported GPUs is at: https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+        # supported GPUs is at: https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
         #
-        # Enable this by default, hosts may override this option if their gpu is not 
+        # Enable this by default, hosts may override this option if their gpu is not
         # supported by the open source drivers
         open = mkDefault true;
 
@@ -88,7 +91,7 @@ in
       ];
 
       sessionVariables = mkMerge [
-        { LIBVA_DRIVER_NAME = "nvidia"; }
+        {LIBVA_DRIVER_NAME = "nvidia";}
 
         (mkIf isWayland {
           WLR_NO_HARDWARE_CURSORS = "1";

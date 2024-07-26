@@ -1,7 +1,7 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkEnableOption mkOption types;
-in
-{
+in {
   options.myOptions.system.boot.plymouth = {
     enable = mkEnableOption ''
       Plymouth boot splash.

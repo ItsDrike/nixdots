@@ -1,5 +1,4 @@
-{pkgs, ...}:
-(pkgs.writeShellApplication {
+{pkgs, ...}: (pkgs.writeShellApplication {
   name = "bitcoin";
   runtimeInputs = with pkgs; [coreutils curl jq];
   text = ''

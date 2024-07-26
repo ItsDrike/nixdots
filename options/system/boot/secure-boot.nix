@@ -1,9 +1,9 @@
-{ lib, ... }: with lib; let
+{lib, ...}:
+with lib; let
   inherit (lib) mkEnableOption;
-in
-{
+in {
   options.myOptions.system.boot.secure-boot = {
-     enable = mkEnableOption ''
+    enable = mkEnableOption ''
       secure-boot using lanzaboote.
 
       Note that you will need to have UEFI firmware, and the rebuild
@@ -18,6 +18,6 @@ in
       sudo sbctl enroll-keys -m
       ```
       Then reboot, and secure-boot should be enabled.
-     '';
+    '';
   };
 }

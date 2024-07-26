@@ -7,18 +7,21 @@
   inherit (lib) mkIf;
   cfg = osConfig.myOptions.system.impermanence.home;
 in {
-  imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
+  imports = [inputs.impermanence.nixosModules.home-manager.impermanence];
 
   config = mkIf cfg.enable {
     home.persistence."${cfg.persistentMountPoint}" = {
-      directories = [
-        ".cache/nix"
-        ".cache/nix-index"
-      ] ++ cfg.extraDirectories;
+      directories =
+        [
+          ".cache/nix"
+          ".cache/nix-index"
+        ]
+        ++ cfg.extraDirectories;
 
-      files = [
-
-      ] ++ cfg.extraFiles;
+      files =
+        [
+        ]
+        ++ cfg.extraFiles;
 
       # Allow other users (such as root), to access files through the bind
       # mounted directories listed in `directories`. Useful for `sudo` operations,
@@ -27,13 +30,15 @@ in {
     };
 
     home.persistence."${cfg.persistentDataMountPoint}" = {
-      directories = [
+      directories =
+        [
+        ]
+        ++ cfg.extraDataDirectories;
 
-      ] ++ cfg.extraDataDirectories;
-
-      files = [
-
-      ] ++ cfg.extraDataFiles;
+      files =
+        [
+        ]
+        ++ cfg.extraDataFiles;
 
       # See comment for this above
       allowOther = true;

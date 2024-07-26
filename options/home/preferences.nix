@@ -1,24 +1,25 @@
-{ lib, ... }: let
+{lib, ...}: let
   inherit (lib) mkOption types;
 
-  mkPreferenceCmdOption = name: commandDefault: mkOption {
-    type = types.str;
-    description = "The command to start your preferred ${name}.";
-    default = commandDefault;
-  };
+  mkPreferenceCmdOption = name: commandDefault:
+    mkOption {
+      type = types.str;
+      description = "The command to start your preferred ${name}.";
+      default = commandDefault;
+    };
 
-  mkPreferenceDesktopOption = name: desktopDefault: mkOption {
-    type = types.str;
-    description = "The desktop (application) file for your preferred ${name}.";
-    default = desktopDefault;
-  };
+  mkPreferenceDesktopOption = name: desktopDefault:
+    mkOption {
+      type = types.str;
+      description = "The desktop (application) file for your preferred ${name}.";
+      default = desktopDefault;
+    };
 
   mkPreferenceOptions = name: commandDefault: desktopDefault: {
-    command = mkPreferenceCmdOption name commandDefault; 
+    command = mkPreferenceCmdOption name commandDefault;
     desktop = mkPreferenceDesktopOption name desktopDefault;
   };
-in 
-{
+in {
   options.myOptions.home-manager.preferences = {
     browser = mkPreferenceOptions "browser" "firefox" "firefox.desktop";
     terminalEmulator = mkPreferenceOptions "terminal emulator" "kitty" "kitty.desktop";

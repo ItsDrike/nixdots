@@ -1,10 +1,5 @@
-{
-  config,
-  ...
-}:
-{
+{config, ...}: {
   wayland.windowManager.hyprland.settings = {
-
     #
     # Window gaps
     #
@@ -34,12 +29,12 @@
 
     group = {
       # Groupped windows
-      "col.border_active" = "rgba(00A500FF)";  # green
-      "col.border_inactive" = "rgba(5AA500FF)";  # transparent green
+      "col.border_active" = "rgba(00A500FF)"; # green
+      "col.border_inactive" = "rgba(5AA500FF)"; # transparent green
 
       # Locked groupped windows
-      "col.border_locked_active" = "rgba(A0A500FF)";  # yellow
-      "col.border_locked_inactive" = "rgba(A0A500AA)";  # transparent yellow
+      "col.border_locked_active" = "rgba(A0A500FF)"; # yellow
+      "col.border_locked_inactive" = "rgba(A0A500AA)"; # transparent yellow
     };
 
     #
@@ -52,7 +47,7 @@
         render_titles = false; # disable, looks kinda bad
         font_family = "Monaspace Krypton";
         font_size = 11;
-        text_color = "rgba(FFFFFFFF)";  # white
+        text_color = "rgba(FFFFFFFF)"; # white
 
         # Gradients should be enabled only if title rendering is also enabled
         # on their own, they look really bad
@@ -81,7 +76,6 @@
       "col.shadow_inactive" = "rgba(0F0F0F99)";
     };
 
-
     #
     # Window Blur
     #
@@ -91,7 +85,6 @@
       size = 8;
       passes = 1;
     };
-
 
     #
     # Dim inactive windows
@@ -107,7 +100,7 @@
     #
     # Animation
     #
-    
+
     animations = {
       enabled = true;
       first_launch_animation = true; # fade in on first launch
@@ -124,4 +117,3 @@
     misc.animate_manual_resizes = true;
   };
 }
-

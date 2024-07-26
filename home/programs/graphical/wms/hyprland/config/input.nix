@@ -1,7 +1,4 @@
-{
-  osConfig,
-  ...
-}: let
+{osConfig, ...}: let
   cfg = osConfig.myOptions.home-manager.wms.hyprland;
 in {
   wayland.windowManager.hyprland.settings = {
@@ -29,4 +26,3 @@ in {
     monitor = cfg.monitor;
   };
 }
-

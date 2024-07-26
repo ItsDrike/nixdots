@@ -15,52 +15,52 @@ in {
         line-length = 119;
         lint = {
           select = [
-            "F"     # Pyflakes
-            "E"     # Pycodestyle (errors)
-            "W"     # Pycodestyle (warnigns)
-            "N"     # pep8-naming
-            "D"     # pydocstyle
-            "UP"    # pyupgrade
-            "YTT"   # flake8-2020
-            "ANN"   # flake8-annotations
+            "F" # Pyflakes
+            "E" # Pycodestyle (errors)
+            "W" # Pycodestyle (warnigns)
+            "N" # pep8-naming
+            "D" # pydocstyle
+            "UP" # pyupgrade
+            "YTT" # flake8-2020
+            "ANN" # flake8-annotations
             "ASYNC" # flake8-async
-            "S"     # flake8-bandit
-            "BLE"   # flake8-blind-except
-            "B"     # flake8-bugbear
-            "A"     # flake8-builtins
-            "COM"   # flake8-commas
-            "C4"    # flake8-comprehensions
-            "DTZ"   # flake8-datetimez
-            "T10"   # flake8-debugger
-            "EM"    # flake8-errmsg
-            "EXE"   # flake8-executable
-            "FA"    # flake8-future-annotations
-            "ISC"   # flake8-implicit-str-concat
-            "ICN"   # flake8-import-conventions
-            "LOG"   # flake8-logging
-            "G"     # flake8-logging-format
-            "INP"   # flake8-no-pep420
-            "PIE"   # flake8-pie
-            "T20"   # flake8-print
-            "PYI"   # flake8-pyi
-            "PT"    # flake8-pytest-style
-            "Q"     # flake8-quotes
-            "RSE"   # flake8-raise
-            "RET"   # flake8-return
-            "SLOT"  # flake8-slots
-            "SIM"   # flake8-simplify
-            "TID"   # flake8-tidy-imports
-            "TCH"   # flake8-type-checking
-            "INT"   # flake8-gettext
-            "PTH"   # flake8-use-pathlib
-            "TD"    # flake8-todos
-            "ERA"   # flake8-eradicate
-            "PGH"   # pygrep-hooks
-            "PL"    # pylint
-            "TRY"   # tryceratops
-            "FLY"   # flynt
-            "PERF"  # perflint
-            "RUF"   # ruff-specific rules
+            "S" # flake8-bandit
+            "BLE" # flake8-blind-except
+            "B" # flake8-bugbear
+            "A" # flake8-builtins
+            "COM" # flake8-commas
+            "C4" # flake8-comprehensions
+            "DTZ" # flake8-datetimez
+            "T10" # flake8-debugger
+            "EM" # flake8-errmsg
+            "EXE" # flake8-executable
+            "FA" # flake8-future-annotations
+            "ISC" # flake8-implicit-str-concat
+            "ICN" # flake8-import-conventions
+            "LOG" # flake8-logging
+            "G" # flake8-logging-format
+            "INP" # flake8-no-pep420
+            "PIE" # flake8-pie
+            "T20" # flake8-print
+            "PYI" # flake8-pyi
+            "PT" # flake8-pytest-style
+            "Q" # flake8-quotes
+            "RSE" # flake8-raise
+            "RET" # flake8-return
+            "SLOT" # flake8-slots
+            "SIM" # flake8-simplify
+            "TID" # flake8-tidy-imports
+            "TCH" # flake8-type-checking
+            "INT" # flake8-gettext
+            "PTH" # flake8-use-pathlib
+            "TD" # flake8-todos
+            "ERA" # flake8-eradicate
+            "PGH" # pygrep-hooks
+            "PL" # pylint
+            "TRY" # tryceratops
+            "FLY" # flynt
+            "PERF" # perflint
+            "RUF" # ruff-specific rules
           ];
           ignore = [
             "D100" # Missing docstring in public module
@@ -100,25 +100,25 @@ in {
             "TD002" # Missing author in TODO
             "TD003" # Missing issue link on the line following this TODO
 
-            "PT011"   # pytest.raises without match parameter is too broad # TODO: Unignore this
-            "TRY003"  # No f-strings in raise statements
-            "EM101"   # No string literals in exception init
-            "EM102"   # No f-strings in exception init
-            "UP024"   # Using errors that alias OSError
+            "PT011" # pytest.raises without match parameter is too broad # TODO: Unignore this
+            "TRY003" # No f-strings in raise statements
+            "EM101" # No string literals in exception init
+            "EM102" # No f-strings in exception init
+            "UP024" # Using errors that alias OSError
             "PLR2004" # Using unnamed numerical constants
-            "PGH003"  # Using specific rule codes in type ignores
-            "E731"    # Don't asign a lambda expression, use a def
+            "PGH003" # Using specific rule codes in type ignores
+            "E731" # Don't asign a lambda expression, use a def
 
             # Redundant rules with ruff-format:
-            "E111"   # Indentation of a non-multiple of 4 spaces
-            "E114"   # Comment with indentation  of a non-multiple of 4 spaces
-            "E117"   # Cheks for over-indented code
-            "D206"   # Checks for docstrings indented with tabs
-            "D300"   # Checks for docstring that use ''' instead of """
-            "Q000"   # Checks of inline strings that use wrong quotes (' instead of ")
-            "Q001"   # Multiline string that use wrong quotes (''' instead of """)
-            "Q002"   # Checks for docstrings that use wrong quotes (''' instead of """)
-            "Q003"   # Checks for avoidable escaped quotes ("\"" -> '"')
+            "E111" # Indentation of a non-multiple of 4 spaces
+            "E114" # Comment with indentation  of a non-multiple of 4 spaces
+            "E117" # Cheks for over-indented code
+            "D206" # Checks for docstrings indented with tabs
+            "D300" # Checks for docstring that use ''' instead of """
+            "Q000" # Checks of inline strings that use wrong quotes (' instead of ")
+            "Q001" # Multiline string that use wrong quotes (''' instead of """)
+            "Q002" # Checks for docstrings that use wrong quotes (''' instead of """)
+            "Q003" # Checks for avoidable escaped quotes ("\"" -> '"')
             "COM812" # Missing trailing comma (in multi-line lists/tuples/...)
             "COM819" # Prohibited trailing comma (in single-line lists/tuples/...)
             "ISC001" # Single line implicit string concatenation ("hi" "hey" -> "hihey")
@@ -126,7 +126,7 @@ in {
           ];
           extend-per-file-ignores = {
             "tests/*" = [
-              "ANN"  # flake8-annotations
+              "ANN" # flake8-annotations
               "S101" # Use of assert
             ];
             "docs/conf.py" = [
@@ -139,10 +139,10 @@ in {
             combine-as-imports = true;
 
             # Redundant rules with ruff-format
-            force-single-line = false;       # forces all imports to appear on their own line
-            force-wrap-aliases = false;      # Split imports with multiple members and at least one alias
-            lines-after-imports = -1;        # The number of blank lines to place after imports
-            lines-between-types = 0;         # Number of lines to place between "direct" and import from imports
+            force-single-line = false; # forces all imports to appear on their own line
+            force-wrap-aliases = false; # Split imports with multiple members and at least one alias
+            lines-after-imports = -1; # The number of blank lines to place after imports
+            lines-between-types = 0; # Number of lines to place between "direct" and import from imports
             split-on-trailing-comma = false; # if last member of multiline import has a comma, don't fold it to single line
           };
           pylint = {

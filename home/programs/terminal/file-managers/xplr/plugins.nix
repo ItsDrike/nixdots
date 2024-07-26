@@ -12,4 +12,3 @@ pkgs: {
     hash = "sha256-k/yre9SYNPYBM2W1DPpL6Ypt3w3EMO9dznHwa+fw/n0=";
   };
 }
-

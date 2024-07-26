@@ -1,7 +1,6 @@
 {
   programs = {
     ssh = {
-
       # TODO: Enable this after figuring out how to add protected/encrypted blocks here.
       # I don't like the idea of expising IPs/hostnames in the config.
       # For now, I just persist the .ssh directory, managing stuff manually.

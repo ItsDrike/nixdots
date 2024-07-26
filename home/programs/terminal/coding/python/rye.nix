@@ -13,7 +13,7 @@
 in {
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [ rye ];
+      packages = with pkgs; [rye];
 
       sessionVariables = {
         RYE_HOME = "${config.xdg.configHome}/rye";
@@ -32,7 +32,7 @@ in {
     # see: <https://rye.astral.sh/guide/config/#config-file>
     xdg.configFile."rye/config.toml".source = toTOML "config.toml" {
       default.license = "GPL-3.0-or-later";
-      behavior.global-python=true;
+      behavior.global-python = true;
     };
   };
 }

@@ -1,5 +1,5 @@
 # Manage $XDG_CONFIG_HOME/user-dirs.dirs
-{ config, ... }: {
+{config, ...}: {
   xdg.userDirs = {
     enable = true;
     createDirectories = true;

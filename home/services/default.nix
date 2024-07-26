@@ -1,5 +1,5 @@
 _: {
-  imports = [ 
+  imports = [
     ./dunst.nix
     ./hyprpaper.nix
   ];

@@ -9,6 +9,6 @@
   cfg = osConfig.myOptions.home-manager.programs.coding.python;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ pyright ];
+    home.packages = with pkgs; [pyright];
   };
 }

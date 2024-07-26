@@ -1,7 +1,11 @@
-{ lib, config, ... }: with lib; let
-  inherit (lib) mkEnableOption mkOption literalExpression types;
-in
 {
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  inherit (lib) mkEnableOption mkOption literalExpression types;
+in {
   options.myOptions.security.auditd = {
     enable = mkEnableOption "the audit daemon.";
     autoPrune = {
@@ -58,4 +62,3 @@ in
     };
   };
 }
-

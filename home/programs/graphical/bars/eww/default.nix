@@ -1,4 +1,4 @@
-{ 
+{
   lib,
   pkgs,
   osConfig,
@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  scriptPkgs = (import ../../../../packages/cli/scripts/packages {inherit pkgs;});
+  scriptPkgs = import ../../../../packages/cli/scripts/packages {inherit pkgs;};
 
   cfg = osConfig.myOptions.home-manager.programs.bars.eww;
 in {
@@ -17,7 +17,7 @@ in {
     };
 
     systemd.user.services = {
-      "eww" = let 
+      "eww" = let
         # All dependencies required for eww and for the scripts/widgets it uses
         dependencies = with pkgs; [
           python3
@@ -44,8 +44,8 @@ in {
       in {
         Unit = {
           Description = "ElKowar's Wacky Widgets (eww) daemon";
-          After = [ "graphical-session-pre.target" ];
-          PartOf = [ "graphical-session.target" ];
+          After = ["graphical-session-pre.target"];
+          PartOf = ["graphical-session.target"];
         };
 
         Service = {
@@ -63,14 +63,14 @@ in {
           Nice = 19;
         };
 
-        Install.WantedBy = [ "graphical-session.target" ];
+        Install.WantedBy = ["graphical-session.target"];
       };
 
       "eww-window-bar0" = {
         Unit = {
           Description = "Open bar0 eww (ElKowar's Wacky Widgets) window";
-          After = [ "eww.service" ];
-          PartOf = [ "graphical-session.target" "eww.service" ];
+          After = ["eww.service"];
+          PartOf = ["graphical-session.target" "eww.service"];
         };
 
         Service = {
@@ -82,7 +82,7 @@ in {
           Restart = "on-failure";
         };
 
-        Install.WantedBy = [ "graphical-session.target" ];
+        Install.WantedBy = ["graphical-session.target"];
       };
     };
   };

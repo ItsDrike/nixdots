@@ -1,10 +1,9 @@
-{ lib, ... }: let
+{lib, ...}: let
   inherit (lib) mkOption mkEnableOption types;
-in
-{
+in {
   options.myOptions.device = {
     cpu.type = mkOption {
-      type = with types; nullOr (enum [ "intel" "amd" ]);
+      type = with types; nullOr (enum ["intel" "amd"]);
       default = null;
       description = ''
         The manifaturer/type of the primary system CPU.
@@ -16,7 +15,7 @@ in
     };
 
     gpu.type = mkOption {
-      type = with types; nullOr (enum [ "nvidia" "amd" "intel" "hybrid-nvidia" "hybrid-amd" ]);
+      type = with types; nullOr (enum ["nvidia" "amd" "intel" "hybrid-nvidia" "hybrid-amd"]);
       default = null;
       description = ''
         The manifaturer/type of the primary system GPU.

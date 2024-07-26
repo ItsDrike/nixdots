@@ -10,7 +10,7 @@
   cfg = osConfig.myOptions.home-manager.programs.applications.iamb;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ iamb ];
+    home.packages = with pkgs; [iamb];
 
     xdg.configFile."iamb/config.json".text = builtins.toJSON {
       settings = {
@@ -33,10 +33,12 @@ in {
       };
 
       default_profile = cfg.defaultProfile;
-      profiles = lib.mapAttrs (name: profile: {
-        user_id = profile.userId;
-        url = profile.homeServer;
-      }) cfg.profiles;
+      profiles =
+        lib.mapAttrs (name: profile: {
+          user_id = profile.userId;
+          url = profile.homeServer;
+        })
+        cfg.profiles;
 
       dirs = {
         cache = "${config.xdg.cacheHome}/iamb/";

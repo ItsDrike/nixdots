@@ -10,7 +10,7 @@
   cfgPreferences = osConfig.myOptions.home-manager.preferences;
 in {
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ lxqt.pcmanfm-qt ];
+    home.packages = with pkgs; [lxqt.pcmanfm-qt];
 
     xdg.configFile."pcmanfm-qt/default/settings.conf".text = lib.generators.toINI {} {
       Behavior = {
@@ -109,7 +109,7 @@ in {
 
       Thumbnail = {
         MaxExternalThumbnailFileSize = -1;
-        MaxThumbnailFileSize = 40960;  # 40 MB
+        MaxThumbnailFileSize = 40960; # 40 MB
         ShowThumbnails = true;
         ThumbnailLocalFilesOnly = true;
       };

@@ -1,4 +1,4 @@
-{ 
+{
   lib,
   config,
   ...
@@ -6,8 +6,7 @@
   inherit (lib) mkEnableOption mkOption types mkIf;
 
   cfg = config.myOptions.home-manager.programs.applications.iamb;
-in
-{
+in {
   options.myOptions.home-manager.programs.applications.iamb = {
     enable = mkEnableOption "iamb (vim-inspired terminal Matrix client)";
     defaultProfile = mkOption {
@@ -48,4 +47,3 @@ in
     ];
   };
 }
-

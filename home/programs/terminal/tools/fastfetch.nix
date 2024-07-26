@@ -11,4 +11,3 @@ in {
     programs.fastfetch.enable = true;
   };
 }
-

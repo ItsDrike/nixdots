@@ -12,11 +12,11 @@
 in {
   config = mkIf (cfg.enable && cfgIsWayland) {
     systemd.user.services.hyprpaper = {
-      Install.WantedBy = [ "hyprland-session.target" ];
+      Install.WantedBy = ["hyprland-session.target"];
       Unit = {
         Description = "Hyprpaper (Hyprland wallpaper daemon)";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
       };
       Service = {
         Type = "simple";
@@ -31,4 +31,3 @@ in {
     '';
   };
 }
-

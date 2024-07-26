@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   inherit (lib.modules) mkForce;
   inherit (lib.strings) makeBinPath;

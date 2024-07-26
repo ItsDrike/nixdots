@@ -1,11 +1,8 @@
 # Manage $XDG_CONFIG_HOME/mimeapps.list
-{
-  osConfig,
-  ...
-}: let
+{osConfig, ...}: let
   cfgPreferences = osConfig.myOptions.home-manager.preferences;
 in {
-  xdg.mimeApps = let 
+  xdg.mimeApps = let
     browser = cfgPreferences.browser.desktop;
     textEditor = cfgPreferences.textEditor.desktop;
     emailClient = cfgPreferences.emailClient.desktop;

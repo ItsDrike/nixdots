@@ -1,10 +1,13 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkIf mkForce;
 
   cfgSystem = config.myOptions.system;
   cfg = config.myOptions.system.impermanence.root;
-in
-{
+in {
   config = mkIf cfg.enable {
     users = {
       # This option makes it that users are not mutable outside of our configuration.
@@ -28,19 +31,23 @@ in
 
     environment.persistence."${cfg.persistentMountPoint}/system" = {
       hideMounts = true;
-      directories = [
-        "/etc/nixos" # NixOS configuration source
-        "/etc/NetworkManager/system-connections" # saved network connections
-        "/var/db/sudo" # keeps track of who got the sudo lecture already
-        # "/var/log" # I sometimes use a subvolume for this, added manually if not
-        "/var/lib/nixos"
-        "/var/lib/bluetooth"
-        "/var/lib/systemd/coredump" # captured coredumps 
-      ] ++ cfg.extraDirectories;
+      directories =
+        [
+          "/etc/nixos" # NixOS configuration source
+          "/etc/NetworkManager/system-connections" # saved network connections
+          "/var/db/sudo" # keeps track of who got the sudo lecture already
+          # "/var/log" # I sometimes use a subvolume for this, added manually if not
+          "/var/lib/nixos"
+          "/var/lib/bluetooth"
+          "/var/lib/systemd/coredump" # captured coredumps
+        ]
+        ++ cfg.extraDirectories;
 
-      files = [
-        "/etc/machine-id"
-      ] ++ cfg.extraFiles;
+      files =
+        [
+          "/etc/machine-id"
+        ]
+        ++ cfg.extraFiles;
     };
 
     # For some reason, NetworkManager needs this instead of the impermanence mode

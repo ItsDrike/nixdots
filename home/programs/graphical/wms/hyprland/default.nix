@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf;
 
-  hyprPkgs = (import ./packages {inherit pkgs;});
+  hyprPkgs = import ./packages {inherit pkgs;};
 
   # TODO: Switch to flake
   hyprlandPkg = pkgs.hyprland;
@@ -15,7 +15,7 @@
   cfg = osConfig.myOptions.home-manager.wms.hyprland;
 in {
   imports = [
-      ./config
+    ./config
   ];
 
   config = mkIf cfg.enable {

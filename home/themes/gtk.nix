@@ -18,7 +18,11 @@ in {
       GTK_THEME = "${cfg.theme.name}";
 
       # gtk applications should use filepickers specified by xdg
-      GTK_USE_PORTAL = "${toString (if cfg.usePortal then 1 else 0)}";
+      GTK_USE_PORTAL = "${toString (
+        if cfg.usePortal
+        then 1
+        else 0
+      )}";
     };
   };
 

@@ -1,4 +1,8 @@
-{ config, lib, ... }: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib.modules) mkIf;
 in {
   # if lvm is enabled, then tell it to issue discards

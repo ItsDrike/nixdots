@@ -10,5 +10,3 @@ pkgs.writeShellApplication {
     ${builtins.readFile ./toggle-fake-fullscreen.sh}
   '';
 }
-
-

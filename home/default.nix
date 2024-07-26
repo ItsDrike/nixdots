@@ -1,9 +1,13 @@
-{ config, lib, inputs, self, ... }:
-let
+{
+  config,
+  lib,
+  inputs,
+  self,
+  ...
+}: let
   myHmConf = config.myOptions.home-manager;
   username = config.myOptions.system.username;
-in
-{
+in {
   home-manager = lib.mkIf myHmConf.enable {
     # Use verbose mode for home-manager
     verbose = true;
@@ -23,7 +27,7 @@ in
     backupFileExtension = "hm.old";
 
     # These will be passed to all hm modules
-    extraSpecialArgs = { inherit inputs self; };
+    extraSpecialArgs = {inherit inputs self;};
 
     users.${username} = {
       # These imports will be scoped under this key so all settings

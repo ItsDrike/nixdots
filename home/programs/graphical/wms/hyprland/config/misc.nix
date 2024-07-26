@@ -9,7 +9,7 @@
       focus_on_activate = true;
 
       # Auto-reload is unnecessary on NixOS, config is readonly
-      disable_autoreload = true; 
+      disable_autoreload = true;
 
       # Enable DPMS on these actions
       mouse_move_enables_dpms = true;

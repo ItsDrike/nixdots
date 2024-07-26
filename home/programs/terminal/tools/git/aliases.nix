@@ -1,9 +1,5 @@
-{
-  pkgs,
-  ...
-}: let
-
-  scriptPkgs = (import ./bin {inherit pkgs;});
+{pkgs, ...}: let
+  scriptPkgs = import ./bin {inherit pkgs;};
 in {
   programs.git = {
     aliases = {
@@ -69,6 +65,8 @@ in {
       make-patch = "diff --no-prefix --relative";
 
       set-upstream = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`";
+
+      fixup-picker = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup";
 
       staash = "stash --all";
       stash-staged = "!sh -c 'git stash --keep-index; git stash push -m \"staged\" --keep-index; git stash pop stash@{1}'";

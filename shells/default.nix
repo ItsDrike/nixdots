@@ -1,4 +1,4 @@
-{inputs, ...}: let 
+{inputs, ...}: let
   inherit (inputs) nixpkgs;
 
   system = "x86_64-linux";

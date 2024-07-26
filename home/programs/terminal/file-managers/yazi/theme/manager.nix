@@ -61,4 +61,3 @@
     syntect_theme = "";
   };
 }
-

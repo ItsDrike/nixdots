@@ -1,4 +1,4 @@
 {pkgs, ...}:
-  pkgs.writeShellScriptBin "brightness" ''
-    ${builtins.readFile ./brightness.sh}
-  ''
+pkgs.writeShellScriptBin "brightness" ''
+  ${builtins.readFile ./brightness.sh}
+''

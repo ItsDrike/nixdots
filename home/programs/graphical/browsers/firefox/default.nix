@@ -13,5 +13,9 @@ in {
       enable = true;
       # TODO: Finish this
     };
+
+    home.packages = with pkgs; [
+      vdhcoapp # video download helper plugin companion app
+    ];
   };
 }

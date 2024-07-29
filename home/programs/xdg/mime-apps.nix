@@ -34,6 +34,7 @@ in {
       "image/jpeg" = [imageViewer];
       "image/jpg" = [imageViewer];
       "image/png" = [imageViewer];
+      "image/webp" = [imageViewer];
       "image/tiff" = [imageViewer];
       "image/x-bmp" = [imageViewer];
       "image/x-pcx" = [imageViewer];

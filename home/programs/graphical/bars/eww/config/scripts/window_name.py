@@ -97,6 +97,7 @@ def main() -> None:
                 formatted_name = new_name
                 break
 
+        formatted_name = formatted_name.split("\n")[0]
         if len(formatted_name) > MAX_LENGTH:
             formatted_name = formatted_name[: MAX_LENGTH - 3] + "..."
 

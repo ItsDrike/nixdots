@@ -13,7 +13,7 @@ in {
       theme = {
         name = mkOption {
           type = types.str;
-          default = "Tokyonight-Dark-BL";
+          default = "Tokyonight-Dark";
           description = "The name for the GTK theme package";
         };
 

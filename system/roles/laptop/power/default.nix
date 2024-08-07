@@ -12,6 +12,7 @@ in {
     ./power-profiles-daemon
     ./upower.nix
     ./acpi.nix
+    ./systemd.nix
   ];
 
   config = mkIf (builtins.elem deviceType acceptedTypes) {

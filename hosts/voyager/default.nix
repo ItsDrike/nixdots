@@ -189,6 +189,7 @@
 
       programs = {
         bars.eww.enable = true;
+        screen-lockers.hyprlock.enable = true;
         browsers = {
           firefox.enable = true;
           chromium.enable = true;
@@ -241,6 +242,7 @@
           # to whatever file you wish to actually be your wallpaper
           wallpaperPath = "/data/Data/Media/Pictures/Wallpapers/active";
         };
+        hypridle.enable = true;
       };
     };
   };

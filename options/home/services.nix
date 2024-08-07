@@ -12,5 +12,6 @@ in {
         description = "Path to the wallpaper of your choosing";
       };
     };
+    hypridle.enable = mkEnableOption "Hypridle (Hyprland idle daemon)";
   };
 }

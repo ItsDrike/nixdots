@@ -7,5 +7,6 @@ _: {
     ./browsers
     ./file-managers
     ./games
+    ./screen-lockers
   ];
 }

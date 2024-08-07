@@ -67,5 +67,9 @@ in {
       steam.enable = mkEnableOption "Steam client";
       prismlauncher.enable = mkEnableOption "PrismLauncher";
     };
+
+    screen-lockers = {
+      hyprlock.enable = mkEnableOption "HyprLock (A screenlocker for Hyprland)";
+    };
   };
 }

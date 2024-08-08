@@ -14,10 +14,9 @@ in {
       enable = true;
       settings = {
         general = {
-          lock_cmd = "hyprlock && dunstctl set-paused true";
+          lock_cmd = "hyprlock";
           unlock_cmd = "killall -s SIGUSR1 hyprlock && dustctl set-paused false";
           before_sleep_cmd = "loginctl lock-session && dunstctl set-paused true && sleep 2";
-          after_sleep_cmd = "dunstctl set-paused false";
           ignore_dbus_inhibit = false;
           ignore_systemd_inhibit = false;
         };
@@ -34,7 +33,8 @@ in {
           # Lock the session & disable dunst notifications
           {
             timeout = 310;
-            on-timeout = "loginctl lock-session";
+            on-timeout = "loginctl lock-session && dunstctl set-paused true";
+            on-resume = "dunstctl set-paused false";
           }
 
           # Turn off the screen after another 50s

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Parse arguments
 # ------------------------------------------------------------------------------------
@@ -186,7 +186,9 @@ send_notify() {
 # Obtain notifications and show them, if they weren't showed (aren't in cache) already
 # ------------------------------------------------------------------------------------
 # Request unread notifications with gh-notify extension for github-cli
+[ $VERY_VERBOSE -eq 1 ] && echo "Requesting notifications..."
 [ "$ALL" -eq 1 ] && out="$(gh notify -s -a -n "$MAX_AMOUNT" 2>/dev/null)" || out="$(gh notify -s -n "$MAX_AMOUNT" 2>/dev/null)"
+[ $VERY_VERBOSE -eq 1 ] && echo "Notifications received"
 
 # When no notifications were found, set output to empty string, to avoid 'All caught up!' line
 # being treated as notification
@@ -216,18 +218,18 @@ if [ "$total" -gt 0 ]; then
     [ $VERY_VERY_VERBOSE -eq 1 ] && echo "gh-notify output line: $line"
 
     # Parse out the data from given output lines
-    issue_type="$(echo "$line" | awk '{print $4}' | sed 's/\x1b\[[0-9;]*m//g')"
-    repo_id="$(echo "$line" | awk '{print $3}' | sed 's/\x1b\[[0-9;]*m//g')"
+    issue_type="$(echo "$line" | awk -F '  +' '{print $4}' | sed 's/\x1b\[[0-9;]*m//g')"
+    repo_id="$(echo "$line" | awk -F '  +' '{print $3}' | sed 's/\x1b\[[0-9;]*m//g')"
 
     if [ "$issue_type" == "PullRequest" ]; then
-      issue_id="$(echo "$line" | awk '{print $5}' | sed 's/\x1b\[[0-9;]*m//g' | cut -c2-)"
-      description="$(echo "$line" | awk '{for (i=6; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      issue_id="$(echo "$line" | awk -F '  +' '{print $5}' | sed 's/\x1b\[[0-9;]*m//g' | cut -c2-)"
+      description="$(echo "$line" | awk -F '  +' '{for (i=6; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type #$issue_id)"
 
       url="https://github.com/$repo_id/pull/$issue_id"
     elif [ "$issue_type" == "Issue" ]; then
-      issue_id="$(echo "$line" | awk '{print $5}' | sed 's/\x1b\[[0-9;]*m//g' | cut -c2-)"
-      description="$(echo "$line" | awk '{for (i=6; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      issue_id="$(echo "$line" | awk -F '  +' '{print $5}' | sed 's/\x1b\[[0-9;]*m//g' | cut -c2-)"
+      description="$(echo "$line" | awk -F '  +' '{for (i=6; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type #$issue_id)"
 
       url="https://github.com/$repo_id/issues/$issue_id"
@@ -236,26 +238,26 @@ if [ "$total" -gt 0 ]; then
       # this means if the name is the same, they will be treated as the same release
       # and they could end up being ignored, this could be fixed by using github API and
       # searching for that release's commit, but that's too much work here for little benefit
-      description="$(echo "$line" | awk '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      description="$(echo "$line" | awk -F '  +' '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type)"
 
       # Because we don't know the tag or commit ID, best we can do is use the page for all releases
       # the new release will be the first one there anyway
       url="https://github.com/$repo_id/releases"
     elif [ "$issue_type" == "Commit" ]; then
-      description="$(echo "$line" | awk '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      description="$(echo "$line" | awk -F '  +' '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type)"
 
       # Because we don't know the commit SHA, just go to the repo itself
       url="https://github.com/$repo_id"
     elif [ "$issue_type" == "Discussion" ]; then
-      description="$(echo "$line" | awk '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      description="$(echo "$line" | awk -F '  +' '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type)"
 
       # Annoyingly, the discussion ID isn't included here, so best we can do is go to the discussions section
       url="https://github.com/$repo_id/discussions"
     elif [ "$issue_type" == "RepositoryDependabotAlertsThread" ]; then
-      description="$(echo "$line" | awk '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
+      description="$(echo "$line" | awk -F '  +' '{for (i=5; i<NF; i++) printf $i " "; print $NF}' | sed 's/\x1b\[[0-9;]*m//g')"
       name="$repo_id ($issue_type)"
 
       # The specific dependabot notification id isn't included, so this just goes to all security warnings for the repo
@@ -309,7 +311,7 @@ if [ "$total" -gt 0 ]; then
 
     # Add a new-line separator on very verbose to group prints from each iteration
     [ $VERY_VERBOSE -eq 1 ] && echo ""
-  done
+  done || true
 
   # Recover amount of sent notifications from the temporary file
   sent="$(cat "$sent_count_file")"

@@ -9,6 +9,7 @@
   cfg = osConfig.myOptions.home-manager.services.dunst;
 in {
   config = mkIf cfg.enable {
+    # BUG: Dunst seems to have /usr/bin/xdg-open hardcoded
     services.dunst = {
       enable = true;
       iconTheme = {

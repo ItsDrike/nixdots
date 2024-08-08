@@ -106,6 +106,7 @@ in {
             "FiraMono"
             "Hack"
             "HeavyData"
+            "Gohu"
           ];
         })
       ];

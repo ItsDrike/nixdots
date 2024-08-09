@@ -12,7 +12,7 @@ in {
     # it's about power management
     services.logind = {
       lidSwitch = "suspend-then-hibernate";
-      lidSwitchExternalPower = "lock";
+      lidSwitchExternalPower = "suspend";
       extraConfig = ''
         HandlePowerKey=suspend-then-hibernate
         HibernateDelaySec=3600

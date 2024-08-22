@@ -36,7 +36,10 @@ in {
     myOptions.system.impermanence.home.extraDirectories = optional cfg.hplip.enable ".hplip";
 
     # Support for SANE (Scanner Access Now Easy) scanners
-    hardware.sane.enable = true;
+    hardware.sane = {
+      enable = true;
+      extraBackends = optional cfg.hplip.enable pkgs.hplipWithPlugin;
+    };
 
     users.extraGroups.scanner.members = ["${cfgUser}"];
     users.extraGroups.lp.members = ["${cfgUser}"];

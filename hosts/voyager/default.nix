@@ -86,6 +86,7 @@
             ".config/github-copilot"
             ".config/ipython"
             ".cache/pre-commit"
+            ".local/share/direnv"
 
             # Services
             ".local/state/wireplumber" # volume settings

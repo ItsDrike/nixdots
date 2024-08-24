@@ -1,6 +1,5 @@
-{lib, ...}:
-with lib; let
-  inherit (lib) mkOption;
+{lib, ...}: let
+  inherit (lib) mkOption mkEnableOption types;
 in {
   imports = [
     ./boot
@@ -20,6 +19,15 @@ in {
 
     sound = {
       enable = mkEnableOption "sound related programs and audio-dependent programs";
+    };
+
+    docker = {
+      enable = mkEnableOption "docker virtualisation platform";
+      data-root = mkOption {
+        type = types.str;
+        description = "Path to the directory where docker data should be stored";
+        default = "/var/lib/docker";
+      };
     };
   };
 }

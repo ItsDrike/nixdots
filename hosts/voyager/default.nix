@@ -37,6 +37,7 @@
       username = "itsdrike";
 
       sound.enable = true;
+      docker.enable = true;
 
       impermanence = {
         root = {
@@ -48,6 +49,7 @@
 
           extraDirectories = [
             "/var/log"
+            "/var/lib/docker"
           ];
         };
 

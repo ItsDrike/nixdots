@@ -7,5 +7,6 @@ _: {
     ./thermald.nix
     ./journald.nix
     ./fstrim.nix
+    ./docker.nix
   ];
 }

@@ -234,6 +234,7 @@
         };
         games = {
           steam.enable = true;
+          lutris.enable = true;
           prismlauncher.enable = true;
         };
       };

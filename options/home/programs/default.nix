@@ -65,6 +65,7 @@ in {
 
     games = {
       steam.enable = mkEnableOption "Steam client";
+      lutris.enable = mkEnableOption "Lutris (Open Gaming Platform for Linux)";
       prismlauncher.enable = mkEnableOption "PrismLauncher";
     };
 

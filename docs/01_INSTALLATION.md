@@ -49,6 +49,14 @@ cryptsetup open /dev/disk/by-label/NIXCRYPTFS crypfs
 mkfs.btrfs -L NIXFS /dev/mapper/cryptfs
 ```
 
+> [!NOTE]
+> For the LUKS encrypted partitions, I'd heavily recommend that you back up the LUKS headers in case of a partial drive failure, so that you're still
+> able to recover your remaining data. To do this, you can use the following command:
+>
+> ```bash
+> cryptsetup luksHeaderBackup /dev/device --header-backup-file /mnt/backup/file.img
+> ```
+
 ### BTRFS Subvolumes
 
 Now we will split our btrfs partition into the following subvolumes:

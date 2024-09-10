@@ -92,7 +92,6 @@
       #
 
       # Jetbrains
-      "windowdance, class:^(jetbrains-.*)$,floating:1"
       "center, class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
       "nofocus, class:^(jetbrains-.*)$,title:^(splash)$,floating:1"
       "noborder, class:^(jetbrains-.*)$,title:^(splash)$,floating:1"

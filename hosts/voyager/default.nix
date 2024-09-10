@@ -88,6 +88,7 @@
             ".config/github-copilot"
             ".config/ipython"
             ".cache/pre-commit"
+            ".cache/venv-selector"
             ".local/share/direnv"
 
             # Services

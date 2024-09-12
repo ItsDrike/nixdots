@@ -31,7 +31,7 @@
       neocmakelsp
       bash-language-server
       nixd
-      emmet-ls
+      emmet-language-server
 
       # Linters / formatters
       stylua

@@ -226,6 +226,7 @@
           };
           qalculate-gtk.enable = true;
           virtualbox.enable = true;
+          wireshark.enable = true;
         };
         file-managers = {
           pcmanfm-qt.enable = true;

@@ -5,5 +5,6 @@
     ./thunar.nix
     ./virtualbox.nix
     ./steam.nix
+    ./wireshark.nix
   ];
 }

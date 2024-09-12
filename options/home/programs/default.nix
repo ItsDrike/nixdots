@@ -48,6 +48,7 @@ in {
       mpv.enable = mkEnableOption "MPV (General-purpose media player)";
       qalculate-gtk.enable = mkEnableOption "qalculate-gtk (The ultimate desktop calculator)";
       virtualbox.enable = mkEnableOption "VirtualBox";
+      wireshark.enable = mkEnableOption "WireShark (Network protocol analyzer)";
     };
 
     file-managers = {

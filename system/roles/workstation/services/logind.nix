@@ -11,10 +11,10 @@ in {
     # despite being under logind, this has nothing to do with login
     # it's about power management
     services.logind = {
-      lidSwitch = "suspend-then-hibernate";
+      lidSwitch = "suspend";
       lidSwitchExternalPower = "suspend";
       extraConfig = ''
-        HandlePowerKey=suspend-then-hibernate
+        HandlePowerKey=suspend
         HibernateDelaySec=3600
       '';
     };

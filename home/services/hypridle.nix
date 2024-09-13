@@ -47,7 +47,7 @@ in {
           # Enter suspend/sleep state (10 minutes)
           {
             timeout = 600;
-            on-timeout = "systemctl suspend-then-hibernate";
+            on-timeout = "systemctl suspend";
           }
         ];
       };

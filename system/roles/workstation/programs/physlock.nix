@@ -14,11 +14,13 @@ in {
       enable = true;
       lockMessage = "System is locked...";
 
-      # Don't auto-lock the system with physlock, I prefer other (gui) lockers
       # I only use physlock manually in some circumstances
       lockOn = {
+        # Don't auto-lock the system with physlock on suspend, I prefer other (gui) lockers
         suspend = false;
-        hibernate = false;
+        # Do use physlock on resuming from hibernation though, as this just restored RAM,
+        # potentially bypassing the login screen and even initial disk encryption password
+        hibernate = true;
       };
     };
   };

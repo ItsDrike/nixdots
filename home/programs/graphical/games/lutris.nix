@@ -10,10 +10,14 @@
 in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      lutris.override
-      {
-        extraPkgs = pkgs: [];
-      }
+      (lutris.override {
+        extraLibraries = pkgs: [
+          pixman
+        ];
+        extraPkgs = pkgs: [
+          jdk
+        ];
+      })
     ];
   };
 }

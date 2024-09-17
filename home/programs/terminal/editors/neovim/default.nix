@@ -32,7 +32,7 @@
       bash-language-server
       nixd
       emmet-language-server
-      nodePackages.eslint
+      vscode-langservers-extracted
 
       # Linters / formatters
       stylua
@@ -43,6 +43,7 @@
       hadolint
       markdownlint-cli2
       nodePackages.prettier
+      nodePackages.eslint
       shellcheck
       shfmt
       alejandra

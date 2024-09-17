@@ -32,6 +32,7 @@
       bash-language-server
       nixd
       emmet-language-server
+      nodePackages.eslint
 
       # Linters / formatters
       stylua

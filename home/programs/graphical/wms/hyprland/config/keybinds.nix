@@ -24,8 +24,10 @@ in {
         #
         "SUPER, W, killactive,"
         "SUPER, F, togglefloating,"
-        "SUPER, Space, fullscreen, 0"
-        "SUPER_SHIFT, Space, fullscreen, 1" # maximize
+        "SUPER, Space, fullscreen, 0" # regular fullscreen
+        "SUPER_SHIFT, Space, fullscreen, 1" # maximize without client fullscreen
+        "SUPER_CTRL, Space, fullscreenstate, 2, 0" # fullscreen without client knowing
+        "SUPER_CTRL_SHIFT, Space, fullscreenstate, 1, 2" # maximize with client being full-screen
         "CTRL_SHIFT, Space, exec, toggle-fake-fullscreen" # fake fullscreen + custom border
         "SUPER_SHIFT, S, layoutmsg, togglesplit"
 

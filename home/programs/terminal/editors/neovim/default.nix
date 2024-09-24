@@ -33,6 +33,7 @@
       nixd
       emmet-language-server
       vscode-langservers-extracted
+      kotlin-language-server
 
       # Linters / formatters
       stylua
@@ -49,6 +50,7 @@
       alejandra
       deadnix
       statix
+      ktlint
 
       # Other tools / utilities
       ripgrep

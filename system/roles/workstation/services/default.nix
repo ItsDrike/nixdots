@@ -6,5 +6,6 @@
     ./misc.nix
     ./logind.nix
     ./gnome-keyring.nix
+    ./flatpak.nix
   ];
 }

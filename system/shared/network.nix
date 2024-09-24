@@ -1,4 +1,6 @@
-{lib, ...}: {
+{config, ...}: let
+  cfgUser = config.myOptions.system.username;
+in {
   networking = {
     firewall.enable = false;
 
@@ -15,4 +17,6 @@
       "2620:fe::fe"
     ];
   };
+
+  users.extraGroups.networkmanager.members = ["${cfgUser}"];
 }

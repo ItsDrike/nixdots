@@ -98,6 +98,11 @@
             ".local/share/cargo"
             ".local/share/go"
             ".config/rye"
+
+            # University crap
+            "Android/Sdk"
+            "AndroidStudioProjects"
+            ".android"
           ];
           extraFiles = [
             ".config/gtk-3.0/bookmarks"
@@ -141,6 +146,7 @@
       roles = {
         type = "laptop";
         virtual-machine = false;
+        isUniMachine = true;
       };
       cpu.type = "amd";
       gpu.type = "amd";
@@ -182,10 +188,10 @@
           "eDP-1, 1920x1200@60, 0x1080, 1"
 
           # HDMI-A-1 above primary
-          "HDMI-A-1, 1920x1080@60, 0x0, 1"
+          #"HDMI-A-1, 1920x1080@60, 0x0, 1"
 
           # HDMI-A-1 left to primary
-          #"HDMI-A-1, 1920x1080@60, 1920x1080, 1"
+          "HDMI-A-1, 1920x1080@60, 1920x1080, 1"
 
           # Mirror the primary (laptop) monitor on externals
           ", preferred, auto, 1, mirror, eDP-1"

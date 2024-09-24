@@ -7,5 +7,6 @@
   imports = [
     ./workstation
     ./laptop
+    ./uni
   ];
 }

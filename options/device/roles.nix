@@ -35,5 +35,15 @@ in {
         Workstation machines are meant for regular day-to-day use.
       '';
     };
+
+    isUniMachine = mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''
+        Should University specific configuration be applied?
+
+        (Things like University specific software, etc.)
+      '';
+    };
   };
 }

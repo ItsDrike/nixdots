@@ -1,13 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
-  inherit (lib) mkIf;
-  deviceType = config.myOptions.device.roles.type;
-  acceptedTypes = ["laptop"];
-in {
+{pkgs, ...}: {
   imports = [
     ./power-profiles-daemon
     ./upower.nix
@@ -15,7 +6,7 @@ in {
     ./systemd.nix
   ];
 
-  config = mkIf (builtins.elem deviceType acceptedTypes) {
+  config = {
     environment.systemPackages = with pkgs; [powertop];
   };
 }

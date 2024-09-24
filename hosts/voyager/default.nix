@@ -143,11 +143,7 @@
     };
 
     device = {
-      roles = {
-        type = "laptop";
-        virtual-machine = false;
-        isUniMachine = true;
-      };
+      roles.virtual-machine = false;
       cpu.type = "amd";
       gpu.type = "amd";
       hasTPM = true;

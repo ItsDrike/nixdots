@@ -4,10 +4,14 @@
 
   # A list of shared modules that ALL systems need
   shared = [
-    ../system
+    ../system/shared
     ../home
     ../options
   ];
+
+  workstationRole = ../system/roles/workstation;
+  laptopRole = ../system/roles/laptop;
+  uniRole = ../system/roles/uni;
 in {
   herugrim = lib.nixosSystem {
     system = "x86_64-linux";
@@ -18,6 +22,8 @@ in {
         inputs.home-manager.nixosModules.home-manager
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
+        workstationRole
+        laptopRole
       ]
       ++ shared;
   };
@@ -31,6 +37,9 @@ in {
         inputs.home-manager.nixosModules.home-manager
         inputs.impermanence.nixosModules.impermanence
         inputs.lanzaboote.nixosModules.lanzaboote
+        workstationRole
+        laptopRole
+        uniRole
       ]
       ++ shared;
   };

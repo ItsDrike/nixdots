@@ -1,5 +1,6 @@
 {
   imports = [
     ./python
+    ./cpp.nix
   ];
 }
